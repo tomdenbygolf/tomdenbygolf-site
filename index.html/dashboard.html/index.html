@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f1824">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>My Dashboard — Tom Denby Golf</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,400&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap');
+:root{--navy:#1a2640;--navy-deep:#0f1824;--navy-mid:#243350;--green:#3a6b4a;--green-light:#4e8c62;--green-bright:#5daa74;--tan:#c9a96e;--tan-light:#dfc18f;--cream:#f5ead8;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy-deep);color:var(--cream);font-family:'Barlow',sans-serif;min-height:100svh;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,24,36,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,0.2);padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-emblem{width:30px;height:30px;background:var(--tan);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--navy-deep);flex-shrink:0}
+.nav-name{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:3px;color:var(--cream)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-client-name{font-size:12px;font-weight:600;color:var(--tan)}
+.btn-logout{background:none;border:1px solid rgba(201,169,110,0.3);border-radius:6px;color:rgba(245,234,216,0.5);font-size:11px;font-family:'Barlow',sans-serif;padding:5px 10px;cursor:pointer;transition:all .2s}
+.btn-logout:hover{border-color:var(--tan);color:var(--tan)}
+
+/* LAYOUT */
+.page{padding:74px 20px 100px;max-width:680px;margin:0 auto}
+
+/* HERO GREETING */
+.greeting{padding:28px 0 24px;border-bottom:1px solid rgba(201,169,110,0.15);margin-bottom:28px}
+.greeting-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--tan);margin-bottom:8px}
+.greeting-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,8vw,48px);letter-spacing:2px;line-height:1;color:var(--cream);margin-bottom:6px}
+.greeting-title em{color:var(--tan);font-style:italic;font-family:'Playfair Display',serif;font-weight:400;font-size:.75em}
+.greeting-meta{font-size:13px;color:rgba(245,234,216,0.5)}
+
+/* STAT CARDS */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
+.stat-card{background:var(--navy);border:1px solid rgba(201,169,110,0.18);border-radius:12px;padding:16px 14px;text-align:center}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1px;color:var(--tan);line-height:1}
+.stat-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,234,216,0.45);margin-top:3px}
+
+/* SECTION */
+.section{margin-bottom:32px}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--cream);display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:20px;height:2px;background:var(--tan);border-radius:1px}
+
+/* SESSION CARDS */
+.session-card{background:var(--navy);border:1px solid rgba(201,169,110,0.18);border-radius:14px;padding:20px;margin-bottom:10px;transition:border-color .2s,transform .2s;cursor:pointer}
+.session-card:hover{border-color:rgba(201,169,110,0.45);transform:translateY(-2px)}
+.session-card.new-session{border-color:var(--green-bright);background:rgba(58,107,74,0.1)}
+.session-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.session-date{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tan)}
+.session-badge{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:100px}
+.badge-new{background:rgba(93,170,116,0.2);color:var(--green-bright);border:1px solid rgba(93,170,116,0.4)}
+.badge-viewed{background:rgba(255,255,255,0.06);color:rgba(245,234,216,0.4);border:1px solid rgba(255,255,255,0.1)}
+.session-notes{font-size:13px;line-height:1.65;color:rgba(245,234,216,0.7);margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.session-notes.expanded{-webkit-line-clamp:unset}
+.session-meta{display:flex;gap:10px;flex-wrap:wrap}
+.meta-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:rgba(245,234,216,0.45);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:100px;border:1px solid rgba(255,255,255,0.08)}
+.session-expand{width:100%;background:none;border:1px solid rgba(201,169,110,0.2);border-radius:8px;color:var(--tan);font-size:11px;font-family:'Barlow',sans-serif;font-weight:600;letter-spacing:1px;padding:8px;cursor:pointer;margin-top:12px;transition:all .2s;text-transform:uppercase}
+.session-expand:hover{background:rgba(201,169,110,0.1);border-color:var(--tan)}
+
+/* RECORDINGS */
+.rec-list{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.rec-item{background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.15);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:12px}
+.rec-play{width:32px;height:32px;background:var(--green);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;color:white;font-size:12px;transition:background .2s}
+.rec-play:hover{background:var(--green-light)}
+.rec-play.playing{background:var(--tan)}
+.rec-info{flex:1;min-width:0}
+.rec-name{font-size:12px;font-weight:600;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rec-meta{font-size:10px;color:rgba(245,234,216,0.4)}
+
+/* SNAPSHOTS */
+.snap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.snap-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid rgba(201,169,110,0.18);cursor:pointer;transition:transform .2s,border-color .2s}
+.snap-img:hover{transform:scale(1.02);border-color:var(--tan)}
+
+/* BOOKING SECTION */
+.booking-card{background:linear-gradient(135deg,var(--navy-mid),var(--navy));border:2px solid rgba(201,169,110,0.3);border-radius:16px;padding:24px;margin-bottom:10px;position:relative;overflow:hidden}
+.booking-card::before{content:'📅';position:absolute;top:-8px;right:16px;font-size:70px;opacity:.07}
+.booking-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--tan);margin-bottom:6px}
+.booking-sub{font-size:13px;color:rgba(245,234,216,0.6);margin-bottom:20px;line-height:1.6}
+.booking-form{display:flex;flex-direction:column;gap:10px}
+.form-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tan);display:block;margin-bottom:5px}
+.form-input,.form-select,.form-textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.22);border-radius:8px;color:var(--cream);font-family:'Barlow',sans-serif;font-size:14px;padding:12px 14px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--tan)}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(245,234,216,0.28)}
+.form-select option{background:var(--navy-deep)}
+.form-textarea{height:90px;resize:none;line-height:1.5}
+.btn-book{width:100%;background:var(--green);color:white;border:2px solid var(--green-bright);border-radius:8px;padding:14px;font-family:'Barlow',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.btn-book:hover{background:var(--green-light);transform:translateY(-1px)}
+.booking-success{display:none;text-align:center;padding:16px 0}
+.booking-success.show{display:block}
+.booking-success-icon{font-size:40px;margin-bottom:10px}
+.booking-success-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--green-bright);margin-bottom:6px}
+.booking-success-body{font-size:13px;color:rgba(245,234,216,0.6);line-height:1.6}
+
+/* HANDICAP TRACKER */
+.hcp-card{background:var(--navy);border:1px solid rgba(201,169,110,0.18);border-radius:14px;padding:20px;margin-bottom:10px}
+.hcp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.hcp-current{text-align:center}
+.hcp-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--tan);line-height:1}
+.hcp-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,234,216,0.4)}
+.hcp-arrow{font-size:32px;color:var(--green-bright)}
+.hcp-target{text-align:center}
+.hcp-target .hcp-num{color:var(--green-bright)}
+.hcp-note{font-size:12px;color:rgba(245,234,216,0.5);text-align:center;font-style:italic}
+
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:32px 20px;color:rgba(245,234,216,0.35)}
+.empty-icon{font-size:40px;margin-bottom:12px;opacity:.5}
+.empty-text{font-size:13px;line-height:1.6}
+
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(15,24,36,0.97);backdrop-filter:blur(16px);border-top:1px solid rgba(201,169,110,0.18);display:flex;justify-content:space-around;align-items:center;height:62px;padding-bottom:env(safe-area-inset-bottom);z-index:99}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(245,234,216,0.38);text-decoration:none;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;flex:1;padding:8px 4px;transition:color .15s;cursor:pointer;background:none;border:none;-webkit-tap-highlight-color:transparent}
+.bnav-item.active,.bnav-item:hover{color:var(--tan)}
+.bnav-icon{font-size:19px;line-height:1}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,13,20,0.9);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.modal-overlay.hidden{display:none}
+.modal{background:var(--navy);border:2px solid rgba(201,169,110,0.3);border-radius:16px;padding:24px;width:100%;max-width:480px;max-height:85vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:12px;right:12px;background:none;border:none;color:var(--tan);font-size:20px;cursor:pointer;opacity:.7}
+.modal-close:hover{opacity:1}
+.modal-img{width:100%;border-radius:10px;margin-bottom:14px}
+
+.toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--navy-mid);border:2px solid var(--tan);border-radius:8px;padding:10px 18px;font-size:12px;font-weight:600;color:var(--cream);letter-spacing:1px;transition:transform .3s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.success{border-color:var(--green-bright);color:var(--green-bright)}
+
+.hidden{display:none!important}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../" class="nav-logo">
+    <div class="nav-emblem">TDG</div>
+    <div class="nav-name">Tom Denby Golf</div>
+  </a>
+  <div class="nav-right">
+    <span class="nav-client-name" id="navClientName"></span>
+    <button class="btn-logout" onclick="logout()">Log Out</button>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- GREETING -->
+  <div class="greeting reveal" id="greetingSection">
+    <div class="greeting-sub">Your Coaching Hub</div>
+    <div class="greeting-title">Hey, <em id="clientFirstName">there</em> 👋</div>
+    <div class="greeting-meta" id="greetingMeta">Loading your dashboard…</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row reveal">
+    <div class="stat-card">
+      <div class="stat-num" id="statSessions">0</div>
+      <div class="stat-label">Sessions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statRecordings">0</div>
+      <div class="stat-label">Recordings</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statHcp">—</div>
+      <div class="stat-label">Handicap</div>
+    </div>
+  </div>
+
+  <!-- SESSIONS -->
+  <div class="section reveal" id="sessionsSection">
+    <div class="section-header">
+      <div class="section-title">Recent Sessions</div>
+    </div>
+    <div id="sessionsList"></div>
+  </div>
+
+  <!-- HANDICAP TRACKER -->
+  <div class="section reveal" id="hcpSection">
+    <div class="section-header">
+      <div class="section-title">Handicap Journey</div>
+    </div>
+    <div class="hcp-card">
+      <div class="hcp-row">
+        <div class="hcp-current">
+          <div class="hcp-num" id="hcpCurrent">—</div>
+          <div class="hcp-label">Current HCP</div>
+        </div>
+        <div class="hcp-arrow">→</div>
+        <div class="hcp-target">
+          <div class="hcp-num" id="hcpTarget">—</div>
+          <div class="hcp-label">Target HCP</div>
+        </div>
+      </div>
+      <div class="hcp-note" id="hcpNote">Your coach will update this as you improve</div>
+    </div>
+  </div>
+
+  <!-- BOOK NEXT SESSION -->
+  <div class="section reveal" id="bookingSection">
+    <div class="section-header">
+      <div class="section-title">Book Next Session</div>
+    </div>
+    <div class="booking-card">
+      <div class="booking-title">Ready for Your Next Session?</div>
+      <div class="booking-sub">Pick a preferred day and time and Tom will confirm within 24 hours.</div>
+      <div id="bookingFormArea">
+        <div class="booking-form">
+          <div>
+            <label class="form-label">Preferred Day</label>
+            <select class="form-select" id="bookDay">
+              <option value="">— Choose a day —</option>
+              <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+              <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Preferred Time</label>
+            <select class="form-select" id="bookTime">
+              <option value="">— Choose a time —</option>
+              <option>Morning (8am–12pm)</option>
+              <option>Afternoon (12pm–4pm)</option>
+              <option>Evening (4pm–7pm)</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Anything to focus on?</label>
+            <textarea class="form-textarea" id="bookFocus" placeholder="e.g. I've been struggling with my driver lately, would love to work on that…"></textarea>
+          </div>
+          <button class="btn-book" onclick="submitBooking()">📅 Request This Session</button>
+        </div>
+      </div>
+      <div class="booking-success" id="bookingSuccess">
+        <div class="booking-success-icon">✅</div>
+        <div class="booking-success-title">Request Sent!</div>
+        <div class="booking-success-body">Tom will be in touch within 24 hours to confirm your session time.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="bnav-item active" onclick="scrollTo('greetingSection')">
+    <span class="bnav-icon">🏠</span>Home
+  </button>
+  <button class="bnav-item" onclick="scrollTo('sessionsSection')">
+    <span class="bnav-icon">🎬</span>Sessions
+  </button>
+  <button class="bnav-item" onclick="scrollTo('hcpSection')">
+    <span class="bnav-icon">📉</span>Handicap
+  </button>
+  <button class="bnav-item" onclick="scrollTo('bookingSection')">
+    <span class="bnav-icon">📅</span>Book
+  </button>
+</nav>
+
+<!-- IMAGE MODAL -->
+<div class="modal-overlay hidden" id="imgModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <img class="modal-img" id="modalImg" src="" alt="Swing analysis snapshot">
+    <div style="font-size:12px;color:rgba(245,234,216,0.5);text-align:center" id="modalCaption"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ════════════════════════════════════════
+// AUTH CHECK
+// ════════════════════════════════════════
+let currentClient = null;
+let clientData = null;
+
+function init() {
+  // Check session
+  const session = sessionStorage.getItem('tdg_client_session');
+  if (!session) { window.location.href = '../client/'; return; }
+
+  try { currentClient = JSON.parse(session); } catch(e) { window.location.href = '../client/'; return; }
+  if (!currentClient.loggedIn) { window.location.href = '../client/'; return; }
+
+  // Load client data
+  const clientId = new URLSearchParams(window.location.search).get('client') || currentClient.id;
+  loadClientData(clientId);
+}
+
+function loadClientData(id) {
+  let db = {};
+  try { db = JSON.parse(localStorage.getItem('tdg_db') || '{}'); } catch(e) {}
+
+  const students = db.students || [];
+  clientData = students.find(s => s.id === id);
+
+  if (!clientData) {
+    // Show demo data if no real data exists yet
+    clientData = {
+      id, firstName: currentClient.name.split(' ')[0],
+      lastName: currentClient.name.split(' ').slice(1).join(' '),
+      handicap: '—', targetHandicap: '—',
+      sessions: [], publishedSessions: []
+    };
+  }
+
+  renderDashboard();
+}
+
+function renderDashboard() {
+  const firstName = clientData.firstName || currentClient.name.split(' ')[0] || 'there';
+  document.getElementById('clientFirstName').textContent = firstName;
+  document.getElementById('navClientName').textContent = firstName;
+
+  const published = clientData.publishedSessions || [];
+  const totalRecs = published.reduce((acc, s) => acc + (s.recordingNames ? s.recordingNames.length : 0), 0);
+
+  document.getElementById('statSessions').textContent = published.length;
+  document.getElementById('statRecordings').textContent = totalRecs;
+  document.getElementById('statHcp').textContent = clientData.handicap || '—';
+
+  // Greeting meta
+  const lastSession = published.length ? new Date(published[published.length-1].date) : null;
+  document.getElementById('greetingMeta').textContent = lastSession
+    ? 'Last session: ' + lastSession.toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'})
+    : 'No sessions yet — your first one is coming soon!';
+
+  // HCP
+  document.getElementById('hcpCurrent').textContent = clientData.handicap || '—';
+  document.getElementById('hcpTarget').textContent = clientData.targetHandicap || '—';
+
+  renderSessions(published);
+
+  // Scroll reveal
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }, 100);
+}
+
+function renderSessions(sessions) {
+  const list = document.getElementById('sessionsList');
+  if (!sessions || !sessions.length) {
+    list.innerHTML = `<div class="empty-state">
+      <div class="empty-icon">🎬</div>
+      <div class="empty-text">No sessions published yet.<br>Tom will share your first analysis here very soon!</div>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = [...sessions].reverse().map((s, i) => {
+    const isNew = !s.viewed;
+    const date = new Date(s.date).toLocaleDateString('en-GB', {weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    const recCount = s.recordingNames ? s.recordingNames.length : 0;
+    const snapCount = s.snapshots ? s.snapshots.length : 0;
+
+    return `<div class="session-card ${isNew ? 'new-session' : ''}" id="session-${s.id}">
+      <div class="session-header">
+        <div class="session-date">${date}</div>
+        <span class="session-badge ${isNew ? 'badge-new' : 'badge-viewed'}">${isNew ? '● New' : 'Viewed'}</span>
+      </div>
+      <div class="session-notes" id="notes-${s.id}">${s.notes || '<em style="opacity:.5">No written notes for this session</em>'}</div>
+      ${s.notes && s.notes.length > 150 ? `<button class="session-expand" onclick="toggleNotes('${s.id}')">Read more ↓</button>` : ''}
+      <div class="session-meta">
+        ${recCount ? `<span class="meta-tag">🎙 ${recCount} recording${recCount!==1?'s':''}</span>` : ''}
+        ${snapCount ? `<span class="meta-tag">📸 ${snapCount} snapshot${snapCount!==1?'s':''}</span>` : ''}
+        ${s.focusArea ? `<span class="meta-tag">🎯 ${s.focusArea}</span>` : ''}
+      </div>
+      ${recCount || snapCount ? `<div style="margin-top:14px">
+        ${snapCount ? renderSnapshots(s.snapshots) : ''}
+        ${recCount ? renderRecordings(s.recordingNames, s.id) : ''}
+      </div>` : ''}
+    </div>`;
+  }).join('');
+
+  // Mark all as viewed
+  if (clientData.publishedSessions) {
+    clientData.publishedSessions.forEach(s => s.viewed = true);
+    saveClientData();
+  }
+}
+
+function renderSnapshots(snaps) {
+  if (!snaps || !snaps.length) return '';
+  return `<div class="snap-grid">${snaps.map((src,i) =>
+    `<img class="snap-img" src="${src}" alt="Swing snapshot ${i+1}" onclick="openImgModal('${src}','Swing Analysis Snapshot')" loading="lazy">`
+  ).join('')}</div>`;
+}
+
+function renderRecordings(names, sessionId) {
+  if (!names || !names.length) return '';
+  return `<div class="rec-list">${names.map((name,i) =>
+    `<div class="rec-item">
+      <button class="rec-play" id="play-${sessionId}-${i}" onclick="playRecording('${sessionId}',${i},'${name}')">▶</button>
+      <div class="rec-info">
+        <div class="rec-name">${name}</div>
+        <div class="rec-meta">Voice commentary from Tom</div>
+      </div>
+    </div>`
+  ).join('')}</div>`;
+}
+
+function toggleNotes(id) {
+  const el = document.getElementById('notes-' + id);
+  const btn = el.nextElementSibling;
+  if (el.classList.toggle('expanded')) { btn.textContent = 'Show less ↑'; }
+  else { btn.textContent = 'Read more ↓'; }
+}
+
+// ════════════════════════════════════════
+// AUDIO PLAYBACK
+// ════════════════════════════════════════
+let currentAudio = null;
+let currentPlayBtn = null;
+
+function playRecording(sessionId, idx, name) {
+  // Recordings are stored as base64 in publishedSessions
+  const session = clientData.publishedSessions ? clientData.publishedSessions.find(s => s.id === sessionId) : null;
+  const btn = document.getElementById(`play-${sessionId}-${idx}`);
+
+  if (currentAudio && !currentAudio.paused) {
+    currentAudio.pause();
+    if (currentPlayBtn) currentPlayBtn.textContent = '▶';
+    currentPlayBtn.classList.remove('playing');
+    if (currentPlayBtn === btn) { currentAudio = null; currentPlayBtn = null; return; }
+  }
+
+  if (session && session.recordingData && session.recordingData[idx]) {
+    currentAudio = new Audio(session.recordingData[idx]);
+    currentAudio.play();
+    btn.textContent = '⏸';
+    btn.classList.add('playing');
+    currentPlayBtn = btn;
+    currentAudio.onended = () => { btn.textContent = '▶'; btn.classList.remove('playing'); };
+    showToast('Playing: ' + name);
+  } else {
+    showToast('Recording not available — ask Tom to re-share this session', 'error');
+  }
+}
+
+// ════════════════════════════════════════
+// BOOKING
+// ════════════════════════════════════════
+function submitBooking() {
+  const day = document.getElementById('bookDay').value;
+  const time = document.getElementById('bookTime').value;
+  const focus = document.getElementById('bookFocus').value.trim();
+
+  if (!day || !time) { showToast('Please select a day and time', 'error'); return; }
+
+  // Fire email to coach
+  const coachEmail = 'tom@tomdenbygolf.com'; // REPLACE WITH YOUR EMAIL
+  const subject = encodeURIComponent(`Session Request — ${clientData.firstName} ${clientData.lastName}`);
+  const body = encodeURIComponent(
+    `Session Booking Request\n${'═'.repeat(30)}\n` +
+    `Client: ${clientData.firstName} ${clientData.lastName}\n` +
+    `Preferred Day: ${day}\nPreferred Time: ${time}\n` +
+    (focus ? `\nFocus Area:\n${focus}` : '') +
+    `\n\n---\nSent from client dashboard`
+  );
+  window.location.href = `mailto:${coachEmail}?subject=${subject}&body=${body}`;
+
+  document.getElementById('bookingFormArea').style.display = 'none';
+  document.getElementById('bookingSuccess').classList.add('show');
+}
+
+// ════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════
+function saveClientData() {
+  try {
+    let db = JSON.parse(localStorage.getItem('tdg_db') || '{}');
+    if (!db.students) db.students = [];
+    const idx = db.students.findIndex(s => s.id === clientData.id);
+    if (idx >= 0) db.students[idx] = clientData;
+    localStorage.setItem('tdg_db', JSON.stringify(db));
+  } catch(e) {}
+}
+
+function logout() {
+  sessionStorage.removeItem('tdg_client_session');
+  window.location.href = '../client/';
+}
+
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 64; window.scrollTo({ top, behavior: 'smooth' }); }
+  document.querySelectorAll('.bnav-item').forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+function openImgModal(src, caption) {
+  document.getElementById('modalImg').src = src;
+  document.getElementById('modalCaption').textContent = caption;
+  document.getElementById('imgModal').classList.remove('hidden');
+}
+function closeModal() { document.getElementById('imgModal').classList.add('hidden'); }
+document.getElementById('imgModal').addEventListener('click', e => { if(e.target.id==='imgModal') closeModal(); });
+
+let toastT;
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+// ════════════════════════════════════════
+// SCROLL REVEAL + BOTTOM NAV
+// ════════════════════════════════════════
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+init();
+</script>
+</body>
+</html>
