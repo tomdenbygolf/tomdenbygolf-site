@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f1824">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tom Denby Golf">
+<meta name="description" content="Real Life Coaching for Real Life Golfers. PGA Qualified Golf Coach Tom Denby — swing analysis, lessons and the Real Life Method™.">
+<title>Tom Denby Golf</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap');
+
+:root {
+  --navy: #1a2640;
+  --navy-deep: #0f1824;
+  --navy-mid: #243350;
+  --green: #3a6b4a;
+  --green-light: #4e8c62;
+  --green-bright: #5daa74;
+  --tan: #c9a96e;
+  --tan-light: #dfc18f;
+  --cream: #f5ead8;
+  --cream-dark: #e8d4b4;
+  --white: #ffffff;
+  --text-dark: #1a1a1a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy-deep);
+  color: var(--cream);
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════════════════════════
+   GRAIN OVERLAY
+══════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.35;
+}
+
+/* ══════════════════════════════════
+   NAV
+══════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(15, 24, 36, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  padding: 0 20px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-emblem {
+  width: 32px; height: 32px;
+  background: var(--tan);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  color: var(--navy-deep);
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+.nav-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--cream);
+}
+.nav-links {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.nav-link {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(245, 234, 216, 0.65);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-link:hover { color: var(--tan); background: rgba(201,169,110,0.08); }
+.nav-cta {
+  background: var(--green);
+  color: white !important;
+  border-radius: 6px;
+  padding: 7px 14px !important;
+  border: 1px solid var(--green-bright);
+}
+.nav-cta:hover { background: var(--green-light) !important; }
+
+/* hide nav links on mobile, show cta */
+@media (max-width: 600px) {
+  .nav-link:not(.nav-cta) { display: none; }
+}
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,169,110,0.08) 0%, transparent 60%),
+    linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%);
+}
+
+/* Decorative grid lines */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,169,110,0.12);
+  border: 1px solid rgba(201,169,110,0.35);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--tan);
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green-bright);
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 14vw, 88px);
+  line-height: 0.9;
+  letter-spacing: 2px;
+  color: var(--cream);
+  margin-bottom: 8px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.hero-title-accent {
+  color: var(--tan);
+  display: block;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 8vw, 52px);
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--tan), var(--green-bright));
+  margin: 22px auto;
+  border-radius: 2px;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-sub {
+  font-size: clamp(15px, 4vw, 18px);
+  line-height: 1.65;
+  color: rgba(245,234,216,0.72);
+  font-weight: 300;
+  margin-bottom: 36px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.hero-sub strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+
+.btn-hero-primary {
+  background: var(--tan);
+  color: var(--navy-deep);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(201,169,110,0.25);
+}
+.btn-hero-primary:hover {
+  background: var(--tan-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(201,169,110,0.35);
+}
+
+.btn-hero-ghost {
+  background: transparent;
+  color: var(--cream);
+  border: 2px solid rgba(245,234,216,0.3);
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+.btn-hero-ghost:hover {
+  border-color: var(--tan);
+  color: var(--tan);
+  transform: translateY(-2px);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(245,234,216,0.3);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fadeUp 1s 1s ease both;
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(201,169,110,0.5), transparent);
+  animation: scrollPulse 2s infinite;
+}
+@keyframes scrollPulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+/* ══════════════════════════════════
+   SECTION BASE
+══════════════════════════════════ */
+section {
+  padding: 80px 24px;
+  position: relative;
+}
+.section-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.section-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--tan);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-tag::before {
+  content: '';
+  width: 28px; height: 2px;
+  background: var(--tan);
+  border-radius: 1px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 9vw, 56px);
+  letter-spacing: 2px;
+  line-height: 1;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+.section-title em {
+  color: var(--tan);
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 0.8em;
+}
+.section-body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(245,234,216,0.7);
+  font-weight: 300;
+}
+.section-body strong { color: var(--cream); font-weight: 600; }
+.section-divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--tan), var(--green-bright));
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+/* ══════════════════════════════════
+   METHOD SECTION
+══════════════════════════════════ */
+.method-section {
+  background: var(--navy);
+}
+.method-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 36px;
+  position: relative;
+}
+.method-steps::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--tan), var(--green-bright), var(--tan));
+  opacity: 0.3;
+}
+.step {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  position: relative;
+}
+.step-num {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--navy-deep);
+  border: 2px solid var(--tan);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  color: var(--tan);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.step-content { padding-top: 8px; }
+.step-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.step-name span { color: var(--tan); }
+.step-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(245,234,216,0.6);
+}
+
+/* ══════════════════════════════════
+   WHO IT'S FOR
+══════════════════════════════════ */
+.for-section { background: var(--navy-deep); }
+.for-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 32px;
+}
+@media (max-width: 400px) { .for-cards { grid-template-columns: 1fr; } }
+.for-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,169,110,0.18);
+  border-radius: 12px;
+  padding: 20px 16px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.for-card:hover { border-color: rgba(201,169,110,0.45); transform: translateY(-2px); }
+.for-icon { font-size: 28px; margin-bottom: 10px; }
+.for-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--tan);
+  margin-bottom: 6px;
+}
+.for-desc { font-size: 13px; line-height: 1.55; color: rgba(245,234,216,0.6); }
+
+/* ══════════════════════════════════
+   PDF DOWNLOAD
+══════════════════════════════════ */
+.pdf-section {
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.pdf-section::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 70%);
+}
+.pdf-card {
+  background: var(--navy-deep);
+  border: 2px solid rgba(201,169,110,0.35);
+  border-radius: 16px;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 32px;
+}
+.pdf-card::after {
+  content: '📋';
+  position: absolute;
+  top: -10px; right: 16px;
+  font-size: 80px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.pdf-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: var(--tan);
+  margin-bottom: 6px;
+}
+.pdf-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(245,234,216,0.7);
+  margin-bottom: 16px;
+}
+.pdf-bullets {
+  list-style: none;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pdf-bullets li {
+  font-size: 13px;
+  color: rgba(245,234,216,0.75);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+.pdf-bullets li::before {
+  content: '✓';
+  color: var(--green-bright);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.pdf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pdf-form input {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(201,169,110,0.3);
+  border-radius: 8px;
+  color: var(--cream);
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+}
+.pdf-form input::placeholder { color: rgba(245,234,216,0.35); }
+.pdf-form input:focus { border-color: var(--tan); }
+.btn-download {
+  background: linear-gradient(135deg, var(--tan), var(--tan-light));
+  color: var(--navy-deep);
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(201,169,110,0.2);
+}
+.btn-download:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,169,110,0.35); }
+.pdf-privacy {
+  font-size: 11px;
+  color: rgba(245,234,216,0.35);
+  text-align: center;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.pdf-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+.pdf-success.show { display: block; }
+.pdf-success-icon { font-size: 48px; margin-bottom: 12px; }
+.pdf-success-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: var(--green-bright);
+  margin-bottom: 8px;
+}
+.pdf-success-body { font-size: 13px; color: rgba(245,234,216,0.65); line-height: 1.6; }
+
+/* ══════════════════════════════════
+   BOOKING / CONTACT FORM
+══════════════════════════════════ */
+.booking-section { background: var(--navy); }
+.contact-form {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--tan);
+}
+.form-input, .form-select, .form-textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 8px;
+  color: var(--cream);
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  padding: 13px 15px;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+  width: 100%;
+}
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(245,234,216,0.3); }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--tan); background: rgba(255,255,255,0.07); }
+.form-select { color: var(--cream); cursor: pointer; }
+.form-select option { background: var(--navy-deep); }
+.form-textarea { height: 110px; resize: none; line-height: 1.5; }
+.btn-submit {
+  background: var(--green);
+  color: white;
+  border: 2px solid var(--green-bright);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-submit:hover { background: var(--green-light); transform: translateY(-2px); }
+.form-success {
+  display: none;
+  background: rgba(58,107,74,0.15);
+  border: 1px solid var(--green-bright);
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+}
+.form-success.show { display: block; }
+.form-success-icon { font-size: 40px; margin-bottom: 12px; }
+.form-success-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--green-bright);
+  margin-bottom: 8px;
+}
+.form-success-body { font-size: 13px; color: rgba(245,234,216,0.65); line-height: 1.6; }
+
+/* ══════════════════════════════════
+   LINKS HUB
+══════════════════════════════════ */
+.links-section {
+  background: var(--navy-deep);
+  padding-bottom: 100px;
+}
+.link-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 32px;
+}
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,169,110,0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--cream);
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.link-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--tan);
+  transform: scaleY(0);
+  transition: transform 0.2s;
+  transform-origin: bottom;
+}
+.link-card:hover {
+  background: rgba(201,169,110,0.08);
+  border-color: rgba(201,169,110,0.4);
+  transform: translateX(4px);
+}
+.link-card:hover::before { transform: scaleY(1); }
+.link-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.link-icon.ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.link-icon.li { background: #0077b5; }
+.link-icon.yt { background: #ff0000; }
+.link-icon.coach { background: var(--green); border: 1px solid var(--green-bright); }
+.link-icon.pdf { background: rgba(201,169,110,0.2); border: 1px solid rgba(201,169,110,0.4); }
+.link-info { flex: 1; min-width: 0; }
+.link-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 2px;
+}
+.link-desc { font-size: 12px; color: rgba(245,234,216,0.5); }
+.link-arrow {
+  color: rgba(245,234,216,0.3);
+  font-size: 16px;
+  transition: color 0.2s, transform 0.2s;
+}
+.link-card:hover .link-arrow { color: var(--tan); transform: translateX(3px); }
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+footer {
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(201,169,110,0.15);
+  padding: 28px 24px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: rgba(201,169,110,0.5);
+  margin-bottom: 8px;
+}
+.footer-method {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(245,234,216,0.25);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.footer-copy {
+  font-size: 11px;
+  color: rgba(245,234,216,0.2);
+}
+
+/* ══════════════════════════════════
+   BOTTOM NAV (mobile)
+══════════════════════════════════ */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(15,24,36,0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(201,169,110,0.2);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 64px;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 99;
+}
+@media (min-width: 700px) { .bottom-nav { display: none; } }
+.bnav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: rgba(245,234,216,0.4);
+  text-decoration: none;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  flex: 1;
+  padding: 8px 4px;
+  transition: color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.bnav-item:hover, .bnav-item.active { color: var(--tan); }
+.bnav-icon { font-size: 20px; line-height: 1; }
+
+/* ══════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ══════════════════════════════════
+   INSTALL BANNER
+══════════════════════════════════ */
+.install-banner {
+  position: fixed;
+  bottom: 72px;
+  left: 16px; right: 16px;
+  background: var(--navy-mid);
+  border: 1px solid var(--tan);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 200;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transform: translateY(120px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.install-banner.show { transform: translateY(0); }
+.install-banner-text { flex: 1; }
+.install-banner-title { font-size: 13px; font-weight: 700; color: var(--cream); margin-bottom: 2px; }
+.install-banner-sub { font-size: 11px; color: rgba(245,234,216,0.55); }
+.install-btn {
+  background: var(--tan);
+  color: var(--navy-deep);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.install-dismiss {
+  background: none;
+  border: none;
+  color: rgba(245,234,216,0.4);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <div class="nav-emblem">TDG</div>
+    <div class="nav-name">Tom Denby Golf</div>
+  </a>
+  <div class="nav-links">
+    <a href="#method" class="nav-link">Method</a>
+    <a href="#booking" class="nav-link">Book</a>
+    <a href="#booking" class="nav-link nav-cta">Book a Session →</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">PGA Qualified Golf Coach · 12 Years Experience</div>
+    <h1 class="hero-title">
+      Real Life Coaching
+      <em class="hero-title-accent">for Real Life Golfers</em>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">
+      You have a <strong>job, a family, and limited time to practise.</strong>
+      I help mid-handicap golfers play their best golf with a structured,
+      no-nonsense coaching method built around your real life — not a tour pro's.
+    </p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-hero-primary">📅 Book a Free Consultation</a>
+      <a href="#pdf" class="btn-hero-ghost">⬇ Free Guide</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══ METHOD ══ -->
+<section class="method-section" id="method">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">The Framework</div>
+      <h2 class="section-title">The Real Life <em>Method™</em></h2>
+      <div class="section-divider"></div>
+      <p class="section-body">
+        Every player is different. That's why I built a <strong>five-step framework</strong>
+        that starts with understanding <em>you</em> — your game, your life, your goals —
+        before we touch a single drill.
+      </p>
+    </div>
+    <div class="method-steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-name"><span>Discover</span></div>
+          <div class="step-desc">We start by understanding your game, your goals and the constraints of your real life. No assumptions, no generic advice.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-name"><span>Diagnose</span></div>
+          <div class="step-desc">Video analysis and detailed assessment to identify the real root cause of what's holding your scores back.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-name"><span>Design</span></div>
+          <div class="step-desc">A personalised improvement plan built around how much time you actually have to practise each week.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-name"><span>Develop</span></div>
+          <div class="step-desc">Structured sessions with clear, measurable progress checkpoints so you always know you're moving forward.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-name"><span>Deliver</span></div>
+          <div class="step-desc">You take the new skills onto the course and see real scores come down. This is where it all matters.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHO IT'S FOR ══ -->
+<section class="for-section" id="about">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Who I Work With</div>
+      <h2 class="section-title">Built for <em>Golfers Like You</em></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="for-cards reveal">
+      <div class="for-card">
+        <div class="for-icon">⏱</div>
+        <div class="for-title">Limited Practice Time</div>
+        <div class="for-desc">You're not a touring pro. Your practice plan works around your real schedule.</div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">📉</div>
+        <div class="for-title">Stuck at the Same Handicap</div>
+        <div class="for-desc">You've plateaued around 12–22. We find the root cause and fix it properly.</div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">🤯</div>
+        <div class="for-title">Too Much Information</div>
+        <div class="for-desc">YouTube tips have your head full. We simplify and focus on what actually moves the needle.</div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">🎯</div>
+        <div class="for-title">Want a Clear Plan</div>
+        <div class="for-desc">No guessing. Every session has a purpose. Every week builds on the last.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PDF DOWNLOAD ══ -->
+<section class="pdf-section" id="pdf">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Free Download</div>
+      <h2 class="section-title">Get the <em>Free Guide</em></h2>
+      <div class="section-divider"></div>
+      <p class="section-body">
+        Enter your email and I'll send you my free guide — practical, no-fluff advice
+        you can use in your very next round.
+      </p>
+    </div>
+    <div class="pdf-card reveal">
+      <div class="pdf-title">The Real Life Method™ Starter Guide</div>
+      <div class="pdf-subtitle">5 Changes That Will Lower Your Score This Weekend</div>
+      <ul class="pdf-bullets">
+        <li>The one swing thought you actually need (and why more is hurting you)</li>
+        <li>How to practise smarter with just 20 minutes a week</li>
+        <li>The pre-round routine that eliminates first-tee nerves</li>
+        <li>Why your short game is costing you 5 shots a round</li>
+        <li>The Real Life Method™ framework explained in full</li>
+      </ul>
+      <div id="pdfFormArea">
+        <div class="pdf-form">
+          <input type="text" id="pdfName" placeholder="Your first name" autocomplete="given-name">
+          <input type="email" id="pdfEmail" placeholder="Your email address" autocomplete="email">
+          <button class="btn-download" onclick="handlePdfDownload()">
+            ⬇ Send Me the Free Guide
+          </button>
+        </div>
+        <p class="pdf-privacy">No spam, ever. Just the guide and the occasional coaching tip. Unsubscribe any time.</p>
+      </div>
+      <div class="pdf-success" id="pdfSuccess">
+        <div class="pdf-success-icon">🎉</div>
+        <div class="pdf-success-title">You're In!</div>
+        <div class="pdf-success-body">
+          Check your inbox — the guide is on its way.<br><br>
+          While you're here, why not book a free 20-minute consultation?
+          <br><br>
+          <a href="#booking" class="btn-hero-primary" style="display:inline-flex;margin-top:8px;font-size:13px;padding:12px 24px">📅 Book Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOOKING ══ -->
+<section class="booking-section" id="booking">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Get Started</div>
+      <h2 class="section-title">Book a <em>Free Consultation</em></h2>
+      <div class="section-divider"></div>
+      <p class="section-body">
+        A <strong>free 20-minute call</strong> to talk about your game, your goals and whether
+        we're a good fit. No hard sell, no obligation — just an honest conversation about
+        how to get your handicap moving.
+      </p>
+    </div>
+    <div id="contactFormArea">
+      <div class="contact-form reveal">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">First Name</label>
+            <input class="form-input" id="cFirstName" placeholder="James" autocomplete="given-name">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" id="cLastName" placeholder="Murphy" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" id="cEmail" type="email" placeholder="james@email.com" autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Current Handicap</label>
+          <input class="form-input" id="cHandicap" placeholder="e.g. 16.4">
+        </div>
+        <div class="form-field">
+          <label class="form-label">What's your biggest challenge right now?</label>
+          <textarea class="form-textarea" id="cMessage" placeholder="e.g. I can't seem to get below 18, my driving is inconsistent and I never have much time to practise…"></textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label">How did you find me?</label>
+          <select class="form-select" id="cSource">
+            <option value="">— Select one —</option>
+            <option>Instagram (@tomdenbygolf)</option>
+            <option>LinkedIn</option>
+            <option>YouTube</option>
+            <option>Word of mouth</option>
+            <option>Google search</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button class="btn-submit" onclick="handleBookingSubmit()">
+          📅 Request My Free Consultation
+        </button>
+        <p style="font-size:11px;color:rgba(245,234,216,0.3);text-align:center;margin-top:4px">I'll be in touch within 24 hours to arrange a time.</p>
+      </div>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">✅</div>
+      <div class="form-success-title">Request Received!</div>
+      <div class="form-success-body">
+        Thanks <span id="successName"></span> — I'll be in touch within 24 hours to arrange your free consultation.<br><br>
+        In the meantime, grab the free guide below if you haven't already.
+        <br><br>
+        <a href="#pdf" class="btn-hero-ghost" style="display:inline-flex;margin-top:8px;font-size:12px;padding:10px 20px">⬇ Get the Free Guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LINKS HUB ══ -->
+<section class="links-section" id="links">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Find Me Everywhere</div>
+      <h2 class="section-title">All My <em>Links</em></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="link-cards reveal">
+      <a href="https://instagram.com/tomdenbygolf" target="_blank" class="link-card">
+        <div class="link-icon ig">📸</div>
+        <div class="link-info">
+          <div class="link-name">Instagram</div>
+          <div class="link-desc">@tomdenbygolf — tips, drills & behind the scenes</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+      <a href="https://linkedin.com/in/tomdenbygolf" target="_blank" class="link-card">
+        <div class="link-icon li">💼</div>
+        <div class="link-info">
+          <div class="link-name">LinkedIn</div>
+          <div class="link-desc">Tom Denby — professional updates & coaching insights</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+      <a href="https://youtube.com/@tomdenbygolf" target="_blank" class="link-card">
+        <div class="link-icon yt">▶</div>
+        <div class="link-info">
+          <div class="link-name">YouTube</div>
+          <div class="link-desc">Free swing tips and Real Life Method™ breakdowns</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+      <a href="#pdf" class="link-card">
+        <div class="link-icon pdf">📋</div>
+        <div class="link-info">
+          <div class="link-name">Free Guide</div>
+          <div class="link-desc">5 Changes That Will Lower Your Score This Weekend</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+      <a href="#booking" class="link-card">
+        <div class="link-icon coach">⛳</div>
+        <div class="link-info">
+          <div class="link-name">Book a Session</div>
+          <div class="link-desc">Free 20-min consultation — no obligation</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Tom Denby Golf</div>
+  <div class="footer-method">Real Life Method™ · PGA Qualified Golf Coach</div>
+  <div class="footer-copy">© 2026 Tom Denby Golf. All rights reserved.</div>
+</footer>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav">
+  <a href="#home" class="bnav-item active">
+    <span class="bnav-icon">🏠</span>Home
+  </a>
+  <a href="#method" class="bnav-item">
+    <span class="bnav-icon">🎯</span>Method
+  </a>
+  <a href="#pdf" class="bnav-item">
+    <span class="bnav-icon">⬇</span>Guide
+  </a>
+  <a href="#booking" class="bnav-item">
+    <span class="bnav-icon">📅</span>Book
+  </a>
+  <a href="#links" class="bnav-item">
+    <span class="bnav-icon">🔗</span>Links
+  </a>
+</nav>
+
+<!-- INSTALL BANNER -->
+<div class="install-banner" id="installBanner">
+  <div style="font-size:28px;flex-shrink:0">⛳</div>
+  <div class="install-banner-text">
+    <div class="install-banner-title">Add to Home Screen</div>
+    <div class="install-banner-sub">Install this app for quick access</div>
+  </div>
+  <button class="install-btn" id="installBtn">Install</button>
+  <button class="install-dismiss" onclick="dismissInstall()">✕</button>
+</div>
+
+<script>
+// ══════════════════════════════════
+// SCROLL REVEAL
+// ══════════════════════════════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ══════════════════════════════════
+// BOTTOM NAV ACTIVE STATE
+// ══════════════════════════════════
+const sections = ['home','method','about','pdf','booking','links'];
+const navMap = { home:0, method:1, about:1, pdf:2, booking:3, links:4 };
+const bnavItems = document.querySelectorAll('.bnav-item');
+
+const secObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      const idx = navMap[id];
+      if (idx !== undefined) {
+        bnavItems.forEach((el, i) => el.classList.toggle('active', i === idx));
+      }
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(id => { const el = document.getElementById(id); if(el) secObserver.observe(el); });
+
+// ══════════════════════════════════
+// PDF DOWNLOAD FORM
+// ══════════════════════════════════
+function handlePdfDownload() {
+  const name = document.getElementById('pdfName').value.trim();
+  const email = document.getElementById('pdfEmail').value.trim();
+
+  if (!name) { shake('pdfName'); showToast('Please enter your first name'); return; }
+  if (!email || !email.includes('@')) { shake('pdfEmail'); showToast('Please enter a valid email'); return; }
+
+  // Store lead
+  storeLead({ name, email, source: 'pdf_download', date: new Date().toISOString() });
+
+  // In production: trigger actual PDF delivery via email service (Mailchimp, ConvertKit etc.)
+  // For now: trigger download of the PDF if one exists, and show success
+  triggerPdfDownload();
+
+  document.getElementById('pdfFormArea').style.display = 'none';
+  document.getElementById('pdfSuccess').classList.add('show');
+  showToast('🎉 Guide sent! Check your inbox.', 'success');
+}
+
+function triggerPdfDownload() {
+  // This will download whatever PDF is linked here.
+  // REPLACE 'YOUR_PDF_URL_HERE' with the actual path to your PDF when hosting.
+  // e.g. './real-life-method-guide.pdf' or a full URL
+  const pdfUrl = 'YOUR_PDF_URL_HERE';
+  if (pdfUrl !== 'YOUR_PDF_URL_HERE') {
+    const a = document.createElement('a');
+    a.href = pdfUrl;
+    a.download = 'Real-Life-Method-Starter-Guide.pdf';
+    a.click();
+  }
+}
+
+function storeLead(data) {
+  try {
+    const leads = JSON.parse(localStorage.getItem('tdg_leads') || '[]');
+    leads.push(data);
+    localStorage.setItem('tdg_leads', JSON.stringify(leads));
+  } catch(e) {}
+}
+
+// ══════════════════════════════════
+// BOOKING / CONTACT FORM
+// ══════════════════════════════════
+function handleBookingSubmit() {
+  const fn = document.getElementById('cFirstName').value.trim();
+  const ln = document.getElementById('cLastName').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  const handicap = document.getElementById('cHandicap').value.trim();
+  const message = document.getElementById('cMessage').value.trim();
+  const source = document.getElementById('cSource').value;
+
+  if (!fn) { shake('cFirstName'); showToast('Please enter your first name'); return; }
+  if (!email || !email.includes('@')) { shake('cEmail'); showToast('Please enter a valid email'); return; }
+  if (!message) { shake('cMessage'); showToast('Please tell me about your game'); return; }
+
+  // Store enquiry locally
+  storeEnquiry({ fn, ln, email, handicap, message, source, date: new Date().toISOString() });
+
+  // Open email to Tom with pre-filled details
+  const mailBody = encodeURIComponent(
+    `New Consultation Request\n` +
+    `═══════════════════════\n` +
+    `Name: ${fn} ${ln}\n` +
+    `Email: ${email}\n` +
+    `Handicap: ${handicap || 'Not provided'}\n` +
+    `Source: ${source || 'Not provided'}\n\n` +
+    `Message:\n${message}\n\n` +
+    `---\nSent via tomdenbygolf.com`
+  );
+
+  // REPLACE with your actual email address
+  const coachEmail = 'tom@tomdenbygolf.com';
+  window.location.href = `mailto:${coachEmail}?subject=New Consultation Request — ${fn} ${ln}&body=${mailBody}`;
+
+  document.getElementById('successName').textContent = fn + '!';
+  document.getElementById('contactFormArea').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+}
+
+function storeEnquiry(data) {
+  try {
+    const enqs = JSON.parse(localStorage.getItem('tdg_enquiries') || '[]');
+    enqs.push(data);
+    localStorage.setItem('tdg_enquiries', JSON.stringify(enqs));
+  } catch(e) {}
+}
+
+// ══════════════════════════════════
+// UI HELPERS
+// ══════════════════════════════════
+function shake(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.borderColor = '#e74c3c';
+  el.style.animation = 'shake 0.3s ease';
+  setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 600);
+}
+
+let toastTimeout;
+function showToast(msg, type) {
+  let t = document.getElementById('globalToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'globalToast';
+    t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(60px);background:#1a2640;border:2px solid #c9a96e;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:600;color:#f5ead8;letter-spacing:1px;transition:transform .3s;z-index:999;pointer-events:none;white-space:nowrap';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  if (type === 'success') { t.style.borderColor = '#5daa74'; t.style.color = '#5daa74'; }
+  else { t.style.borderColor = '#c9a96e'; t.style.color = '#f5ead8'; }
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => { t.style.transform = 'translateX(-50%) translateY(60px)'; }, 2800);
+}
+
+// ══════════════════════════════════
+// PWA INSTALL
+// ══════════════════════════════════
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  setTimeout(() => {
+    const banner = document.getElementById('installBanner');
+    if (banner) banner.classList.add('show');
+  }, 4000);
+});
+
+document.getElementById('installBtn').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  dismissInstall();
+  if (outcome === 'accepted') showToast('App installed! 🎉', 'success');
+});
+
+function dismissInstall() {
+  const banner = document.getElementById('installBanner');
+  if (banner) { banner.classList.remove('show'); }
+}
+
+window.addEventListener('appinstalled', () => { dismissInstall(); });
+
+// ══════════════════════════════════
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ══════════════════════════════════
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 60;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// Shake animation
+const style = document.createElement('style');
+style.textContent = '@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }';
+document.head.appendChild(style);
+</script>
+</body>
+</html>
