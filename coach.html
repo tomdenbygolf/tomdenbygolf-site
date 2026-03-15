@@ -1084,10 +1084,11 @@ function exportNotes(){
 // ════════════════════════════════════════════════════
 // MODAL HELPERS
 // ════════════════════════════════════════════════════
-function openModal(id){document.getElementById(id).classList.remove('hidden');}
+function openModal(id) {
+  if (id==='credentialsModal') renderCredentialsList();
+  document.getElementById(id).classList.remove('hidden');
+}
 function closeModal(id){document.getElementById(id).classList.add('hidden');}
-// close on overlay click
-document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.add('hidden');}));
 
 // ════════════════════════════════════════════════════
 // PUBLISH TO CLIENT DASHBOARD
@@ -1160,12 +1161,8 @@ function renderCredentialsList() {
   }).join('');
 }
 
-// Override openModal to render credentials when opened
-const _origOpenModal = openModal;
-function openModal(id) {
-  if (id==='credentialsModal') renderCredentialsList();
-  _origOpenModal(id);
-}
+// close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.add('hidden');}));
 
 function generatePassword(id) {
   const words=['birdie','eagle','bogey','driver','wedge','putt','links','fairway','bunker','green'];
