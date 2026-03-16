@@ -241,7 +241,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,24,36,0.9
 <!-- VIDEO MODAL -->
 <div class="modal-overlay hidden" id="videoModal">
   <div class="modal-video">
-    <video id="modalVideo" controls playsinline></video>
+    <div id="modalVideoContainer" style="width:100%;position:relative;background:#000;border-radius:12px;overflow:hidden">
+      <video id="modalVideo" controls playsinline style="width:100%;display:block;max-height:80vh"></video>
+      <iframe id="modalIframe" style="display:none;width:100%;height:60vh;border:none" allowfullscreen allow="autoplay"></iframe>
+    </div>
     <button class="modal-close-btn" onclick="closeVideoModal()">✕</button>
   </div>
 </div>
@@ -392,22 +395,41 @@ function toggleSession(idx) {
 let currentAudio = null;
 function playSessionRecording(url, name, idx) {
   if (!url) { showToast('Recording not available — ask Tom to re-share', 'error'); return; }
-
-  // Stop any playing audio
   if (currentAudio) { currentAudio.pause(); currentAudio = null; }
 
-  // Always open webm in video modal — works for both screen recordings and audio
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('modalVideo');
-  video.src = url;
-  modal.classList.remove('hidden');
-  video.play().catch(() => {
-    // If video fails, fall back to audio
-    modal.classList.add('hidden');
-    currentAudio = new Audio(url);
-    currentAudio.play();
-    showToast('Playing: ' + name);
-  });
+  const iframe = document.getElementById('modalIframe');
+
+  // Google Drive preview links use iframe
+  if (url.includes('drive.google.com') || url.includes('docs.google.com')) {
+    video.style.display = 'none';
+    video.src = '';
+    iframe.style.display = 'block';
+    iframe.src = url;
+    modal.classList.remove('hidden');
+  } else {
+    // Direct video file
+    iframe.style.display = 'none';
+    iframe.src = '';
+    video.style.display = 'block';
+    video.src = url;
+    modal.classList.remove('hidden');
+    video.play().catch(() => {
+      modal.classList.add('hidden');
+      currentAudio = new Audio(url);
+      currentAudio.play();
+      showToast('Playing: ' + name);
+    });
+  }
+}
+
+function closeVideoModal() {
+  document.getElementById('videoModal').classList.add('hidden');
+  const video = document.getElementById('modalVideo');
+  const iframe = document.getElementById('modalIframe');
+  video.pause(); video.src = '';
+  iframe.src = '';
 }
 
 function renderVideoLocker(videos, clientId) {
@@ -483,19 +505,6 @@ async function handleVideoUpload(input) {
   input.value = '';
 }
 
-// VIDEO MODAL
-function openVideoModal(url, name) {
-  const modal = document.getElementById('videoModal');
-  const video = document.getElementById('modalVideo');
-  video.src = url;
-  modal.classList.remove('hidden');
-  video.play();
-}
-function closeVideoModal() {
-  document.getElementById('videoModal').classList.add('hidden');
-  document.getElementById('modalVideo').pause();
-  document.getElementById('modalVideo').src = '';
-}
 document.getElementById('videoModal').addEventListener('click', e => { if(e.target.id==='videoModal') closeVideoModal(); });
 
 // BOOKING
