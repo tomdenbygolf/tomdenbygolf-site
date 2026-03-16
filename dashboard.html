@@ -338,22 +338,81 @@ function renderSessions(sessions) {
     list.innerHTML = `<div class="empty-state"><div class="empty-icon">🎬</div><div class="empty-text">No sessions published yet.<br>Tom will share your first analysis here soon!</div></div>`;
     return;
   }
-  list.innerHTML = sessions.map(s => {
+  list.innerHTML = sessions.map((s, idx) => {
     const isNew = !s.viewed;
     const date = new Date(s.created_at).toLocaleDateString('en-GB', {weekday:'long',day:'numeric',month:'long',year:'numeric'});
     const recNames = s.recording_names || [];
-    return `<div class="session-card ${isNew ? 'new-session' : ''}">
-      <div class="session-head">
-        <div class="session-date">${date}</div>
-        <span class="session-badge ${isNew ? 'badge-new' : 'badge-viewed'}">${isNew ? '● New' : 'Viewed'}</span>
+    const recUrls = s.recording_urls || [];
+    const hasRecordings = recNames.length > 0;
+
+    // Build recordings list HTML
+    const recordingsHtml = recNames.map((name, i) => {
+      const url = recUrls[i] || null;
+      const isVideo = name.includes('_') || url;
+      return `<div class="rec-item">
+        <button class="rec-play" onclick="playSessionRecording('${url}', '${name}', ${i})" ${!url ? 'style="opacity:.4;cursor:not-allowed"' : ''} id="recplay-${idx}-${i}">▶</button>
+        <div style="flex:1;min-width:0">
+          <div class="rec-name">${isVideo ? '🎬' : '🎙'} ${name}</div>
+          <div class="rec-meta">${url ? 'Tap to play' : 'Recording saved — ask Tom to re-share'}</div>
+        </div>
+        ${url ? `<a href="${url}" download="${name}.webm" class="rec-play" style="background:var(--navy-mid);font-size:14px" title="Download">⬇</a>` : ''}
+      </div>`;
+    }).join('');
+
+    return `<div class="session-card ${isNew ? 'new-session' : ''}" id="session-${idx}">
+      <div class="session-head" onclick="toggleSession(${idx})" style="cursor:pointer;user-select:none">
+        <div>
+          <div class="session-date">${date}</div>
+          ${s.focus_area ? `<span class="meta-tag" style="margin-top:4px;display:inline-flex">🎯 ${s.focus_area}</span>` : ''}
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="session-badge ${isNew ? 'badge-new' : 'badge-viewed'}">${isNew ? '● New' : 'Viewed'}</span>
+          <span id="chevron-${idx}" style="color:var(--tan);font-size:14px;transition:transform .2s">▼</span>
+        </div>
       </div>
-      <div class="session-notes">${s.notes || '<em style="opacity:.5">No written notes for this session</em>'}</div>
-      <div>
-        ${s.focus_area ? `<span class="meta-tag">🎯 ${s.focus_area}</span>` : ''}
-        ${recNames.length ? `<span class="meta-tag">🎙 ${recNames.length} recording${recNames.length!==1?'s':''}</span>` : ''}
+      <div id="session-body-${idx}" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(201,169,110,0.15)">
+        ${s.notes ? `<div style="font-size:13px;line-height:1.7;color:rgba(245,234,216,0.8);margin-bottom:14px;white-space:pre-wrap">${s.notes}</div>` : '<div style="font-size:12px;color:rgba(245,234,216,.4);font-style:italic;margin-bottom:12px">No written notes for this session</div>'}
+        ${hasRecordings ? `
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tan);margin-bottom:8px">Session Recordings</div>
+          <div class="rec-list">${recordingsHtml}</div>
+        ` : ''}
       </div>
+      ${hasRecordings ? `<div style="margin-top:10px;font-size:11px;color:rgba(245,234,216,.4);display:flex;align-items:center;gap:5px"><span>🎙</span>${recNames.length} recording${recNames.length!==1?'s':''} — tap card to view</div>` : ''}
     </div>`;
   }).join('');
+}
+
+function toggleSession(idx) {
+  const body = document.getElementById('session-body-'+idx);
+  const chevron = document.getElementById('chevron-'+idx);
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+
+let currentAudio = null;
+function playSessionRecording(url, name, idx) {
+  if (!url) { showToast('Recording not available — ask Tom to re-share', 'error'); return; }
+
+  // Stop any playing
+  if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+
+  // Detect if video or audio
+  const isVideo = url.includes('.webm') || name.toLowerCase().includes('screen');
+
+  if (isVideo) {
+    // Open video in modal
+    const modal = document.getElementById('videoModal');
+    const video = document.getElementById('modalVideo');
+    video.src = url;
+    modal.classList.remove('hidden');
+    video.play().catch(() => {});
+  } else {
+    // Play audio
+    currentAudio = new Audio(url);
+    currentAudio.play();
+    showToast('Playing: ' + name);
+  }
 }
 
 function renderVideoLocker(videos, clientId) {
