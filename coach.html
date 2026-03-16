@@ -926,18 +926,45 @@ async function confirmPublish() {
   const notes = document.getElementById('sessionNotes').value.trim();
   const focus = document.getElementById('publishFocus').value.trim();
 
-  // Save session to Supabase
+  closeModal('publishModal');
+  showToast('Uploading recordings…', 'success');
+
+  // Upload each recording to Supabase Storage and collect URLs
+  const recordingUrls = [];
+  for (let i = 0; i < sessionRecordings.length; i++) {
+    const rec = sessionRecordings[i];
+    try {
+      showToast(`Uploading recording ${i+1} of ${sessionRecordings.length}…`);
+      const ext = rec.isVideo ? 'webm' : 'webm';
+      const fileName = `sessions/${s.id}/${Date.now()}_${rec.name.replace(/\s+/g,'_')}.${ext}`;
+      const uploadRes = await fetch(`${SUPABASE_URL}/storage/v1/object/videos/${fileName}`, {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': rec.blob.type || 'video/webm' },
+        body: rec.blob
+      });
+      if (uploadRes.ok) {
+        recordingUrls.push(`${SUPABASE_URL}/storage/v1/object/public/videos/${fileName}`);
+      } else {
+        // If storage upload fails, still save session without URL
+        recordingUrls.push(null);
+      }
+    } catch(e) {
+      recordingUrls.push(null);
+    }
+  }
+
+  // Save session to Supabase with recording URLs
   await sbInsert('sessions', {
     student_id: s.id,
     notes,
     focus_area: focus,
     recording_names: sessionRecordings.map(r => r.name),
+    recording_urls: recordingUrls.filter(u => u !== null),
     viewed: false
   });
 
-  closeModal('publishModal');
   showToast(`✅ Session published to ${s.first_name}'s dashboard!`, 'success');
-  setTimeout(() => { if(confirm(`Email ${s.first_name} to let them know?`)) sendPublishEmail(s); }, 500);
+  setTimeout(() => { if(confirm(`Email ${s.first_name} to let them know?`)) sendPublishEmail(s); }, 800);
 }
 
 function sendPublishEmail(s) {
