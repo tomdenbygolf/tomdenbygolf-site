@@ -226,7 +226,7 @@ footer{background:var(--navy-deep);border-top:1px solid rgba(201,169,110,0.15);p
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge">PGA Qualified Golf Coach · 12 Years Experience</div>
+    <div class="hero-badge">PGA Qualified Golf Coach · 15 Years Experience</div>
     <h1 class="hero-title">Real Life Coaching<em class="hero-title-accent">for Real Life Golfers</em></h1>
     <div class="hero-divider"></div>
     <p class="hero-sub">You have a <strong>job, a family, and limited time to practise.</strong> I help mid-handicap golfers play their best golf with a structured, no-nonsense coaching method built around your real life — not a tour pro's.</p>
@@ -265,7 +265,7 @@ footer{background:var(--navy-deep);border-top:1px solid rgba(201,169,110,0.15);p
     </div>
     <div class="for-cards reveal">
       <div class="for-card"><div class="for-icon">⏱</div><div class="for-title">Limited Practice Time</div><div class="for-desc">You're not a touring pro. Your practice plan works around your real schedule.</div></div>
-      <div class="for-card"><div class="for-icon">📉</div><div class="for-title">Stuck at the Same Handicap</div><div class="for-desc">You've plateaued around 12–22. We find the root cause and fix it properly.</div></div>
+      <div class="for-card"><div class="for-icon">📉</div><div class="for-title">Stuck at the Same Handicap</div><div class="for-desc">You've plateaued. We find the root cause and fix it properly.</div></div>
       <div class="for-card"><div class="for-icon">🤯</div><div class="for-title">Too Much Information</div><div class="for-desc">YouTube tips have your head full. We simplify and focus on what actually moves the needle.</div></div>
       <div class="for-card"><div class="for-icon">🎯</div><div class="for-title">Want a Clear Plan</div><div class="for-desc">No guessing. Every session has a purpose. Every week builds on the last.</div></div>
     </div>
@@ -436,27 +436,45 @@ const secObs = new IntersectionObserver(entries => {
 }, { threshold: 0.4 });
 sections.forEach(id => { const el=document.getElementById(id); if(el) secObs.observe(el); });
 
-// PDF DOWNLOAD — saves lead to Supabase + emails Tom
+// PDF DOWNLOAD — Web3Forms silent submission
 async function handlePdfDownload() {
   const name = document.getElementById('pdfName').value.trim();
   const email = document.getElementById('pdfEmail').value.trim();
   if (!name) { shakeEl('pdfName'); showToast('Please enter your first name'); return; }
   if (!email || !email.includes('@')) { shakeEl('pdfEmail'); showToast('Please enter a valid email'); return; }
 
-  // Save to Supabase
-  await sbInsert('leads', { name, email, source: 'pdf_download' });
+  // Show loading state
+  const btn = document.querySelector('.btn-download');
+  btn.textContent = 'Sending…'; btn.disabled = true;
 
-  // Email Tom with the lead details
-  const subject = encodeURIComponent(`New Free Guide Request — ${name}`);
-  const body = encodeURIComponent(`Hi Tom,\n\nSomeone has requested your free guide:\n\nName: ${name}\nEmail: ${email}\n\nPlease send them the Real Life Method™ Starter Guide.\n\n---\nSent from tomdenbygolf.co.uk`);
-  window.open(`mailto:${COACH_EMAIL}?subject=${subject}&body=${body}`, '_blank');
+  try {
+    // Save to Supabase
+    await sbInsert('leads', { name, email, source: 'pdf_download' });
 
-  document.getElementById('pdfFormArea').style.display = 'none';
-  document.getElementById('pdfSuccess').classList.add('show');
-  showToast('Request sent! Tom will be in touch shortly.', 'success');
+    // Send via Web3Forms — goes directly to Tom's Gmail
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: '341aff8e-ea1a-4b8e-b1c6-016ae6990f90',
+        subject: `New Free Guide Request — ${name}`,
+        from_name: name,
+        email: email,
+        message: `Someone has requested your free guide:\n\nName: ${name}\nEmail: ${email}\n\nPlease send them the Real Life Method™ Starter Guide.\n\n---\nSent from tomdenbygolf.co.uk`
+      })
+    });
+
+    document.getElementById('pdfFormArea').style.display = 'none';
+    document.getElementById('pdfSuccess').classList.add('show');
+    showToast('Request sent!', 'success');
+
+  } catch(e) {
+    showToast('Something went wrong — please try again', 'error');
+    btn.textContent = '⬇ Send Me the Free Guide'; btn.disabled = false;
+  }
 }
 
-// BOOKING FORM — saves to Supabase + emails Tom
+// BOOKING FORM — Web3Forms silent submission
 async function handleBookingSubmit() {
   const fn = document.getElementById('cFirstName').value.trim();
   const ln = document.getElementById('cLastName').value.trim();
@@ -469,17 +487,35 @@ async function handleBookingSubmit() {
   if (!email || !email.includes('@')) { shakeEl('cEmail'); showToast('Please enter a valid email'); return; }
   if (!message) { shakeEl('cMessage'); showToast('Please tell me about your game'); return; }
 
-  // Save to Supabase
-  await sbInsert('enquiries', { first_name:fn, last_name:ln, email, handicap, message, source });
+  // Show loading state
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = 'Sending…'; btn.disabled = true;
 
-  // Email Tom
-  const subject = encodeURIComponent(`New Consultation Request — ${fn} ${ln}`);
-  const body = encodeURIComponent(`New Consultation Request\n${'═'.repeat(30)}\nName: ${fn} ${ln}\nEmail: ${email}\nHandicap: ${handicap||'Not provided'}\nSource: ${source||'Not provided'}\n\nMessage:\n${message}\n\n---\nSent from tomdenbygolf.co.uk`);
-  window.open(`mailto:${COACH_EMAIL}?subject=${subject}&body=${body}`, '_blank');
+  try {
+    // Save to Supabase
+    await sbInsert('enquiries', { first_name:fn, last_name:ln, email, handicap, message, source });
 
-  document.getElementById('successName').textContent = fn + '!';
-  document.getElementById('contactFormArea').style.display = 'none';
-  document.getElementById('formSuccess').classList.add('show');
+    // Send via Web3Forms — goes directly to Tom's Gmail
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: 'b743554e-b5ec-47d1-ac2e-06cc7022dfe4',
+        subject: `New Consultation Request — ${fn} ${ln}`,
+        from_name: `${fn} ${ln}`,
+        email: email,
+        message: `New Consultation Request\n${'═'.repeat(30)}\nName: ${fn} ${ln}\nEmail: ${email}\nHandicap: ${handicap||'Not provided'}\nSource: ${source||'Not provided'}\n\nMessage:\n${message}\n\n---\nSent from tomdenbygolf.co.uk`
+      })
+    });
+
+    document.getElementById('successName').textContent = fn + '!';
+    document.getElementById('contactFormArea').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+
+  } catch(e) {
+    showToast('Something went wrong — please try again', 'error');
+    btn.textContent = '📅 Request My Free Consultation'; btn.disabled = false;
+  }
 }
 
 // COACH PORTAL PIN
