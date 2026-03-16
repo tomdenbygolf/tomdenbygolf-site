@@ -348,14 +348,13 @@ function renderSessions(sessions) {
     // Build recordings list HTML
     const recordingsHtml = recNames.map((name, i) => {
       const url = recUrls[i] || null;
-      const isVideo = name.includes('_') || url;
       return `<div class="rec-item">
-        <button class="rec-play" onclick="playSessionRecording('${url}', '${name}', ${i})" ${!url ? 'style="opacity:.4;cursor:not-allowed"' : ''} id="recplay-${idx}-${i}">▶</button>
+        <button class="rec-play" onclick="${url ? `playSessionRecording('${url}','${name}',${i})` : `showToast('This recording was saved before cloud upload was enabled. Ask Tom to re-record this session.','error')`}">▶</button>
         <div style="flex:1;min-width:0">
-          <div class="rec-name">${isVideo ? '🎬' : '🎙'} ${name}</div>
-          <div class="rec-meta">${url ? 'Tap to play' : 'Recording saved — ask Tom to re-share'}</div>
+          <div class="rec-name">🎬 ${name}</div>
+          <div class="rec-meta">${url ? 'Tap ▶ to play · ' + new Date(s.created_at).toLocaleDateString('en-GB') : 'Not yet available online'}</div>
         </div>
-        ${url ? `<a href="${url}" download="${name}.webm" class="rec-play" style="background:var(--navy-mid);font-size:14px" title="Download">⬇</a>` : ''}
+        ${url ? `<a href="${url}" download="${name}.webm" style="width:28px;height:28px;background:var(--navy-mid);border:1px solid rgba(201,169,110,.3);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--tan);text-decoration:none;font-size:13px;flex-shrink:0" title="Download">⬇</a>` : ''}
       </div>`;
     }).join('');
 
@@ -394,25 +393,21 @@ let currentAudio = null;
 function playSessionRecording(url, name, idx) {
   if (!url) { showToast('Recording not available — ask Tom to re-share', 'error'); return; }
 
-  // Stop any playing
+  // Stop any playing audio
   if (currentAudio) { currentAudio.pause(); currentAudio = null; }
 
-  // Detect if video or audio
-  const isVideo = url.includes('.webm') || name.toLowerCase().includes('screen');
-
-  if (isVideo) {
-    // Open video in modal
-    const modal = document.getElementById('videoModal');
-    const video = document.getElementById('modalVideo');
-    video.src = url;
-    modal.classList.remove('hidden');
-    video.play().catch(() => {});
-  } else {
-    // Play audio
+  // Always open webm in video modal — works for both screen recordings and audio
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('modalVideo');
+  video.src = url;
+  modal.classList.remove('hidden');
+  video.play().catch(() => {
+    // If video fails, fall back to audio
+    modal.classList.add('hidden');
     currentAudio = new Audio(url);
     currentAudio.play();
     showToast('Playing: ' + name);
-  }
+  });
 }
 
 function renderVideoLocker(videos, clientId) {
