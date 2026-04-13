@@ -891,7 +891,7 @@ footer {
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge">PGA Qualified Golf Coach · 12 Years Experience</div>
+    <div class="hero-badge">PGA Qualified Golf Coach · 15 Years Experience</div>
     <h1 class="hero-title">
       Real Life Coaching
       <em class="hero-title-accent">for Real Life Golfers</em>
@@ -1040,7 +1040,7 @@ footer {
           While you're here, why not send over a video of your Swing and I'll review for FREE?
 	  Send to tomdenbygolfpro@gmail.com
           <br><br>
-          <a href="#booking" class="btn-hero-primary" style="display:inline-flex;margin-top:8px;font-size:13px;padding:12px 24px">📅 Send Your Swing Video</a>
+          <a href="#booking" class="btn-hero-primary" style="display:inline-flex;margin-top:8px;font-size:13px;padding:12px 24px">📅 Book Free Consultation</a>
         </div>
       </div>
     </div>
@@ -1244,39 +1244,27 @@ function handlePdfDownload() {
   if (!name) { shake('pdfName'); showToast('Please enter your first name'); return; }
   if (!email || !email.includes('@')) { shake('pdfEmail'); showToast('Please enter a valid email'); return; }
 
-  // Store lead
-  storeLead({ name, email, source: 'pdf_download', date: new Date().toISOString() });
-
-  // In production: trigger actual PDF delivery via email service (Mailchimp, ConvertKit etc.)
-  // For now: trigger download of the PDF if one exists, and show success
-  triggerPdfDownload();
-
-  document.getElementById('pdfFormArea').style.display = 'none';
-  document.getElementById('pdfSuccess').classList.add('show');
-  showToast('🎉 Video One is on its way! Check your inbox.', 'success');
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      access_key: '341aff8e-ea1a-4b8e-b1c6-016ae6990f90',
+      subject: 'New Strike It Pure Series Sign-Up — ' + name,
+      from_name: 'Tom Denby Golf Website',
+      name: name,
+      email: email,
+      message: 'New video series sign-up\nName: ' + name + '\nEmail: ' + email
+    })
+  }).then(res => res.json()).then(data => {
+    if (data.success) {
+      document.getElementById('pdfFormArea').style.display = 'none';
+      document.getElementById('pdfSuccess').classList.add('show');
+      showToast('Video 1 is on its way — check your inbox!', 'success');
+    } else {
+      showToast('Something went wrong — please try again');
+    }
+  }).catch(() => showToast('Something went wrong — please try again'));
 }
-
-function triggerPdfDownload() {
-  // This will download whatever PDF is linked here.
-  // REPLACE 'YOUR_PDF_URL_HERE' with the actual path to your PDF when hosting.
-  // e.g. './real-life-method-guide.pdf' or a full URL
-  const pdfUrl = 'YOUR_PDF_URL_HERE';
-  if (pdfUrl !== 'YOUR_PDF_URL_HERE') {
-    const a = document.createElement('a');
-    a.href = pdfUrl;
-    a.download = 'Real-Life-Method-Starter-Guide.pdf';
-    a.click();
-  }
-}
-
-function storeLead(data) {
-  try {
-    const leads = JSON.parse(localStorage.getItem('tdg_leads') || '[]');
-    leads.push(data);
-    localStorage.setItem('tdg_leads', JSON.stringify(leads));
-  } catch(e) {}
-}
-
 // ══════════════════════════════════
 // BOOKING / CONTACT FORM
 // ══════════════════════════════════
@@ -1292,38 +1280,27 @@ function handleBookingSubmit() {
   if (!email || !email.includes('@')) { shake('cEmail'); showToast('Please enter a valid email'); return; }
   if (!message) { shake('cMessage'); showToast('Please tell me about your game'); return; }
 
-  // Store enquiry locally
-  storeEnquiry({ fn, ln, email, handicap, message, source, date: new Date().toISOString() });
-
-  // Open email to Tom with pre-filled details
-  const mailBody = encodeURIComponent(
-    `New Consultation Request\n` +
-    `═══════════════════════\n` +
-    `Name: ${fn} ${ln}\n` +
-    `Email: ${email}\n` +
-    `Handicap: ${handicap || 'Not provided'}\n` +
-    `Source: ${source || 'Not provided'}\n\n` +
-    `Message:\n${message}\n\n` +
-    `---\nSent via tomdenbygolf.com`
-  );
-
-  // REPLACE with your actual email address
-  const coachEmail = 'tom@tomdenbygolf.com';
-  window.location.href = `mailto:${coachEmail}?subject=New Consultation Request — ${fn} ${ln}&body=${mailBody}`;
-
-  document.getElementById('successName').textContent = fn + '!';
-  document.getElementById('contactFormArea').style.display = 'none';
-  document.getElementById('formSuccess').classList.add('show');
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      access_key: '341aff8e-ea1a-4b8e-b1c6-016ae6990f90',
+      subject: 'New Consultation Request — ' + fn + ' ' + ln,
+      from_name: 'Tom Denby Golf Website',
+      name: fn + ' ' + ln,
+      email: email,
+      message: 'Name: ' + fn + ' ' + ln + '\nEmail: ' + email + '\nHandicap: ' + (handicap || 'Not provided') + '\nSource: ' + (source || 'Not provided') + '\n\nMessage:\n' + message
+    })
+  }).then(res => res.json()).then(data => {
+    if (data.success) {
+      document.getElementById('successName').textContent = fn + '!';
+      document.getElementById('contactFormArea').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+    } else {
+      showToast('Something went wrong — please try again');
+    }
+  }).catch(() => showToast('Something went wrong — please try again'));
 }
-
-function storeEnquiry(data) {
-  try {
-    const enqs = JSON.parse(localStorage.getItem('tdg_enquiries') || '[]');
-    enqs.push(data);
-    localStorage.setItem('tdg_enquiries', JSON.stringify(enqs));
-  } catch(e) {}
-}
-
 // ══════════════════════════════════
 // UI HELPERS
 // ══════════════════════════════════
