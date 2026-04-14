@@ -1244,27 +1244,11 @@ function handlePdfDownload() {
   if (!name) { shake('pdfName'); showToast('Please enter your first name'); return; }
   if (!email || !email.includes('@')) { shake('pdfEmail'); showToast('Please enter a valid email'); return; }
 
-  // Disable button to prevent double submit
   const btn = document.querySelector('.btn-download');
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
-  // Web3Forms — notifies your Gmail
-  const web3Promise = fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      access_key: '341aff8e-ea1a-4b8e-b1c6-016ae6990f90',
-      subject: 'New Strike It Pure Series Sign-Up — ' + name,
-      from_name: 'Tom Denby Golf Website',
-      name: name,
-      email: email,
-      message: 'New video series sign-up\nName: ' + name + '\nEmail: ' + email
-    })
-  }).then(res => res.json());
-
-  // Kit — adds subscriber to your email sequence
-  const kitPromise = fetch('https://api.convertkit.com/v3/sequences/2720067/subscribe', {
+  fetch('https://api.convertkit.com/v3/sequences/2720067/subscribe', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -1272,30 +1256,26 @@ function handlePdfDownload() {
       first_name: name,
       email: email
     })
-  }).then(res => res.json());
-
-  // Run both at the same time
-  Promise.allSettled([web3Promise, kitPromise]).then(([web3Result, kitResult]) => {
-
-    // Check Web3Forms
-    const web3OK = web3Result.status === 'fulfilled' && web3Result.value.success;
-
-    // Check Kit
-    const kitOK = kitResult.status === 'fulfilled' && kitResult.value.subscription;
-
-    if (web3OK || kitOK) {
-      // At least one succeeded — show success to user
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.subscription) {
       document.getElementById('pdfFormArea').style.display = 'none';
       document.getElementById('pdfSuccess').classList.add('show');
       showToast('Video 1 is on its way — check your inbox!', 'success');
     } else {
-      // Both failed
       btn.disabled = false;
       btn.innerHTML = '▶ Send Me the Strike It Pure Series';
       showToast('Something went wrong — please try again');
     }
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.innerHTML = '▶ Send Me the Strike It Pure Series';
+    showToast('Something went wrong — please try again');
   });
-}// ══════════════════════════════════
+}
+// ══════════════════════════════════
 // BOOKING / CONTACT FORM
 // ══════════════════════════════════
 function handleBookingSubmit() {
