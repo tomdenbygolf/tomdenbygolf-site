@@ -29,12 +29,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* PREMIUM GRAIN OVERLAY */
 body::before {
   content: ''; position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none; z-index: 1000; opacity: 0.35;
 }
 
+/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(15, 24, 36, 0.92); backdrop-filter: blur(12px);
@@ -49,6 +51,7 @@ nav {
 .nav-cta { background: var(--green); color: white !important; border-radius: 6px; padding: 7px 14px !important; border: 1px solid var(--green-bright); }
 @media (max-width: 600px) { .nav-link:not(.nav-cta) { display: none; } }
 
+/* HERO */
 .hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 100px 24px 60px; }
 .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%), linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%); }
 .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%); }
@@ -70,15 +73,16 @@ nav {
 .hero-btn { background: linear-gradient(135deg, var(--tan), var(--tan-light)); color: var(--navy-deep); border: none; border-radius: 8px; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; width: 100%; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; box-shadow: 0 4px 20px rgba(201,169,110,0.25); }
 .hero-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,110,0.3); border-radius: 8px; color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 14px; padding: 14px 16px; outline: none; width: 100%; margin-bottom: 10px; }
 
+/* SECTIONS */
 section { padding: 80px 24px; position: relative; }
 .section-inner { max-width: 640px; margin: 0 auto; }
 .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
 .section-tag::before { content: ''; width: 28px; height: 2px; background: var(--tan); border-radius: 1px; }
 .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 9vw, 56px); letter-spacing: 2px; line-height: 1; color: var(--cream); margin-bottom: 16px; }
 .section-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 0.8em; }
-.section-body { font-size: 15px; line-height: 1.75; color: rgba(245,234,216,0.7); font-weight: 300; }
 .section-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--tan), var(--green-bright)); border-radius: 2px; margin-bottom: 24px; }
 
+/* METHOD */
 .method-section { background: var(--navy); }
 .method-split { display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start; }
 @media (max-width: 700px) { .method-split { grid-template-columns: 1fr; gap: 30px; } }
@@ -89,9 +93,9 @@ section { padding: 80px 24px; position: relative; }
 .step { display: flex; gap: 20px; padding: 20px 0; position: relative; }
 .step-num { width: 42px; height: 42px; border-radius: 50%; background: var(--navy-deep); border: 2px solid var(--tan); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--tan); flex-shrink: 0; z-index: 1; }
 .step-name { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cream); margin-bottom: 4px; }
-.step-name span { color: var(--tan); }
 .step-desc { font-size: 14px; line-height: 1.6; color: rgba(245,234,216,0.6); }
 
+/* FOR CARDS */
 .for-section { background: var(--navy-deep); }
 .for-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
 @media (max-width: 400px) { .for-cards { grid-template-columns: 1fr; } }
@@ -100,6 +104,7 @@ section { padding: 80px 24px; position: relative; }
 .for-icon { font-size: 28px; margin-bottom: 10px; }
 .for-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 6px; }
 
+/* FORMS */
 .booking-section { background: var(--navy); }
 .contact-form { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -108,24 +113,27 @@ section { padding: 80px 24px; position: relative; }
 .form-input, .form-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,110,0.25); border-radius: 8px; color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 14px; padding: 13px 15px; outline: none; width: 100%; transition: 0.2s; }
 .form-textarea { height: 110px; resize: none; }
 
+/* LINKS */
 .link-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
 .link-card { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 16px 18px; text-decoration: none; color: var(--cream); transition: 0.2s; position: relative; overflow: hidden; }
-.link-card:hover { background: rgba(201,169,110,0.08); border-color: rgba(201,169,110,0.4); transform: translateX(4px); }
+.link-card:hover { background: rgba(201, 169, 110, 0.08); border-color: rgba(201, 169, 110, 0.4); transform: translateX(4px); }
 .link-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
 .link-info { flex: 1; }
 
+/* MOBILE NAV */
 .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,24,36,0.96); backdrop-filter: blur(16px); border-top: 1px solid rgba(201,169,110,0.2); display: flex; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99; }
 @media (min-width: 700px) { .bottom-nav { display: none; } }
-.bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1; transition: 0.15s; }
+.bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1; }
 .bnav-item.active { color: var(--tan); }
 .bnav-icon { font-size: 20px; margin-bottom: 2px; }
 
+/* FOOTER */
 footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.15); padding: 40px 24px 100px; text-align: center; }
 .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px; color: rgba(201,169,110,0.5); margin-bottom: 8px; }
 .footer-copy { font-size: 11px; color: rgba(245,234,216,0.2); margin-bottom: 8px; }
 .privacy-btn { background: none; border: none; color: rgba(245, 234, 216, 0.4); font-size: 10px; text-decoration: underline; cursor: pointer; }
 
-/* MODAL STYLING */
+/* MODAL */
 .modal { display: none; position: fixed; z-index: 2000; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(5px); padding: 40px 20px; overflow-y: auto; }
 .modal-content { background: var(--navy-mid); max-width: 600px; margin: 0 auto; padding: 32px; border-radius: 16px; border: 1px solid var(--tan); color: rgba(245, 234, 216, 0.8); font-size: 14px; line-height: 1.6; }
 .modal-close { display: block; margin: 20px auto 0; background: var(--tan); color: var(--navy-deep); border: none; padding: 10px 20px; border-radius: 6px; font-weight: 700; cursor: pointer; }
@@ -156,11 +164,7 @@ footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.
         <div class="hero-photo-col">
             <div class="hero-photo-wrap">
                 <div class="hero-photo-accent"></div>
-                <img 
-                    src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" 
-                    alt="Tom Denby Golf PGA Coach" 
-                    class="hero-photo" 
-                    fetchpriority="high">
+                <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby Golf PGA Coach" class="hero-photo" fetchpriority="high">
                 <div class="hero-photo-badge">
                     <span class="hero-photo-badge-dot"></span>
                     PGA Qualified · 15 Years Experience
@@ -196,9 +200,9 @@ footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.
             <p class="section-body">Built for golfers with real jobs and families. We focus on <strong>root cause diagnosis</strong> and high-impact changes that fit into your actual schedule.</p>
             
             <div class="method-steps">
-                <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-name">Discover</div><div class="step-desc">Understanding your game, goals, and the constraints of your real life.</div></div></div>
-                <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-name">Diagnose</div><div class="step-desc">Identifying the root cause holding your ball-striking back using video analysis.</div></div></div>
-                <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-name">Deliver</div><div class="step-desc">Applying simple, measurable drills that result in lower scores on the course.</div></div></div>
+                <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-name">Discover</div><div class="step-desc">Understanding your game, goals, and constraints.</div></div></div>
+                <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-name">Diagnose</div><div class="step-desc">Identifying the root cause holding your strike back.</div></div></div>
+                <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-name">Deliver</div><div class="step-desc">Simple drills that result in lower scores on the course.</div></div></div>
             </div>
         </div>
         
@@ -307,35 +311,67 @@ footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.
 </nav>
 
 <script>
+// SCROLL REVEAL LOGIC
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// PRIVACY MODAL TOGGLE
 function toggleModal() {
     const modal = document.getElementById('privacyModal');
     modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
 }
 
+// CONVERTKIT SIGNUP (FORM ID: 9325176)
 function handleHeroSignup() {
     const name = document.getElementById('heroName').value.trim();
     const email = document.getElementById('heroEmail').value.trim();
-    if(!email.includes('@')) return alert('Please enter a valid email');
+    
+    if(!email.includes('@')) {
+        alert('Please enter a valid email');
+        return;
+    }
 
-    fetch('https://api.convertkit.com/v3/sequences/2720067/subscribe', {
+    const btn = document.querySelector('#heroFormArea .hero-btn');
+    btn.innerText = "Sending...";
+    btn.disabled = true;
+
+    fetch('https://api.convertkit.com/v3/forms/9325176/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ api_key: 'OPFD72ZRz8rb2GQHFT3yPQ', first_name: name, email: email })
-    }).then(() => {
-        document.getElementById('heroFormArea').style.display = 'none';
-        document.getElementById('heroSuccess').style.display = 'block';
+        body: JSON.stringify({ 
+            api_key: 'OPFD72ZRz8rb2GQHFT3yPQ', 
+            first_name: name, 
+            email: email 
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.subscription || data.id) {
+            document.getElementById('heroFormArea').style.display = 'none';
+            document.getElementById('heroSuccess').style.display = 'block';
+        } else {
+            throw new Error('Subscription failed');
+        }
+    })
+    .catch((error) => {
+        console.error('ConvertKit Error:', error);
+        btn.innerText = "▶ Send Me The Series";
+        btn.disabled = false;
+        alert('Could not sign you up. Please check your connection.');
     });
 }
 
+// BOOKING FORM SUBMISSION
 function handleBookingSubmit() {
     const fn = document.getElementById('cFirstName').value;
     const email = document.getElementById('cEmail').value;
     if(!fn || !email.includes('@')) return alert('Please enter your name and email');
+    
+    const btn = document.querySelector('.booking-section .hero-btn');
+    btn.innerText = "Requesting...";
+
     fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
