@@ -80,9 +80,9 @@ section { padding: 80px 24px; position: relative; }
 .section-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--tan), var(--green-bright)); border-radius: 2px; margin-bottom: 24px; }
 
 .method-section { background: var(--navy); }
-.method-split { display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
+.method-split { display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start; }
 @media (max-width: 700px) { .method-split { grid-template-columns: 1fr; gap: 30px; } }
-.method-photo { width: 100%; border-radius: 12px; border: 2px solid var(--tan); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+.method-video { width: 100%; border-radius: 12px; border: 2px solid var(--tan); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
 
 .method-steps { display: flex; flex-direction: column; gap: 0; margin-top: 36px; position: relative; }
 .method-steps::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--tan), var(--green-bright), var(--tan)); opacity: 0.3; }
@@ -156,15 +156,11 @@ footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.
         <div class="hero-photo-col">
             <div class="hero-photo-wrap">
                 <div class="hero-photo-accent"></div>
-                <video 
-                    src="https://res.cloudinary.com/dysvknbv1/video/upload/f_auto,q_auto,vc_auto/copy_E11BC30B-2FBA-4418-BCB9-4EB7E2FDCF68_y4cfxx" 
+                <img 
+                    src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" 
+                    alt="Tom Denby Golf PGA Coach" 
                     class="hero-photo" 
-                    autoplay 
-                    muted 
-                    loop 
-                    playsinline
-                    poster="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x">
-                </video>
+                    fetchpriority="high">
                 <div class="hero-photo-badge">
                     <span class="hero-photo-badge-dot"></span>
                     PGA Qualified · 15 Years Experience
@@ -205,8 +201,16 @@ footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.
                 <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-name">Deliver</div><div class="step-desc">Applying simple, measurable drills that result in lower scores on the course.</div></div></div>
             </div>
         </div>
+        
         <div class="reveal" style="position: sticky; top: 100px;">
-            <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="PGA Coach Tom Denby" class="method-photo">
+            <video 
+                src="https://res.cloudinary.com/dysvknbv1/video/upload/f_auto,q_auto,vc_auto/copy_E11BC30B-2FBA-4418-BCB9-4EB7E2FDCF68_y4cfxx" 
+                class="method-video" 
+                autoplay 
+                muted 
+                loop 
+                playsinline>
+            </video>
         </div>
     </div>
 </section>
@@ -290,13 +294,7 @@ footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.
 <div id="privacyModal" class="modal">
     <div class="modal-content">
         <h2 style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; color: var(--tan);">Privacy Policy</h2>
-        <p style="margin-top: 15px;">Your privacy is important to me. This policy outlines how I handle your data.</p>
-        <h4 style="margin-top: 15px; color: var(--cream);">1. Data Collection</h4>
-        <p>I collect your name and email address when you sign up for the video series or request a consultation. This is powered by ConvertKit and Web3Forms.</p>
-        <h4 style="margin-top: 15px; color: var(--cream);">2. Use of Data</h4>
-        <p>Your data is used solely to send you the requested coaching videos and to contact you regarding golf lessons. I do not sell your data to third parties.</p>
-        <h4 style="margin-top: 15px; color: var(--cream);">3. Opt-Out</h4>
-        <p>You can unsubscribe from my emails at any time by clicking the 'unsubscribe' link at the bottom of any email.</p>
+        <p style="margin-top: 15px;">Your privacy is important. I use ConvertKit for emails and Web3Forms for bookings. I do not sell your data.</p>
         <button class="modal-close" onclick="toggleModal()">Close Policy</button>
     </div>
 </div>
