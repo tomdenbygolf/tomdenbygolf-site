@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f1824">
-<meta name="description" content="PGA Golf Coach Tom Denby — Real Life Method™ coaching.">
+<meta name="description" content="PGA Golf Coach Tom Denby — Real Life Method™ coaching. 5-step framework for real-world improvement.">
 <title>Tom Denby Golf | The Real Life Method™</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +40,7 @@ nav {
 .nav-emblem { width: 32px; height: 32px; background: var(--tan); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--navy-deep); }
 .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--cream); }
 
+/* HERO */
 .hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 100px 24px 60px; }
 .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%), linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%); }
 .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%); }
@@ -50,7 +51,6 @@ nav {
 .hero-photo-wrap { position: relative; width: 100%; max-width: 380px; margin: 0 auto; }
 .hero-photo { width: 100%; border-radius: 16px; border: 2px solid var(--tan); box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
 .hero-photo-badge { position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); background: var(--navy-mid); border: 1px solid rgba(201,169,110,0.45); border-radius: 100px; padding: 8px 20px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); white-space: nowrap; z-index: 2; display: flex; align-items: center; gap: 8px; }
-.hero-photo-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); }
 
 .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 72px); line-height: 0.9; color: var(--cream); margin-bottom: 16px; }
 .hero-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
@@ -58,24 +58,46 @@ nav {
 .hero-btns { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
 .btn-primary { background: linear-gradient(135deg, var(--tan), var(--tan-light)); color: var(--navy-deep); border: none; border-radius: 8px; padding: 18px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: 0.2s; box-shadow: 0 4px 15px rgba(201,169,110,0.3); }
 .btn-secondary { background: rgba(58,107,74,0.1); color: var(--green-bright); border: 2px solid var(--green-bright); border-radius: 8px; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-.btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
 
+/* SECTIONS */
 section { padding: 80px 24px; position: relative; }
-.section-inner { max-width: 640px; margin: 0 auto; }
+.section-inner { max-width: 1000px; margin: 0 auto; }
+.section-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.section-tag::before { content: ''; width: 28px; height: 2px; background: var(--tan); border-radius: 1px; }
 .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 8vw, 52px); color: var(--cream); margin-bottom: 16px; }
 .section-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
 
+/* 5-STEP METHOD */
+.method-section { background: var(--navy); }
+.method-split { display: grid; grid-template-columns: 1fr 340px; gap: 50px; align-items: start; }
+@media (max-width: 800px) { .method-split { grid-template-columns: 1fr; } }
+
+.method-video-wrap { position: sticky; top: 100px; }
 .method-video { width: 100%; border-radius: 12px; border: 2px solid var(--tan); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
 
+.method-steps { display: flex; flex-direction: column; margin-top: 32px; position: relative; }
+.method-steps::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--tan), var(--green-bright), var(--tan)); opacity: 0.2; }
+
+.step { display: flex; gap: 20px; padding: 24px 0; }
+.step-num { width: 42px; height: 42px; border-radius: 50%; background: var(--navy-deep); border: 2px solid var(--tan); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--tan); flex-shrink: 0; z-index: 1; }
+.step-name { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 6px; }
+.step-question { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: var(--cream); margin-bottom: 8px; opacity: 0.95; }
+.step-desc { font-size: 14px; line-height: 1.6; color: rgba(245,234,216,0.6); }
+
+/* SOCIAL HUB */
+.link-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
+.link-card { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--cream); transition: 0.2s; }
+.link-card:hover { border-color: var(--tan); background: rgba(201, 169, 110, 0.08); transform: translateY(-3px); }
+.link-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+
+/* MOBILE NAV */
 .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,24,36,0.96); backdrop-filter: blur(16px); border-top: 1px solid rgba(201,169,110,0.2); display: flex; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99; }
 @media (min-width: 700px) { .bottom-nav { display: none; } }
 .bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1; }
 .bnav-item.active { color: var(--tan); }
 
 footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgba(201,169,110,0.1); }
-.footer-copy { font-size: 11px; color: rgba(245,234,216,0.2); }
-
-.reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease; }
+.reveal { opacity: 0; transform: translateY(24px); transition: 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
@@ -94,55 +116,134 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
     <div class="hero-split">
         <div class="hero-photo-col">
             <div class="hero-photo-wrap">
-                <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby Golf PGA Coach" class="hero-photo">
-                <div class="hero-photo-badge">
-                    <span class="hero-photo-badge-dot"></span>
-                    PGA Qualified · 15 Years Experience
-                </div>
+                <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby" class="hero-photo">
+                <div class="hero-photo-badge"><span class="hero-photo-badge-dot"></span> PGA Qualified Professional</div>
             </div>
         </div>
         <div class="hero-content-col">
-            <div style="font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--tan); text-transform: uppercase; margin-bottom: 12px;">PGA Professional Coaching</div>
+            <div class="section-tag">Real Life Coaching</div>
             <h1 class="hero-title">Strike It <em>Pure</em></h1>
-            <p style="color: rgba(245,234,216,0.7); line-height: 1.6; margin-bottom: 24px;">The <strong>Real Life Method™</strong> — High-impact ball striking for golfers with limited practice time.</p>
+            <p style="color: rgba(245,234,216,0.7); line-height: 1.7; margin-bottom: 24px;">Evidence-based golf improvement. No rebuilding. Just lower scores and more confidence.</p>
             
             <div class="hero-btns">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=dialog" target="_blank" class="btn-primary">
                     ▶ Get the Free Video Series
                 </a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="btn-secondary">
-                    📤 Upload My Swing For Review
+                    📤 Upload Swing For Review
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<section id="method" style="background: var(--navy);">
-    <div class="section-inner" style="display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: center;">
-        <div class="reveal">
-            <h2 class="section-title">The <em>Method</em></h2>
-            <p style="color: rgba(245,234,216,0.7); line-height: 1.7;">Stop rebuilding. Start refining. We identify your root cause and fix it using drills that fit into your actual schedule.</p>
+<section class="method-section" id="method">
+    <div class="section-inner">
+        <div class="reveal" style="text-align: center; margin-bottom: 60px;">
+            <div class="section-tag" style="justify-content: center;">Our Process</div>
+            <h2 class="section-title">The Real Life <em>Method™</em></h2>
+            <p style="max-width: 600px; margin: 0 auto; opacity: 0.7;">Real Life Coaching for Real Life Golfers. A bespoke framework for lasting improvement.</p>
         </div>
+
+        <div class="method-split">
+            <div class="reveal">
+                <div class="method-steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <div class="step-name">Discover</div>
+                            <div class="step-question">Who are you as a golfer and a person?</div>
+                            <div class="step-desc">A coaching plan built around your real life, schedule, and specific physical capabilities.</div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <div class="step-name">Diagnose</div>
+                            <div class="step-question">Where are shots actually being dropped?</div>
+                            <div class="step-desc">Evidence-based root cause identification using video and data to stop guessing.</div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <div class="step-name">Design</div>
+                            <div class="step-question">What does your personal plan look like?</div>
+                            <div class="step-desc">A bespoke improvement programme you can execute within your actual weekly time constraints.</div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <div class="step-name">Develop</div>
+                            <div class="step-question">How do we track and sustain progress?</div>
+                            <div class="step-desc">Ongoing coaching, accountability, and real-time adjustments to ensure you never plateau.</div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <div class="step-name">Deliver</div>
+                            <div class="step-question">How do we transfer it to the course?</div>
+                            <div class="step-desc">The ultimate goal: Lower scores, more confidence, and better golf under pressure.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal method-video-wrap">
+                <video src="https://res.cloudinary.com/dysvknbv1/video/upload/f_auto,q_auto,vc_auto/copy_E11BC30B-2FBA-4418-BCB9-4EB7E2FDCF68_y4cfxx" class="method-video" autoplay muted loop playsinline></video>
+                <div style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 2px solid var(--tan);">
+                    <p style="font-size: 13px; font-style: italic; opacity: 0.8;">"I don't chase perfect-looking swings; I chase repeatable, efficient results that fit into your lifestyle."</p>
+                    <p style="font-size: 11px; font-weight: 700; color: var(--tan); margin-top: 8px; text-transform: uppercase;">— Tom Denby</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="links" style="background: var(--navy-deep);">
+    <div class="section-inner">
         <div class="reveal">
-            <video 
-                src="https://res.cloudinary.com/dysvknbv1/video/upload/f_auto,q_auto,vc_auto/copy_E11BC30B-2FBA-4418-BCB9-4EB7E2FDCF68_y4cfxx" 
-                class="method-video" 
-                autoplay muted loop playsinline>
-            </video>
+            <div class="section-tag">Resources</div>
+            <h2 class="section-title">Follow the <em>Journey</em></h2>
+        </div>
+        
+        <div class="link-cards reveal">
+            <a href="https://instagram.com/tomdenbygolf" target="_blank" class="link-card">
+                <div class="link-icon" style="background: linear-gradient(135deg, #833ab4, #fd1d1d);">📸</div>
+                <div class="link-info">
+                    <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Instagram</div>
+                    <div style="font-size: 14px; opacity: 0.7;">Tips & Coaching Stories</div>
+                </div>
+            </a>
+            <a href="https://www.tiktok.com/@tomdenbygolf" target="_blank" class="link-card">
+                <div class="link-icon" style="background: #000; border: 1px solid #333;">📱</div>
+                <div class="link-info">
+                    <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">TikTok</div>
+                    <div style="font-size: 14px; opacity: 0.7;">Quick Drill Fixes</div>
+                </div>
+            </a>
+            <a href="https://youtube.com/@tomdenbygolf" target="_blank" class="link-card">
+                <div class="link-icon" style="background: #ff0000;">▶</div>
+                <div class="link-info">
+                    <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">YouTube</div>
+                    <div style="font-size: 14px; opacity: 0.7;">Technical Breakdowns</div>
+                </div>
+            </a>
         </div>
     </div>
 </section>
 
 <footer>
     <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: rgba(201,169,110,0.5); margin-bottom: 12px;">Tom Denby Golf</div>
-    <div class="footer-copy">© 2026 Tom Denby Golf. PGA Qualified.</div>
+    <div style="font-size: 11px; opacity: 0.3;">© 2026 Tom Denby Golf. PGA Qualified Professional.</div>
 </footer>
 
 <nav class="bottom-nav">
     <a href="#home" class="bnav-item active">🏠 Home</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=dialog" target="_blank" class="bnav-item">▶ Videos</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="bnav-item">📤 Review</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=dialog" class="bnav-item">▶ Videos</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" class="bnav-item">📤 Review</a>
 </nav>
 
 <script>
