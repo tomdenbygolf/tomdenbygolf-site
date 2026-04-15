@@ -80,6 +80,10 @@ section { padding: 80px 24px; position: relative; }
 .section-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--tan), var(--green-bright)); border-radius: 2px; margin-bottom: 24px; }
 
 .method-section { background: var(--navy); }
+.method-split { display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
+@media (max-width: 700px) { .method-split { grid-template-columns: 1fr; gap: 30px; } }
+.method-photo { width: 100%; border-radius: 12px; border: 2px solid var(--tan); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+
 .method-steps { display: flex; flex-direction: column; gap: 0; margin-top: 36px; position: relative; }
 .method-steps::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--tan), var(--green-bright), var(--tan)); opacity: 0.3; }
 .step { display: flex; gap: 20px; padding: 20px 0; position: relative; }
@@ -182,17 +186,22 @@ footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.
 </section>
 
 <section class="method-section" id="method">
-    <div class="section-inner">
+    <div class="section-inner method-split">
         <div class="reveal">
             <div class="section-tag">The Framework</div>
             <h2 class="section-title">The Real Life <em>Method™</em></h2>
             <div class="section-divider"></div>
             <p class="section-body">Built for golfers with real jobs and families. We focus on <strong>root cause diagnosis</strong> and high-impact changes that fit into your actual schedule.</p>
+            
+            <div class="method-steps">
+                <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-name">Discover</div><div class="step-desc">Understanding your game, goals, and the constraints of your real life.</div></div></div>
+                <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-name">Diagnose</div><div class="step-desc">Identifying the root cause holding your ball-striking back using video analysis.</div></div></div>
+                <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-name">Deliver</div><div class="step-desc">Applying simple, measurable drills that result in lower scores on the course.</div></div></div>
+            </div>
         </div>
-        <div class="method-steps reveal">
-            <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-name">Discover</div><div class="step-desc">Understanding your game, goals, and the constraints of your real life.</div></div></div>
-            <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-name">Diagnose</div><div class="step-desc">Identifying the root cause holding your ball-striking back using video analysis.</div></div></div>
-            <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-name">Deliver</div><div class="step-desc">Applying simple, measurable drills that result in lower scores on the course.</div></div></div>
+        
+        <div class="reveal" style="position: sticky; top: 100px;">
+            <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="PGA Coach Tom Denby" class="method-photo">
         </div>
     </div>
 </section>
@@ -231,7 +240,7 @@ footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.
         </div>
         <div id="formSuccess" style="display:none; background: rgba(58,107,74,0.15); border: 1px solid var(--green-bright); border-radius: 12px; padding: 28px 20px; text-align: center;">
             <p style="color: var(--green-bright); font-weight: 700; font-size: 20px;">✅ Request Received!</p>
-            <p style="margin-top: 8px;">I'll be in touch within 24 hours to arrange your call.</p>
+            <p style="margin-top: 8px;">I'll be in touch within 24 hours.</p>
         </div>
     </div>
 </section>
