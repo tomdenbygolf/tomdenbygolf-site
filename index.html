@@ -23,7 +23,7 @@
 html { scroll-behavior: smooth; }
 body { background: var(--navy-deep); color: var(--cream); font-family: 'Barlow', sans-serif; -webkit-font-smoothing: antialiased; }
 
-/* THE GRAIN */
+/* PREMIUM GRAIN OVERLAY */
 body::before {
   content: ''; position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
@@ -47,14 +47,18 @@ nav {
 .hero-split { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 1000px; width: 100%; align-items: center; }
 @media (max-width: 768px) { .hero-split { grid-template-columns: 1fr; gap: 36px; } }
 
+.hero-photo-wrap { position: relative; width: 100%; max-width: 380px; margin: 0 auto; }
 .hero-photo { width: 100%; border-radius: 16px; border: 2px solid var(--tan); box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.hero-photo-badge { position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); background: var(--navy-mid); border: 1px solid rgba(201,169,110,0.45); border-radius: 100px; padding: 8px 20px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); white-space: nowrap; z-index: 2; display: flex; align-items: center; gap: 8px; }
+.hero-photo-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); }
+
 .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 72px); line-height: 0.9; color: var(--cream); margin-bottom: 16px; }
 .hero-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
 
 .hero-btns { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
 .btn-primary { background: linear-gradient(135deg, var(--tan), var(--tan-light)); color: var(--navy-deep); border: none; border-radius: 8px; padding: 18px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: 0.2s; box-shadow: 0 4px 15px rgba(201,169,110,0.3); }
 .btn-secondary { background: rgba(58,107,74,0.1); color: var(--green-bright); border: 2px solid var(--green-bright); border-radius: 8px; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-.btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+.btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
 
 section { padding: 80px 24px; position: relative; }
 .section-inner { max-width: 640px; margin: 0 auto; }
@@ -69,6 +73,8 @@ section { padding: 80px 24px; position: relative; }
 .bnav-item.active { color: var(--tan); }
 
 footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgba(201,169,110,0.1); }
+.footer-copy { font-size: 11px; color: rgba(245,234,216,0.2); }
+
 .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
@@ -87,7 +93,13 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
     <div class="hero-grid"></div>
     <div class="hero-split">
         <div class="hero-photo-col">
-            <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby" class="hero-photo">
+            <div class="hero-photo-wrap">
+                <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby Golf PGA Coach" class="hero-photo">
+                <div class="hero-photo-badge">
+                    <span class="hero-photo-badge-dot"></span>
+                    PGA Qualified · 15 Years Experience
+                </div>
+            </div>
         </div>
         <div class="hero-content-col">
             <div style="font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--tan); text-transform: uppercase; margin-bottom: 12px;">PGA Professional Coaching</div>
@@ -95,7 +107,7 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
             <p style="color: rgba(245,234,216,0.7); line-height: 1.6; margin-bottom: 24px;">The <strong>Real Life Method™</strong> — High-impact ball striking for golfers with limited practice time.</p>
             
             <div class="hero-btns">
-                <a href="REPLACE_WITH_YOUR_NEW_VIDEO_ONLY_GOOGLE_FORM_LINK" target="_blank" class="btn-primary">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=dialog" target="_blank" class="btn-primary">
                     ▶ Get the Free Video Series
                 </a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="btn-secondary">
@@ -110,10 +122,14 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
     <div class="section-inner" style="display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: center;">
         <div class="reveal">
             <h2 class="section-title">The <em>Method</em></h2>
-            <p style="color: rgba(245,234,216,0.7); line-height: 1.7;">Stop rebuilding. Start refining. We identify your root cause and fix it using drills that fit into a 1-hour weekly practice window.</p>
+            <p style="color: rgba(245,234,216,0.7); line-height: 1.7;">Stop rebuilding. Start refining. We identify your root cause and fix it using drills that fit into your actual schedule.</p>
         </div>
         <div class="reveal">
-            <video src="https://res.cloudinary.com/dysvknbv1/video/upload/f_auto,q_auto,vc_auto/copy_E11BC30B-2FBA-4418-BCB9-4EB7E2FDCF68_y4cfxx" class="method-video" autoplay muted loop playsinline></video>
+            <video 
+                src="https://res.cloudinary.com/dysvknbv1/video/upload/f_auto,q_auto,vc_auto/copy_E11BC30B-2FBA-4418-BCB9-4EB7E2FDCF68_y4cfxx" 
+                class="method-video" 
+                autoplay muted loop playsinline>
+            </video>
         </div>
     </div>
 </section>
@@ -125,8 +141,8 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
 
 <nav class="bottom-nav">
     <a href="#home" class="bnav-item active">🏠 Home</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=dialog" class="bnav-item">▶ Videos</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" class="bnav-item">📤 Review</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=dialog" target="_blank" class="bnav-item">▶ Videos</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="bnav-item">📤 Review</a>
 </nav>
 
 <script>
