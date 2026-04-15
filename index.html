@@ -29,7 +29,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* THE PREMIUM GRAIN & GRID */
 body::before {
   content: ''; position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
@@ -50,8 +49,7 @@ nav {
 .nav-cta { background: var(--green); color: white !important; border-radius: 6px; padding: 7px 14px !important; border: 1px solid var(--green-bright); }
 @media (max-width: 600px) { .nav-link:not(.nav-cta) { display: none; } }
 
-/* HERO SECTION */
-.hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 24px 60px; }
+.hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 100px 24px 60px; }
 .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%), linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%); }
 .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%); }
 
@@ -72,7 +70,6 @@ nav {
 .hero-btn { background: linear-gradient(135deg, var(--tan), var(--tan-light)); color: var(--navy-deep); border: none; border-radius: 8px; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; width: 100%; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; box-shadow: 0 4px 20px rgba(201,169,110,0.25); }
 .hero-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,110,0.3); border-radius: 8px; color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 14px; padding: 14px 16px; outline: none; width: 100%; margin-bottom: 10px; }
 
-/* SECTIONS BASE */
 section { padding: 80px 24px; position: relative; }
 .section-inner { max-width: 640px; margin: 0 auto; }
 .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
@@ -82,7 +79,6 @@ section { padding: 80px 24px; position: relative; }
 .section-body { font-size: 15px; line-height: 1.75; color: rgba(245,234,216,0.7); font-weight: 300; }
 .section-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--tan), var(--green-bright)); border-radius: 2px; margin-bottom: 24px; }
 
-/* METHOD STEPS */
 .method-section { background: var(--navy); }
 .method-steps { display: flex; flex-direction: column; gap: 0; margin-top: 36px; position: relative; }
 .method-steps::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--tan), var(--green-bright), var(--tan)); opacity: 0.3; }
@@ -92,7 +88,6 @@ section { padding: 80px 24px; position: relative; }
 .step-name span { color: var(--tan); }
 .step-desc { font-size: 14px; line-height: 1.6; color: rgba(245,234,216,0.6); }
 
-/* WHO IT'S FOR CARDS */
 .for-section { background: var(--navy-deep); }
 .for-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
 @media (max-width: 400px) { .for-cards { grid-template-columns: 1fr; } }
@@ -101,7 +96,6 @@ section { padding: 80px 24px; position: relative; }
 .for-icon { font-size: 28px; margin-bottom: 10px; }
 .for-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 6px; }
 
-/* BOOKING FORM */
 .booking-section { background: var(--navy); }
 .contact-form { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -110,20 +104,22 @@ section { padding: 80px 24px; position: relative; }
 .form-input, .form-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,110,0.25); border-radius: 8px; color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 14px; padding: 13px 15px; outline: none; width: 100%; transition: 0.2s; }
 .form-textarea { height: 110px; resize: none; }
 
-/* LINKS HUB */
 .link-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
 .link-card { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 16px 18px; text-decoration: none; color: var(--cream); transition: 0.2s; position: relative; overflow: hidden; }
 .link-card:hover { background: rgba(201,169,110,0.08); border-color: rgba(201,169,110,0.4); transform: translateX(4px); }
 .link-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.link-info { flex: 1; }
 
-/* BOTTOM NAV & PWA */
 .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,24,36,0.96); backdrop-filter: blur(16px); border-top: 1px solid rgba(201,169,110,0.2); display: flex; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99; }
 @media (min-width: 700px) { .bottom-nav { display: none; } }
-.bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1; }
+.bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1; transition: 0.15s; }
 .bnav-item.active { color: var(--tan); }
 .bnav-icon { font-size: 20px; margin-bottom: 2px; }
 
-/* ANIMATIONS */
+footer { background: var(--navy-deep); border-top: 1px solid rgba(201,169,110,0.15); padding: 40px 24px 100px; text-align: center; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px; color: rgba(201,169,110,0.5); margin-bottom: 8px; }
+.footer-copy { font-size: 11px; color: rgba(245,234,216,0.2); }
+
 .reveal { opacity: 0; transform: translateY(24px); transition: 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -150,7 +146,15 @@ section { padding: 80px 24px; position: relative; }
         <div class="hero-photo-col">
             <div class="hero-photo-wrap">
                 <div class="hero-photo-accent"></div>
-                <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby" class="hero-photo" fetchpriority="high">
+                <video 
+                    src="https://res.cloudinary.com/dysvknbv1/video/upload/f_auto,q_auto,vc_auto/copy_E11BC30B-2FBA-4418-BCB9-4EB7E2FDCF68_y4cfxx" 
+                    class="hero-photo" 
+                    autoplay 
+                    muted 
+                    loop 
+                    playsinline
+                    poster="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x">
+                </video>
                 <div class="hero-photo-badge">
                     <span class="hero-photo-badge-dot"></span>
                     PGA Qualified · 15 Years Experience
@@ -170,7 +174,7 @@ section { padding: 80px 24px; position: relative; }
 
             <div id="heroSuccess" style="display:none; background: rgba(58,107,74,0.1); border: 1px solid var(--green-bright); padding: 24px; border-radius: 12px; text-align: center;">
                 <p style="color: var(--green-bright); font-weight: 700; font-size: 18px; margin-bottom: 8px;">🎉 Check your inbox!</p>
-                <p style="font-size: 14px; margin-bottom: 16px; color: rgba(245,234,216,0.8);">Video 1 is on its way. For a head start, upload your swing below for a free review.</p>
+                <p style="font-size: 14px; margin-bottom: 16px; color: rgba(245,234,216,0.8);">Video 1 is on its way. For a head start, upload your swing below for a free review from Tom.</p>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="hero-btn">📤 Upload My Swing Video</a>
             </div>
         </div>
@@ -201,8 +205,8 @@ section { padding: 80px 24px; position: relative; }
             <div class="section-divider"></div>
         </div>
         <div class="for-cards reveal">
-            <div class="for-card"><div class="for-icon">⏱</div><div class="for-title">Limited Practice Time</div><p class="step-desc">You need a plan that works around a busy schedule, not a full-time training camp.</p></div>
-            <div class="for-card"><div class="for-icon">📉</div><div class="for-title">Handicap Plateau</div><p class="step-desc">Stuck between 12–22 and tired of YouTube tips that only make it worse.</p></div>
+            <div class="for-card"><div class="for-icon">⏱</div><div class="for-title">Limited Practice Time</div><p class="step-desc">A plan that works around your life, not a full-time training camp.</p></div>
+            <div class="for-card"><div class="for-icon">📉</div><div class="for-title">Handicap Plateau</div><p class="step-desc">Stuck between 12–22 and tired of confusing YouTube tips.</p></div>
         </div>
     </div>
 </section>
@@ -222,7 +226,7 @@ section { padding: 80px 24px; position: relative; }
             </div>
             <div><label class="form-label">Email Address</label><input class="form-input" id="cEmail" type="email" placeholder="james@email.com"></div>
             <div><label class="form-label">Current Handicap</label><input class="form-input" id="cHandicap" placeholder="e.g. 16.4"></div>
-            <div><label class="form-label">Tell me about your game</label><textarea class="form-textarea" id="cMessage" placeholder="I'm struggling with a slice and have no time to practice..."></textarea></div>
+            <div><label class="form-label">Tell me about your game</label><textarea class="form-textarea" id="cMessage" placeholder="I'm struggling with a slice..."></textarea></div>
             <button class="hero-btn" onclick="handleBookingSubmit()" style="background: var(--green); color: white; border: 1px solid var(--green-bright);">📅 Request My Consultation</button>
         </div>
         <div id="formSuccess" style="display:none; background: rgba(58,107,74,0.15); border: 1px solid var(--green-bright); border-radius: 12px; padding: 28px 20px; text-align: center;">
@@ -232,16 +236,16 @@ section { padding: 80px 24px; position: relative; }
     </div>
 </section>
 
-<section id="links" style="padding-bottom: 120px;">
+<section id="links" style="padding-bottom: 60px;">
     <div class="section-inner">
         <div class="reveal">
-            <div class="section-tag">Resources</div>
-            <h2 class="section-title">The <em>Links Hub</em></h2>
+            <div class="section-tag">Social Hub</div>
+            <h2 class="section-title">Follow & <em>Upload</em></h2>
         </div>
         <div class="link-cards reveal">
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="link-card" style="border: 2px solid var(--green-bright); background: rgba(58,107,74,0.1);">
                 <div class="link-icon" style="background: var(--green);">📤</div>
-                <div class="link-info"><div class="for-title" style="color: var(--green-bright); margin: 0;">Free Swing Review</div><div class="step-desc">Upload your swing for expert analysis</div></div>
+                <div class="link-info"><div class="for-title" style="color: var(--green-bright); margin: 0;">Free Swing Review</div><div class="step-desc">Upload your video for Tom's feedback</div></div>
                 <div style="color: var(--green-bright);">→</div>
             </a>
             <a href="https://instagram.com/tomdenbygolf" target="_blank" class="link-card">
@@ -249,13 +253,29 @@ section { padding: 80px 24px; position: relative; }
                 <div class="link-info"><div class="for-title" style="margin: 0;">Instagram</div><div class="step-desc">@tomdenbygolf — tips and drills</div></div>
                 <div>→</div>
             </a>
+            <a href="https://www.tiktok.com/@tomdenbygolf" target="_blank" class="link-card">
+                <div class="link-icon" style="background: #000000; color: white; border: 1px solid #ffffff;">📱</div>
+                <div class="link-info"><div class="for-title" style="margin: 0;">TikTok</div><div class="step-desc">@tomdenbygolf — quick lessons</div></div>
+                <div>→</div>
+            </a>
+            <a href="https://youtube.com/@tomdenbygolf" target="_blank" class="link-card">
+                <div class="link-icon" style="background: #ff0000; color: white;">▶</div>
+                <div class="link-info"><div class="for-title" style="margin: 0;">YouTube</div><div class="step-desc">Full breakdowns & framework</div></div>
+                <div>→</div>
+            </a>
         </div>
     </div>
 </section>
 
+<footer>
+    <div class="footer-logo">Tom Denby Golf</div>
+    <div class="footer-copy">© 2026 Tom Denby Golf. PGA Qualified Professional.</div>
+</footer>
+
 <nav class="bottom-nav">
     <a href="#home" class="bnav-item active"><span class="bnav-icon">🏠</span>Home</a>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" class="bnav-item"><span class="bnav-icon">📤</span>Upload</a>
+    <a href="https://youtube.com/@tomdenbygolf" class="bnav-item"><span class="bnav-icon">▶</span>YouTube</a>
     <a href="#booking" class="bnav-item"><span class="bnav-icon">📅</span>Book</a>
 </nav>
 
