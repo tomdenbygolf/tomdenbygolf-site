@@ -1,94 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0f1824">
-    
-    <title>Tom Denby Golf — Real Life Coaching for Real Life Golfers</title>
-    <meta name="description" content="PGA Qualified Golf Coach Tom Denby — ball striking analysis, lessons and the Real Life Method™. Get the Strike It Pure video series.">
-    <meta property="og:title" content="Tom Denby Golf — Strike It Pure">
-    <meta property="og:description" content="PGA Coaching: Get the free 3-part video series on ball striking.">
-    <meta property="og:image" content="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x">
-    <meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f1824">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Real Life Coaching for Real Life Golfers. PGA Qualified Golf Coach Tom Denby — swing analysis, lessons and the Real Life Method™.">
+<title>Tom Denby Golf | The Real Life Method™</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --navy: #1a2640; --navy-deep: #0f1824; --navy-mid: #243350;
-            --green: #3a6b4a; --green-light: #4e8c62; --green-bright: #5daa74;
-            --tan: #c9a96e; --tan-light: #dfc18f; --cream: #f5ead8;
-            --cream-dark: #e8d4b4; --white: #ffffff;
-        }
+<style>
+:root {
+  --navy: #1a2640; --navy-deep: #0f1824; --navy-mid: #243350;
+  --green: #3a6b4a; --green-light: #4e8c62; --green-bright: #5daa74;
+  --tan: #c9a96e; --tan-light: #dfc18f; --cream: #f5ead8;
+  --cream-dark: #e8d4b4; --white: #ffffff;
+}
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            background: var(--navy-deep); color: var(--cream);
-            font-family: 'Barlow', sans-serif; overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy-deep); color: var(--cream);
+  font-family: 'Barlow', sans-serif; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-        body::before {
-            content: ''; position: fixed; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none; z-index: 1000; opacity: 0.35;
-        }
+/* THE PREMIUM GRAIN & GRID */
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 1000; opacity: 0.35;
+}
 
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(15, 24, 36, 0.92); backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(201, 169, 110, 0.2);
-            padding: 0 20px; height: 56px; display: flex; align-items: center; justify-content: space-between;
-        }
-        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .nav-emblem { width: 32px; height: 32px; background: var(--tan); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--navy-deep); }
-        .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--cream); }
-        .nav-link { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(245, 234, 216, 0.65); text-decoration: none; padding: 6px 10px; }
-        .nav-cta { background: var(--green); color: white !important; border-radius: 6px; padding: 7px 14px !important; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(15, 24, 36, 0.92); backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  padding: 0 20px; height: 56px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-emblem { width: 32px; height: 32px; background: var(--tan); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--navy-deep); }
+.nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--cream); }
+.nav-links { display: flex; gap: 6px; align-items: center; }
+.nav-link { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(245, 234, 216, 0.65); text-decoration: none; padding: 6px 10px; border-radius: 4px; transition: 0.2s; }
+.nav-cta { background: var(--green); color: white !important; border-radius: 6px; padding: 7px 14px !important; border: 1px solid var(--green-bright); }
+@media (max-width: 600px) { .nav-link:not(.nav-cta) { display: none; } }
 
-        .hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; position: relative; padding: 80px 24px; }
-        .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%), linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%); }
-        .hero-split { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 1000px; width: 100%; align-items: center; }
-        @media (max-width: 768px) { .hero-split { grid-template-columns: 1fr; gap: 36px; } }
+/* HERO SECTION */
+.hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 24px 60px; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%), linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%); }
 
-        .hero-photo { width: 100%; border-radius: 16px; box-shadow: 0 24px 64px rgba(0,0,0,0.5); position: relative; z-index: 1; }
-        .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 10vw, 80px); line-height: 0.9; color: var(--cream); margin-bottom: 16px; }
-        .hero-title-accent { color: var(--tan); display: block; font-style: italic; font-family: 'Playfair Display', serif; font-size: clamp(36px, 7vw, 60px); font-weight: 400; }
-        .hero-btn { background: linear-gradient(135deg, var(--tan), var(--tan-light)); color: var(--navy-deep); border: none; border-radius: 8px; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; margin-top: 10px; }
-        .hero-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,110,0.3); border-radius: 8px; color: var(--cream); padding: 14px 16px; margin-bottom: 10px; width: 100%; outline: none; }
+.hero-split { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 1000px; width: 100%; align-items: center; }
+@media (max-width: 768px) { .hero-split { grid-template-columns: 1fr; gap: 36px; } }
 
-        section { padding: 80px 24px; position: relative; }
-        .section-inner { max-width: 640px; margin: 0 auto; }
-        .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 9vw, 56px); color: var(--cream); margin-bottom: 16px; }
-        .section-body { font-size: 15px; line-height: 1.75; color: rgba(245,234,216,0.7); font-weight: 300; margin-bottom: 24px; }
+.hero-photo-wrap { position: relative; width: 100%; max-width: 380px; margin: 0 auto; }
+.hero-photo-accent { position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px; border: 2px solid var(--tan); border-radius: 16px; opacity: 0.4; z-index: 0; }
+.hero-photo { width: 100%; border-radius: 16px; object-fit: cover; max-height: 520px; display: block; position: relative; z-index: 1; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.hero-photo-badge { position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); background: var(--navy-mid); border: 1px solid rgba(201,169,110,0.45); border-radius: 100px; padding: 8px 20px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); white-space: nowrap; z-index: 2; display: flex; align-items: center; gap: 8px; }
+.hero-photo-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); }
 
-        .method-steps { display: flex; flex-direction: column; gap: 0; margin-top: 36px; position: relative; }
-        .method-steps::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--tan); opacity: 0.2; }
-        .step { display: flex; gap: 20px; padding: 20px 0; }
-        .step-num { width: 42px; height: 42px; border-radius: 50%; background: var(--navy-deep); border: 2px solid var(--tan); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; color: var(--tan); flex-shrink: 0; z-index: 1; }
+.hero-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--tan); border-radius: 1px; }
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 10vw, 80px); line-height: 0.9; letter-spacing: 2px; color: var(--cream); margin-bottom: 16px; }
+.hero-title-accent { color: var(--tan); display: block; font-style: italic; font-family: 'Playfair Display', serif; font-size: clamp(36px, 7vw, 60px); font-weight: 400; }
+.hero-sub { font-size: 15px; line-height: 1.7; color: rgba(245,234,216,0.72); font-weight: 300; margin-bottom: 20px; }
+.hero-btn { background: linear-gradient(135deg, var(--tan), var(--tan-light)); color: var(--navy-deep); border: none; border-radius: 8px; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; width: 100%; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; box-shadow: 0 4px 20px rgba(201,169,110,0.25); }
+.hero-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,110,0.3); border-radius: 8px; color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 14px; padding: 14px 16px; outline: none; width: 100%; margin-bottom: 10px; }
 
-        .link-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
-        .link-card { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 16px 18px; text-decoration: none; color: var(--cream); transition: 0.2s; }
-        .link-card:hover { transform: translateX(4px); background: rgba(201,169,110,0.08); border-color: var(--tan); }
-        .link-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+/* SECTIONS BASE */
+section { padding: 80px 24px; position: relative; }
+.section-inner { max-width: 640px; margin: 0 auto; }
+.section-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.section-tag::before { content: ''; width: 28px; height: 2px; background: var(--tan); border-radius: 1px; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 9vw, 56px); letter-spacing: 2px; line-height: 1; color: var(--cream); margin-bottom: 16px; }
+.section-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 0.8em; }
+.section-body { font-size: 15px; line-height: 1.75; color: rgba(245,234,216,0.7); font-weight: 300; }
+.section-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--tan), var(--green-bright)); border-radius: 2px; margin-bottom: 24px; }
 
-        .contact-form { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .form-input, .form-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,110,0.25); border-radius: 8px; color: var(--cream); padding: 13px 15px; width: 100%; outline: none; }
-        .form-textarea { height: 110px; resize: none; }
+/* METHOD STEPS */
+.method-section { background: var(--navy); }
+.method-steps { display: flex; flex-direction: column; gap: 0; margin-top: 36px; position: relative; }
+.method-steps::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--tan), var(--green-bright), var(--tan)); opacity: 0.3; }
+.step { display: flex; gap: 20px; padding: 20px 0; position: relative; }
+.step-num { width: 42px; height: 42px; border-radius: 50%; background: var(--navy-deep); border: 2px solid var(--tan); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--tan); flex-shrink: 0; z-index: 1; }
+.step-name { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cream); margin-bottom: 4px; }
+.step-name span { color: var(--tan); }
+.step-desc { font-size: 14px; line-height: 1.6; color: rgba(245,234,216,0.6); }
 
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,24,36,0.96); backdrop-filter: blur(16px); border-top: 1px solid rgba(201,169,110,0.2); display: flex; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99; }
-        .bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1; }
-        .bnav-item.active { color: var(--tan); }
+/* WHO IT'S FOR CARDS */
+.for-section { background: var(--navy-deep); }
+.for-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
+@media (max-width: 400px) { .for-cards { grid-template-columns: 1fr; } }
+.for-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 20px 16px; transition: 0.2s; }
+.for-card:hover { border-color: rgba(201,169,110,0.45); transform: translateY(-2px); }
+.for-icon { font-size: 28px; margin-bottom: 10px; }
+.for-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 6px; }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-    </style>
+/* BOOKING FORM */
+.booking-section { background: var(--navy); }
+.contact-form { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+.form-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); margin-bottom: 4px; display: block;}
+.form-input, .form-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,110,0.25); border-radius: 8px; color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 14px; padding: 13px 15px; outline: none; width: 100%; transition: 0.2s; }
+.form-textarea { height: 110px; resize: none; }
+
+/* LINKS HUB */
+.link-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+.link-card { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 16px 18px; text-decoration: none; color: var(--cream); transition: 0.2s; position: relative; overflow: hidden; }
+.link-card:hover { background: rgba(201,169,110,0.08); border-color: rgba(201,169,110,0.4); transform: translateX(4px); }
+.link-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+
+/* BOTTOM NAV & PWA */
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,24,36,0.96); backdrop-filter: blur(16px); border-top: 1px solid rgba(201,169,110,0.2); display: flex; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99; }
+@media (min-width: 700px) { .bottom-nav { display: none; } }
+.bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1; }
+.bnav-item.active { color: var(--tan); }
+.bnav-icon { font-size: 20px; margin-bottom: 2px; }
+
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(24px); transition: 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-content-col > * { animation: fadeUp 0.8s ease both; }
+</style>
 </head>
 <body>
 
@@ -98,92 +138,116 @@
         <div class="nav-name">Tom Denby Golf</div>
     </a>
     <div class="nav-links">
-        <a href="#booking" class="nav-link nav-cta">Book Session →</a>
+        <a href="#method" class="nav-link">Method</a>
+        <a href="#booking" class="nav-link nav-cta">Book Consultation →</a>
     </div>
 </nav>
 
 <section class="hero" id="home">
     <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
     <div class="hero-split">
         <div class="hero-photo-col">
-            <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby" class="hero-photo" fetchpriority="high">
+            <div class="hero-photo-wrap">
+                <div class="hero-photo-accent"></div>
+                <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby" class="hero-photo" fetchpriority="high">
+                <div class="hero-photo-badge">
+                    <span class="hero-photo-badge-dot"></span>
+                    PGA Qualified · 15 Years Experience
+                </div>
+            </div>
         </div>
         <div class="hero-content-col">
-            <div class="hero-eyebrow">Free Video Series</div>
-            <h1 class="hero-title">Strike It <em class="hero-title-accent">Pure</em></h1>
-            <p style="margin-bottom: 20px; color: rgba(245,234,216,0.7);">Get my <strong>3-part ball-striking framework</strong> — the exact drill sequence I use for Real Life Golfers.</p>
+            <div class="hero-eyebrow" style="animation-delay: 0.1s">Free Video Series</div>
+            <h1 class="hero-title" style="animation-delay: 0.2s">Strike It <em class="hero-title-accent">Pure</em></h1>
+            <p class="hero-sub" style="animation-delay: 0.3s">Get my <strong>3-part ball-striking framework</strong> — the exact Real Life Method™ drills used to lower handicaps without rebuilding your swing.</p>
             
-            <div id="heroFormArea">
-                <input type="text" id="heroName" placeholder="First Name" class="hero-input">
-                <input type="email" id="heroEmail" placeholder="Email Address" class="hero-input">
+            <div id="heroFormArea" style="animation-delay: 0.4s">
+                <input type="text" id="heroName" placeholder="First Name" class="hero-input" autocomplete="given-name">
+                <input type="email" id="heroEmail" placeholder="Email Address" class="hero-input" autocomplete="email">
                 <button class="hero-btn" onclick="handleHeroSignup()">▶ Send Me The Series</button>
             </div>
 
-            <div id="heroSuccess" style="display:none; background: rgba(58,107,74,0.1); border: 1px solid var(--green-bright); padding: 20px; border-radius: 12px;">
-                <p style="color: var(--green-bright); font-weight: 700; margin-bottom: 10px;">🎉 Check your inbox! Video 1 is on its way.</p>
-                <p style="font-size: 13px; margin-bottom: 15px;">Want a head start? Upload your swing now for a free 60-second review from Tom.</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="hero-btn">📤 Upload My Swing Now</a>
+            <div id="heroSuccess" style="display:none; background: rgba(58,107,74,0.1); border: 1px solid var(--green-bright); padding: 24px; border-radius: 12px; text-align: center;">
+                <p style="color: var(--green-bright); font-weight: 700; font-size: 18px; margin-bottom: 8px;">🎉 Check your inbox!</p>
+                <p style="font-size: 14px; margin-bottom: 16px; color: rgba(245,234,216,0.8);">Video 1 is on its way. For a head start, upload your swing below for a free review.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="hero-btn">📤 Upload My Swing Video</a>
             </div>
         </div>
     </div>
 </section>
 
-<section id="method" style="background: var(--navy);">
+<section class="method-section" id="method">
     <div class="section-inner">
         <div class="reveal">
-            <div class="section-tag">The Strategy</div>
+            <div class="section-tag">The Framework</div>
             <h2 class="section-title">The Real Life <em>Method™</em></h2>
-            <p class="section-body">Built for golfers with jobs and families. We focus on high-impact changes that stick with limited practice time.</p>
+            <div class="section-divider"></div>
+            <p class="section-body">Built for golfers with real jobs and families. We focus on <strong>root cause diagnosis</strong> and high-impact changes that fit into your actual schedule.</p>
         </div>
         <div class="method-steps reveal">
-            <div class="step"><div class="step-num">1</div><div><strong>Diagnose:</strong> We find your "Big Miss" root cause.</div></div>
-            <div class="step"><div class="step-num">2</div><div><strong>Design:</strong> A plan built for your weekly schedule.</div></div>
-            <div class="step"><div class="step-num">3</div><div><strong>Deliver:</strong> Results that show up on the scorecard.</div></div>
+            <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-name">Discover</div><div class="step-desc">Understanding your game, goals, and the constraints of your real life.</div></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-name">Diagnose</div><div class="step-desc">Identifying the root cause holding your ball-striking back using video analysis.</div></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-name">Deliver</div><div class="step-desc">Applying simple, measurable drills that result in lower scores on the course.</div></div></div>
         </div>
     </div>
 </section>
 
-<section id="booking">
+<section class="for-section">
     <div class="section-inner">
         <div class="reveal">
-            <div class="section-tag">Consultation</div>
-            <h2 class="section-title">Book a <em>Free Call</em></h2>
-            <p class="section-body">A 20-minute chat to see if we're a good fit for your game.</p>
+            <div class="section-tag">Who I Work With</div>
+            <h2 class="section-title">Built for <em>Golfers Like You</em></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="for-cards reveal">
+            <div class="for-card"><div class="for-icon">⏱</div><div class="for-title">Limited Practice Time</div><p class="step-desc">You need a plan that works around a busy schedule, not a full-time training camp.</p></div>
+            <div class="for-card"><div class="for-icon">📉</div><div class="for-title">Handicap Plateau</div><p class="step-desc">Stuck between 12–22 and tired of YouTube tips that only make it worse.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="booking-section" id="booking">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-tag">Get Started</div>
+            <h2 class="section-title">Book a <em>Free Consultation</em></h2>
+            <div class="section-divider"></div>
+            <p class="section-body">A 20-minute call to discuss your game. No hard sell—just a clear plan to get your handicap moving again.</p>
         </div>
         <div id="contactFormArea" class="contact-form reveal">
             <div class="form-row">
-                <input class="form-input" id="cFirstName" placeholder="First Name">
-                <input class="form-input" id="cLastName" placeholder="Last Name">
+                <div><label class="form-label">First Name</label><input class="form-input" id="cFirstName" placeholder="James"></div>
+                <div><label class="form-label">Last Name</label><input class="form-input" id="cLastName" placeholder="Murphy"></div>
             </div>
-            <input class="form-input" id="cEmail" type="email" placeholder="Email">
-            <textarea class="form-textarea" id="cMessage" placeholder="Tell me about your game..."></textarea>
-            <button class="hero-btn" onclick="handleBookingSubmit()" style="background: var(--green); color: white;">📅 Request My Call</button>
+            <div><label class="form-label">Email Address</label><input class="form-input" id="cEmail" type="email" placeholder="james@email.com"></div>
+            <div><label class="form-label">Current Handicap</label><input class="form-input" id="cHandicap" placeholder="e.g. 16.4"></div>
+            <div><label class="form-label">Tell me about your game</label><textarea class="form-textarea" id="cMessage" placeholder="I'm struggling with a slice and have no time to practice..."></textarea></div>
+            <button class="hero-btn" onclick="handleBookingSubmit()" style="background: var(--green); color: white; border: 1px solid var(--green-bright);">📅 Request My Consultation</button>
         </div>
-        <div id="formSuccess" style="display:none; text-align:center;">
-            <h3>✅ Request Received!</h3>
-            <p>Tom will be in touch within 24 hours.</p>
+        <div id="formSuccess" style="display:none; background: rgba(58,107,74,0.15); border: 1px solid var(--green-bright); border-radius: 12px; padding: 28px 20px; text-align: center;">
+            <p style="color: var(--green-bright); font-weight: 700; font-size: 20px;">✅ Request Received!</p>
+            <p style="margin-top: 8px;">I'll be in touch within 24 hours to arrange your call.</p>
         </div>
     </div>
 </section>
 
-<section id="links" style="background: var(--navy-deep);">
+<section id="links" style="padding-bottom: 120px;">
     <div class="section-inner">
         <div class="reveal">
             <div class="section-tag">Resources</div>
-            <h2 class="section-title">Quick <em>Links</em></h2>
+            <h2 class="section-title">The <em>Links Hub</em></h2>
         </div>
         <div class="link-cards reveal">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="link-card" style="border: 2px solid var(--green-bright); background: rgba(58,107,74,0.15);">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="link-card" style="border: 2px solid var(--green-bright); background: rgba(58,107,74,0.1);">
                 <div class="link-icon" style="background: var(--green);">📤</div>
-                <div class="link-info">
-                    <div class="link-name" style="color: var(--green-bright);">Free Swing Review</div>
-                    <div class="link-desc">Upload your video for Tom's feedback</div>
-                </div>
-                <div class="link-arrow">→</div>
+                <div class="link-info"><div class="for-title" style="color: var(--green-bright); margin: 0;">Free Swing Review</div><div class="step-desc">Upload your swing for expert analysis</div></div>
+                <div style="color: var(--green-bright);">→</div>
             </a>
             <a href="https://instagram.com/tomdenbygolf" target="_blank" class="link-card">
                 <div class="link-icon" style="background: linear-gradient(135deg, #833ab4, #fd1d1d);">📸</div>
-                <div class="link-info"><div class="link-name">Instagram</div><div class="link-desc">@tomdenbygolf</div></div>
+                <div class="link-info"><div class="for-title" style="margin: 0;">Instagram</div><div class="step-desc">@tomdenbygolf — tips and drills</div></div>
+                <div>→</div>
             </a>
         </div>
     </div>
@@ -196,44 +260,45 @@
 </nav>
 
 <script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    function handleHeroSignup() {
-        const name = document.getElementById('heroName').value;
-        const email = document.getElementById('heroEmail').value;
-        if(!email.includes('@')) return alert('Please enter a valid email');
-        fetch('https://api.convertkit.com/v3/sequences/2720067/subscribe', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ api_key: 'OPFD72ZRz8rb2GQHFT3yPQ', first_name: name, email: email })
-        }).then(() => {
-            document.getElementById('heroFormArea').style.display = 'none';
-            document.getElementById('heroSuccess').style.display = 'block';
-        });
-    }
+function handleHeroSignup() {
+    const name = document.getElementById('heroName').value.trim();
+    const email = document.getElementById('heroEmail').value.trim();
+    if(!email.includes('@')) return alert('Please enter a valid email');
 
-    function handleBookingSubmit() {
-        const fn = document.getElementById('cFirstName').value;
-        const email = document.getElementById('cEmail').value;
-        if(!fn || !email.includes('@')) return alert('Please enter your name and email');
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                access_key: '341aff8e-ea1a-4b8e-b1c6-016ae6990f90',
-                name: fn,
-                email: email,
-                message: document.getElementById('cMessage').value
-            })
-        }).then(() => {
-            document.getElementById('contactFormArea').style.display = 'none';
-            document.getElementById('formSuccess').style.display = 'block';
-        });
-    }
+    fetch('https://api.convertkit.com/v3/sequences/2720067/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ api_key: 'OPFD72ZRz8rb2GQHFT3yPQ', first_name: name, email: email })
+    }).then(() => {
+        document.getElementById('heroFormArea').style.display = 'none';
+        document.getElementById('heroSuccess').style.display = 'block';
+    });
+}
+
+function handleBookingSubmit() {
+    const fn = document.getElementById('cFirstName').value;
+    const email = document.getElementById('cEmail').value;
+    if(!fn || !email.includes('@')) return alert('Please enter your name and email');
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            access_key: '341aff8e-ea1a-4b8e-b1c6-016ae6990f90',
+            name: fn + ' ' + document.getElementById('cLastName').value,
+            email: email,
+            handicap: document.getElementById('cHandicap').value,
+            message: document.getElementById('cMessage').value
+        })
+    }).then(() => {
+        document.getElementById('contactFormArea').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+    });
+}
 </script>
-
 </body>
 </html>
