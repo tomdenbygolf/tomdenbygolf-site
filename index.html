@@ -18,232 +18,76 @@
 
     <style>
         :root {
-            --navy: #1a2640;
-            --navy-deep: #0f1824;
-            --navy-mid: #243350;
-            --green: #3a6b4a;
-            --green-light: #4e8c62;
-            --green-bright: #5daa74;
-            --tan: #c9a96e;
-            --tan-light: #dfc18f;
-            --cream: #f5ead8;
-            --cream-dark: #e8d4b4;
-            --white: #ffffff;
-            --text-dark: #1a1a1a;
+            --navy: #1a2640; --navy-deep: #0f1824; --navy-mid: #243350;
+            --green: #3a6b4a; --green-light: #4e8c62; --green-bright: #5daa74;
+            --tan: #c9a96e; --tan-light: #dfc18f; --cream: #f5ead8;
+            --cream-dark: #e8d4b4; --white: #ffffff;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
-            background: var(--navy-deep);
-            color: var(--cream);
-            font-family: 'Barlow', sans-serif;
-            overflow-x: hidden;
+            background: var(--navy-deep); color: var(--cream);
+            font-family: 'Barlow', sans-serif; overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Subtle Grain Effect */
         body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
+            content: ''; position: fixed; inset: 0;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 1000;
-            opacity: 0.35;
+            pointer-events: none; z-index: 1000; opacity: 0.35;
         }
 
-        /* ══ NAV ══ */
         nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            background: rgba(15, 24, 36, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(15, 24, 36, 0.92); backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(201, 169, 110, 0.2);
-            padding: 0 20px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 0 20px; height: 56px; display: flex; align-items: center; justify-content: space-between;
         }
         .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .nav-emblem {
-            width: 32px; height: 32px;
-            background: var(--tan);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 14px;
-            color: var(--navy-deep);
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-        }
+        .nav-emblem { width: 32px; height: 32px; background: var(--tan); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--navy-deep); }
         .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--cream); }
-        .nav-links { display: flex; gap: 6px; align-items: center; }
-        .nav-link {
-            font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-            color: rgba(245, 234, 216, 0.65); text-decoration: none; padding: 6px 10px;
-            border-radius: 4px; transition: color 0.2s, background 0.2s;
-        }
-        .nav-link:hover { color: var(--tan); background: rgba(201,169,110,0.08); }
-        .nav-cta { background: var(--green); color: white !important; border-radius: 6px; padding: 7px 14px !important; border: 1px solid var(--green-bright); }
-        @media (max-width: 600px) { .nav-link:not(.nav-cta) { display: none; } }
+        .nav-link { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(245, 234, 216, 0.65); text-decoration: none; padding: 6px 10px; }
+        .nav-cta { background: var(--green); color: white !important; border-radius: 6px; padding: 7px 14px !important; }
 
-        /* ══ HERO ══ */
-        .hero {
-            min-height: 100svh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 80px 24px 60px;
-        }
-        .hero-bg {
-            position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,169,110,0.08) 0%, transparent 60%),
-                linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%);
-        }
-        .hero-grid {
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-        }
-
-        .hero-split {
-            position: relative; z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 56px;
-            max-width: 1000px;
-            width: 100%;
-            align-items: center;
-        }
+        .hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; position: relative; padding: 80px 24px; }
+        .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%), linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%); }
+        .hero-split { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 1000px; width: 100%; align-items: center; }
         @media (max-width: 768px) { .hero-split { grid-template-columns: 1fr; gap: 36px; } }
 
-        .hero-photo-col { display: flex; justify-content: center; }
-        .hero-photo-wrap { position: relative; width: 100%; max-width: 380px; }
-        .hero-photo-accent {
-            position: absolute;
-            top: -12px; left: -12px; right: 12px; bottom: 12px;
-            border: 2px solid var(--tan);
-            border-radius: 16px;
-            opacity: 0.4;
-            z-index: 0;
-        }
-        .hero-photo {
-            width: 100%;
-            border-radius: 16px;
-            object-fit: cover;
-            max-height: 520px;
-            display: block;
-            position: relative; z-index: 1;
-            box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-            animation: fadeUp 0.8s ease both;
-        }
-        .hero-photo-badge {
-            position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
-            background: var(--navy-mid); border: 1px solid rgba(201,169,110,0.45);
-            border-radius: 100px; padding: 8px 20px; font-size: 10px; font-weight: 700;
-            letter-spacing: 2px; text-transform: uppercase; color: var(--tan);
-            white-space: nowrap; z-index: 2; display: flex; align-items: center; gap: 8px;
-            animation: fadeUp 0.8s 0.4s ease both;
-        }
-        .hero-photo-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); }
+        .hero-photo { width: 100%; border-radius: 16px; box-shadow: 0 24px 64px rgba(0,0,0,0.5); position: relative; z-index: 1; }
+        .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 10vw, 80px); line-height: 0.9; color: var(--cream); margin-bottom: 16px; }
+        .hero-title-accent { color: var(--tan); display: block; font-style: italic; font-family: 'Playfair Display', serif; font-size: clamp(36px, 7vw, 60px); font-weight: 400; }
+        .hero-btn { background: linear-gradient(135deg, var(--tan), var(--tan-light)); color: var(--navy-deep); border: none; border-radius: 8px; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; margin-top: 10px; }
+        .hero-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,110,0.3); border-radius: 8px; color: var(--cream); padding: 14px 16px; margin-bottom: 10px; width: 100%; outline: none; }
 
-        /* Content */
-        .hero-eyebrow {
-            font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-            color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
-            animation: fadeUp 0.6s ease both;
-        }
-        .hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--tan); border-radius: 1px; }
-        .hero-title {
-            font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 10vw, 80px);
-            line-height: 0.9; letter-spacing: 2px; color: var(--cream); margin-bottom: 16px;
-            animation: fadeUp 0.6s 0.1s ease both;
-        }
-        .hero-title-accent {
-            color: var(--tan); display: block; font-style: italic; font-family: 'Playfair Display', serif;
-            font-size: clamp(36px, 7vw, 60px); letter-spacing: 1px; font-weight: 400;
-        }
-        .hero-sub {
-            font-size: 15px; line-height: 1.7; color: rgba(245,234,216,0.72); font-weight: 300;
-            margin-bottom: 20px; animation: fadeUp 0.6s 0.2s ease both;
-        }
-        .hero-form { display: flex; flex-direction: column; gap: 10px; animation: fadeUp 0.6s 0.3s ease both; }
-        .hero-input {
-            background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,110,0.3);
-            border-radius: 8px; color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 14px;
-            padding: 14px 16px; outline: none; width: 100%; transition: border-color 0.2s;
-        }
-        .hero-btn {
-            background: linear-gradient(135deg, var(--tan), var(--tan-light));
-            color: var(--navy-deep); border: none; border-radius: 8px; padding: 16px;
-            font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700;
-            letter-spacing: 2px; text-transform: uppercase; cursor: pointer; width: 100%;
-            transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-
-        /* ══ SECTIONS ══ */
         section { padding: 80px 24px; position: relative; }
         .section-inner { max-width: 640px; margin: 0 auto; }
         .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .section-tag::before { content: ''; width: 28px; height: 2px; background: var(--tan); border-radius: 1px; }
-        .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 9vw, 56px); letter-spacing: 2px; line-height: 1; color: var(--cream); margin-bottom: 16px; }
-        .section-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 0.8em; }
-        .section-body { font-size: 15px; line-height: 1.75; color: rgba(245,234,216,0.7); font-weight: 300; }
-        .section-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--tan), var(--green-bright)); border-radius: 2px; margin-bottom: 24px; }
+        .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 9vw, 56px); color: var(--cream); margin-bottom: 16px; }
+        .section-body { font-size: 15px; line-height: 1.75; color: rgba(245,234,216,0.7); font-weight: 300; margin-bottom: 24px; }
 
-        /* Method & Cards */
-        .method-section { background: var(--navy); }
         .method-steps { display: flex; flex-direction: column; gap: 0; margin-top: 36px; position: relative; }
         .method-steps::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--tan); opacity: 0.2; }
         .step { display: flex; gap: 20px; padding: 20px 0; }
         .step-num { width: 42px; height: 42px; border-radius: 50%; background: var(--navy-deep); border: 2px solid var(--tan); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; color: var(--tan); flex-shrink: 0; z-index: 1; }
 
-        .for-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
-        .for-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 20px 16px; }
+        .link-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+        .link-card { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 16px 18px; text-decoration: none; color: var(--cream); transition: 0.2s; }
+        .link-card:hover { transform: translateX(4px); background: rgba(201,169,110,0.08); border-color: var(--tan); }
+        .link-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
 
-        /* Links Hub */
-        .link-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
-        .link-card { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 16px 18px; text-decoration: none; color: var(--cream); transition: all 0.2s; }
-        .link-card:hover { transform: translateX(4px); background: rgba(201,169,110,0.08); }
-        .link-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
-
-        /* Form Styling */
         .contact-form { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .form-field { display: flex; flex-direction: column; gap: 6px; }
-        .form-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); }
-        .form-input, .form-textarea, .form-select { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,110,0.25); border-radius: 8px; color: var(--cream); padding: 13px 15px; font-family: inherit; }
-        .btn-submit { background: var(--green); color: white; border: 2px solid var(--green-bright); border-radius: 8px; padding: 16px; font-weight: 700; text-transform: uppercase; cursor: pointer; letter-spacing: 2px; }
+        .form-input, .form-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,110,0.25); border-radius: 8px; color: var(--cream); padding: 13px 15px; width: 100%; outline: none; }
+        .form-textarea { height: 110px; resize: none; }
 
-        /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,24,36,0.96); backdrop-filter: blur(16px); border-top: 1px solid rgba(201,169,110,0.2); display: flex; justify-content: space-around; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99; }
-        @media (min-width: 700px) { .bottom-nav { display: none; } }
-        .bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; text-transform: uppercase; flex: 1; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,24,36,0.96); backdrop-filter: blur(16px); border-top: 1px solid rgba(201,169,110,0.2); display: flex; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99; }
+        .bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1; }
         .bnav-item.active { color: var(--tan); }
-        .bnav-icon { font-size: 20px; }
 
-        /* Footer & Privacy Modal */
-        footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgba(201,169,110,0.1); }
-        .privacy-trigger { color: rgba(245,234,216,0.3); font-size: 11px; text-decoration: underline; cursor: pointer; background: none; border: none; }
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; padding: 40px 20px; overflow-y: auto; }
-        .modal-content { background: var(--navy-mid); padding: 24px; border-radius: 12px; max-width: 500px; margin: 0 auto; font-size: 13px; line-height: 1.6; color: rgba(245,234,216,0.8); }
-
-        /* Animations */
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .reveal { opacity: 0; transform: translateY(24px); transition: 0.6s ease; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-        .hidden-field { display: none !important; visibility: hidden; pointer-events: none; }
     </style>
 </head>
 <body>
@@ -254,154 +98,113 @@
         <div class="nav-name">Tom Denby Golf</div>
     </a>
     <div class="nav-links">
-        <a href="#method" class="nav-link">Method</a>
         <a href="#booking" class="nav-link nav-cta">Book Session →</a>
     </div>
 </nav>
 
 <section class="hero" id="home">
     <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
     <div class="hero-split">
         <div class="hero-photo-col">
-            <div class="hero-photo-wrap">
-                <div class="hero-photo-accent"></div>
-                <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" 
-                     alt="Tom Denby — PGA Golf Coach" 
-                     class="hero-photo" 
-                     fetchpriority="high">
-                <div class="hero-photo-badge"><span class="hero-photo-badge-dot"></span> PGA Qualified · 15 Years Exp</div>
-            </div>
+            <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby" class="hero-photo" fetchpriority="high">
         </div>
         <div class="hero-content-col">
             <div class="hero-eyebrow">Free Video Series</div>
             <h1 class="hero-title">Strike It <em class="hero-title-accent">Pure</em></h1>
-            <p class="hero-sub">Get my <strong>3-part video series</strong> — the exact ball-striking framework I use with my private students. Straight to your inbox.</p>
-            <div class="hero-form" id="heroFormArea">
-                <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off">
-                <input type="text" id="heroName" placeholder="First name" class="hero-input" autocomplete="given-name">
-                <input type="email" id="heroEmail" placeholder="Email address" class="hero-input" autocomplete="email">
-                <button class="hero-btn" onclick="handleHeroSignup()">▶ Send Me the Series</button>
+            <p style="margin-bottom: 20px; color: rgba(245,234,216,0.7);">Get my <strong>3-part ball-striking framework</strong> — the exact drill sequence I use for Real Life Golfers.</p>
+            
+            <div id="heroFormArea">
+                <input type="text" id="heroName" placeholder="First Name" class="hero-input">
+                <input type="email" id="heroEmail" placeholder="Email Address" class="hero-input">
+                <button class="hero-btn" onclick="handleHeroSignup()">▶ Send Me The Series</button>
             </div>
-            <div class="hero-form-success" id="heroSuccess" style="display:none">
-                <p>🎉 <strong>Check your inbox!</strong> Video 1 is on its way.</p>
-                <a href="#booking" class="hero-btn" style="margin-top:10px; text-decoration:none">📅 Book Consultation</a>
+
+            <div id="heroSuccess" style="display:none; background: rgba(58,107,74,0.1); border: 1px solid var(--green-bright); padding: 20px; border-radius: 12px;">
+                <p style="color: var(--green-bright); font-weight: 700; margin-bottom: 10px;">🎉 Check your inbox! Video 1 is on its way.</p>
+                <p style="font-size: 13px; margin-bottom: 15px;">Want a head start? Upload your swing now for a free 60-second review from Tom.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="hero-btn">📤 Upload My Swing Now</a>
             </div>
         </div>
     </div>
 </section>
 
-<section class="method-section" id="method">
+<section id="method" style="background: var(--navy);">
     <div class="section-inner">
         <div class="reveal">
-            <div class="section-tag">The Framework</div>
+            <div class="section-tag">The Strategy</div>
             <h2 class="section-title">The Real Life <em>Method™</em></h2>
-            <div class="section-divider"></div>
-            <p class="section-body">Built for golfers with jobs, families, and limited time. We don't chase "perfection"—we chase lower scores.</p>
+            <p class="section-body">Built for golfers with jobs and families. We focus on high-impact changes that stick with limited practice time.</p>
         </div>
         <div class="method-steps reveal">
-            <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Discover:</strong> Understanding your real life and goals.</div></div>
-            <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Diagnose:</strong> Video analysis to find the root cause.</div></div>
-            <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Design:</strong> A plan that fits your actual weekly schedule.</div></div>
+            <div class="step"><div class="step-num">1</div><div><strong>Diagnose:</strong> We find your "Big Miss" root cause.</div></div>
+            <div class="step"><div class="step-num">2</div><div><strong>Design:</strong> A plan built for your weekly schedule.</div></div>
+            <div class="step"><div class="step-num">3</div><div><strong>Deliver:</strong> Results that show up on the scorecard.</div></div>
         </div>
     </div>
 </section>
 
-<section class="booking-section" id="booking">
+<section id="booking">
     <div class="section-inner">
         <div class="reveal">
-            <div class="section-tag">Get Started</div>
-            <h2 class="section-title">Book a <em>Free Consultation</em></h2>
-            <div class="section-divider"></div>
-            <p class="section-body">A 20-minute call to discuss your game. No obligation.</p>
+            <div class="section-tag">Consultation</div>
+            <h2 class="section-title">Book a <em>Free Call</em></h2>
+            <p class="section-body">A 20-minute chat to see if we're a good fit for your game.</p>
         </div>
-        <div id="contactFormArea" class="reveal">
-            <div class="contact-form">
-                <input type="checkbox" id="cBotCheck" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off">
-                <div class="form-row">
-                    <div class="form-field"><label class="form-label">First Name</label><input class="form-input" id="cFirstName" placeholder="James"></div>
-                    <div class="form-field"><label class="form-label">Last Name</label><input class="form-input" id="cLastName" placeholder="Murphy"></div>
-                </div>
-                <div class="form-field"><label class="form-label">Email</label><input class="form-input" id="cEmail" type="email"></div>
-                <div class="form-field"><label class="form-label">Current Handicap</label><input class="form-input" id="cHandicap" inputmode="decimal" placeholder="e.g. 14.2"></div>
-                <div class="form-field"><label class="form-label">Biggest Challenge?</label><textarea class="form-textarea" id="cMessage" placeholder="Tell me about your game..."></textarea></div>
-                <button class="btn-submit" onclick="handleBookingSubmit()">📅 Request Consultation</button>
+        <div id="contactFormArea" class="contact-form reveal">
+            <div class="form-row">
+                <input class="form-input" id="cFirstName" placeholder="First Name">
+                <input class="form-input" id="cLastName" placeholder="Last Name">
             </div>
+            <input class="form-input" id="cEmail" type="email" placeholder="Email">
+            <textarea class="form-textarea" id="cMessage" placeholder="Tell me about your game..."></textarea>
+            <button class="hero-btn" onclick="handleBookingSubmit()" style="background: var(--green); color: white;">📅 Request My Call</button>
         </div>
-        <div id="formSuccess" style="display:none; text-align:center; padding: 20px; border: 1px solid var(--green-bright); border-radius: 12px;">
+        <div id="formSuccess" style="display:none; text-align:center;">
             <h3>✅ Request Received!</h3>
-            <p>I'll be in touch within 24 hours.</p>
+            <p>Tom will be in touch within 24 hours.</p>
         </div>
     </div>
 </section>
 
-<section class="links-section" id="links">
+<section id="links" style="background: var(--navy-deep);">
     <div class="section-inner">
         <div class="reveal">
-            <div class="section-tag">Links</div>
-            <h2 class="section-title">Social <em>Hub</em></h2>
+            <div class="section-tag">Resources</div>
+            <h2 class="section-title">Quick <em>Links</em></h2>
         </div>
         <div class="link-cards reveal">
-            <a href="https://instagram.com/tomdenbygolf" target="_blank" rel="noopener" class="link-card">
-                <div class="link-icon" style="background: linear-gradient(135deg, #833ab4, #fd1d1d);">📸</div>
-                <div class="link-info"><div class="link-name">Instagram</div><div class="link-desc">Tips & Drills</div></div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="link-card" style="border: 2px solid var(--green-bright); background: rgba(58,107,74,0.15);">
+                <div class="link-icon" style="background: var(--green);">📤</div>
+                <div class="link-info">
+                    <div class="link-name" style="color: var(--green-bright);">Free Swing Review</div>
+                    <div class="link-desc">Upload your video for Tom's feedback</div>
+                </div>
+                <div class="link-arrow">→</div>
             </a>
-            <a href="https://youtube.com/@tomdenbygolf" target="_blank" rel="noopener" class="link-card">
-                <div class="link-icon" style="background: #ff0000;">▶</div>
-                <div class="link-info"><div class="link-name">YouTube</div><div class="link-desc">Full Breakdowns</div></div>
+            <a href="https://instagram.com/tomdenbygolf" target="_blank" class="link-card">
+                <div class="link-icon" style="background: linear-gradient(135deg, #833ab4, #fd1d1d);">📸</div>
+                <div class="link-info"><div class="link-name">Instagram</div><div class="link-desc">@tomdenbygolf</div></div>
             </a>
         </div>
     </div>
 </section>
 
-<footer>
-    <div class="footer-logo">Tom Denby Golf</div>
-    <p class="footer-copy">© 2026 Tom Denby Golf. PGA Qualified Professional.</p>
-    <button class="privacy-trigger" onclick="toggleModal('privacyModal')">Privacy Policy</button>
-</footer>
-
 <nav class="bottom-nav">
-    <a href="#home" class="bnav-item active"><span class="bnav-icon" role="img" aria-label="Home">🏠</span>Home</a>
-    <a href="#method" class="bnav-item"><span class="bnav-icon" role="img" aria-label="Method">🎯</span>Method</a>
-    <a href="#booking" class="bnav-item"><span class="bnav-icon" role="img" aria-label="Book">📅</span>Book</a>
-    <a href="#links" class="bnav-item"><span class="bnav-icon" role="img" aria-label="Links">🔗</span>Links</a>
+    <a href="#home" class="bnav-item active"><span class="bnav-icon">🏠</span>Home</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" class="bnav-item"><span class="bnav-icon">📤</span>Upload</a>
+    <a href="#booking" class="bnav-item"><span class="bnav-icon">📅</span>Book</a>
 </nav>
 
-<div id="privacyModal" class="modal">
-    <div class="modal-content">
-        <h3>Privacy Policy</h3><br>
-        <p>Your data is safe. I use ConvertKit for newsletters and Web3Forms for bookings. I will never sell your information. You can unsubscribe from coaching emails at any time.</p><br>
-        <button class="hero-btn" onclick="toggleModal('privacyModal')">Close</button>
-    </div>
-</div>
-
 <script>
-    // Reveal On Scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Nav Active State
-    const bnavItems = document.querySelectorAll('.bnav-item');
-    window.addEventListener('scroll', () => {
-        let current = "";
-        document.querySelectorAll('section').forEach(s => {
-            const top = s.offsetTop;
-            if (pageYOffset >= top - 100) current = s.getAttribute('id');
-        });
-        bnavItems.forEach(item => {
-            item.classList.toggle('active', item.getAttribute('href') === `#${current}`);
-        });
-    });
-
-    // Form Handlers
     function handleHeroSignup() {
-        if(document.getElementsByName('botcheck')[0].checked) return; // Bot detection
         const name = document.getElementById('heroName').value;
         const email = document.getElementById('heroEmail').value;
         if(!email.includes('@')) return alert('Please enter a valid email');
-
         fetch('https://api.convertkit.com/v3/sequences/2720067/subscribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -413,11 +216,9 @@
     }
 
     function handleBookingSubmit() {
-        if(document.getElementById('cBotCheck').checked) return;
         const fn = document.getElementById('cFirstName').value;
         const email = document.getElementById('cEmail').value;
-        if(!fn || !email.includes('@')) return alert('Please fill in required fields');
-
+        if(!fn || !email.includes('@')) return alert('Please enter your name and email');
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -425,18 +226,12 @@
                 access_key: '341aff8e-ea1a-4b8e-b1c6-016ae6990f90',
                 name: fn,
                 email: email,
-                message: document.getElementById('cMessage').value,
-                handicap: document.getElementById('cHandicap').value
+                message: document.getElementById('cMessage').value
             })
         }).then(() => {
             document.getElementById('contactFormArea').style.display = 'none';
             document.getElementById('formSuccess').style.display = 'block';
         });
-    }
-
-    function toggleModal(id) {
-        const m = document.getElementById(id);
-        m.style.display = m.style.display === 'block' ? 'none' : 'block';
     }
 </script>
 
