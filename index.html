@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f1824">
-<meta name="description" content="PGA Golf Coach Tom Denby — Real Life Method™ coaching. 5-step framework for real-world improvement.">
+<meta name="description" content="PGA Golf Coach Tom Denby — Real Life Method™ coaching. Free 3-video Strike It Pure series for mid-handicap golfers.">
 <title>Tom Denby Golf | The Real Life Method™</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,34 +40,95 @@ nav {
 .nav-emblem { width: 32px; height: 32px; background: var(--tan); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--navy-deep); }
 .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--cream); }
 
-/* HERO */
-.hero { min-height: 100svh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 100px 24px 60px; }
-.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%), linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%); }
-.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%); }
+/* ── HERO ── */
+.hero {
+  min-height: 100svh;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; padding: 100px 24px 60px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58,107,74,0.18) 0%, transparent 70%),
+              linear-gradient(180deg, var(--navy-deep) 0%, #0d1520 100%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
 
-.hero-split { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 1000px; width: 100%; align-items: center; }
+.hero-split {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 56px; max-width: 1000px; width: 100%; align-items: center;
+}
 @media (max-width: 768px) { .hero-split { grid-template-columns: 1fr; gap: 36px; } }
 
 .hero-photo-wrap { position: relative; width: 100%; max-width: 380px; margin: 0 auto; }
 .hero-photo { width: 100%; border-radius: 16px; border: 2px solid var(--tan); box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
-.hero-photo-badge { position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); background: var(--navy-mid); border: 1px solid rgba(201,169,110,0.45); border-radius: 100px; padding: 8px 20px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); white-space: nowrap; z-index: 2; display: flex; align-items: center; gap: 8px; }
+.hero-photo-badge {
+  position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
+  background: var(--navy-mid); border: 1px solid rgba(201,169,110,0.45);
+  border-radius: 100px; padding: 8px 20px; font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--tan);
+  white-space: nowrap; z-index: 2; display: flex; align-items: center; gap: 8px;
+}
 
-.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 72px); line-height: 0.9; color: var(--cream); margin-bottom: 16px; }
+/* Pain-led headline */
+.hero-pain {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(16px, 3vw, 20px);
+  font-style: italic;
+  color: rgba(245,234,216,0.75);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  border-left: 3px solid var(--tan);
+  padding-left: 14px;
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 10vw, 72px);
+  line-height: 0.9; color: var(--cream); margin-bottom: 16px;
+}
 .hero-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
 
-.hero-btns { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
-.btn-primary { background: linear-gradient(135deg, var(--tan), var(--tan-light)); color: var(--navy-deep); border: none; border-radius: 8px; padding: 18px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: 0.2s; box-shadow: 0 4px 15px rgba(201,169,110,0.3); }
-.btn-secondary { background: rgba(58,107,74,0.1); color: var(--green-bright); border: 2px solid var(--green-bright); border-radius: 8px; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+.hero-sub {
+  color: rgba(245,234,216,0.7); line-height: 1.7; margin-bottom: 24px; font-size: 15px;
+}
 
-/* SECTIONS */
+/* single primary CTA */
+.hero-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--tan), var(--tan-light));
+  color: var(--navy-deep); border: none; border-radius: 8px; padding: 18px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+  text-decoration: none; display: flex; align-items: center; justify-content: center;
+  transition: 0.2s; box-shadow: 0 4px 15px rgba(201,169,110,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,169,110,0.4); }
+
+.btn-hint {
+  font-size: 11px; color: rgba(245,234,216,0.4); text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* ── SECTIONS ── */
 section { padding: 80px 24px; position: relative; }
 .section-inner { max-width: 1000px; margin: 0 auto; }
-.section-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.section-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+}
 .section-tag::before { content: ''; width: 28px; height: 2px; background: var(--tan); border-radius: 1px; }
 .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 8vw, 52px); color: var(--cream); margin-bottom: 16px; }
 .section-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
 
-/* 5-STEP METHOD */
+/* ── 5-STEP METHOD ── */
 .method-section { background: var(--navy); }
 .method-split { display: grid; grid-template-columns: 1fr 340px; gap: 50px; align-items: start; }
 @media (max-width: 800px) { .method-split { grid-template-columns: 1fr; } }
@@ -76,27 +137,47 @@ section { padding: 80px 24px; position: relative; }
 .method-video { width: 100%; border-radius: 12px; border: 2px solid var(--tan); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
 
 .method-steps { display: flex; flex-direction: column; margin-top: 32px; position: relative; }
-.method-steps::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--tan), var(--green-bright), var(--tan)); opacity: 0.2; }
+.method-steps::before {
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--tan), var(--green-bright), var(--tan)); opacity: 0.2;
+}
 
 .step { display: flex; gap: 20px; padding: 24px 0; }
-.step-num { width: 42px; height: 42px; border-radius: 50%; background: var(--navy-deep); border: 2px solid var(--tan); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--tan); flex-shrink: 0; z-index: 1; }
+.step-num {
+  width: 42px; height: 42px; border-radius: 50%; background: var(--navy-deep);
+  border: 2px solid var(--tan); display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--tan); flex-shrink: 0; z-index: 1;
+}
 .step-name { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 6px; }
 .step-question { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: var(--cream); margin-bottom: 8px; opacity: 0.95; }
 .step-desc { font-size: 14px; line-height: 1.6; color: rgba(245,234,216,0.6); }
 
-/* SOCIAL HUB */
-.link-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
-.link-card { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--cream); transition: 0.2s; }
-.link-card:hover { border-color: var(--tan); background: rgba(201, 169, 110, 0.08); transform: translateY(-3px); }
+/* ── SOCIAL HUB ── */
+.link-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 32px; }
+.link-card {
+  display: flex; align-items: center; gap: 16px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.18);
+  border-radius: 12px; padding: 20px; text-decoration: none; color: var(--cream); transition: 0.2s;
+}
+.link-card:hover { border-color: var(--tan); background: rgba(201,169,110,0.08); transform: translateY(-3px); }
 .link-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
 
-/* MOBILE NAV */
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,24,36,0.96); backdrop-filter: blur(16px); border-top: 1px solid rgba(201,169,110,0.2); display: flex; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99; }
+/* ── MOBILE NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(15,24,36,0.96); backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(201,169,110,0.2);
+  display: flex; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99;
+}
 @media (min-width: 700px) { .bottom-nav { display: none; } }
-.bnav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1; }
+.bnav-item {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1;
+}
 .bnav-item.active { color: var(--tan); }
 
 footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgba(201,169,110,0.1); }
+
 .reveal { opacity: 0; transform: translateY(24px); transition: 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
@@ -104,153 +185,292 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
 <body>
 
 <nav>
-    <a href="#home" class="nav-logo">
-        <div class="nav-emblem">TDG</div>
-        <div class="nav-name">Tom Denby Golf</div>
-    </a>
+  <a href="#home" class="nav-logo">
+    <div class="nav-emblem">TDG</div>
+    <div class="nav-name">Tom Denby Golf</div>
+  </a>
 </nav>
 
+<!-- ══ HERO ══ -->
 <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-split">
-        <div class="hero-photo-col">
-            <div class="hero-photo-wrap">
-                <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby" class="hero-photo">
-                <div class="hero-photo-badge"><span class="hero-photo-badge-dot"></span> PGA Qualified Professional</div>
-            </div>
-        </div>
-        <div class="hero-content-col">
-            <div class="section-tag">Real Life Coaching</div>
-            <h1 class="hero-title">Strike It <em>Pure</em></h1>
-            <p style="color: rgba(245,234,216,0.7); line-height: 1.7; margin-bottom: 24px;">Evidence-based golf improvement. No rebuilding. Just lower scores and more confidence.</p>
-            
-            <div class="hero-btns">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=dialog" target="_blank" class="btn-primary">
-                    ▶ Get the Free Video Series
-                </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" target="_blank" class="btn-secondary">
-                    📤 Upload Swing For Review
-                </a>
-            </div>
-        </div>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-split">
+
+    <div class="hero-photo-col">
+      <div class="hero-photo-wrap">
+        <img src="https://res.cloudinary.com/dysvknbv1/image/upload/f_auto,q_auto/1R6A2235_d0yo7x" alt="Tom Denby PGA Golf Coach" class="hero-photo">
+        <div class="hero-photo-badge">PGA Qualified Professional</div>
+      </div>
     </div>
+
+    <div class="hero-content-col">
+      <div class="section-tag">Real Life Coaching</div>
+
+      <!-- Pain-led hook -->
+      <p class="hero-pain">Still thinning and fatting it after years of lessons?</p>
+
+      <h1 class="hero-title">Strike It <em>Pure</em></h1>
+
+      <p class="hero-sub">
+        A free 3-video series built for real-life golfers who want cleaner ball striking —
+        without rebuilding their swing or spending hours on the range.
+      </p>
+
+      <div class="hero-btns">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary">▶ Get the Free Video Series</a>
+        <p class="btn-hint">Free · No credit card · Takes 30 seconds</p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
+
+
+<!-- ══ 5-STEP METHOD ══ -->
 <section class="method-section" id="method">
-    <div class="section-inner">
-        <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-            <div class="section-tag" style="justify-content: center;">Our Process</div>
-            <h2 class="section-title">The Real Life <em>Method™</em></h2>
-            <p style="max-width: 600px; margin: 0 auto; opacity: 0.7;">Real Life Coaching for Real Life Golfers. A bespoke framework for lasting improvement.</p>
-        </div>
-
-        <div class="method-split">
-            <div class="reveal">
-                <div class="method-steps">
-                    <div class="step">
-                        <div class="step-num">1</div>
-                        <div class="step-content">
-                            <div class="step-name">Discover</div>
-                            <div class="step-question">Who are you as a golfer and a person?</div>
-                            <div class="step-desc">A coaching plan built around your real life, schedule, and specific physical capabilities.</div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num">2</div>
-                        <div class="step-content">
-                            <div class="step-name">Diagnose</div>
-                            <div class="step-question">Where are shots actually being dropped?</div>
-                            <div class="step-desc">Evidence-based root cause identification using video and data to stop guessing.</div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num">3</div>
-                        <div class="step-content">
-                            <div class="step-name">Design</div>
-                            <div class="step-question">What does your personal plan look like?</div>
-                            <div class="step-desc">A bespoke improvement programme you can execute within your actual weekly time constraints.</div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num">4</div>
-                        <div class="step-content">
-                            <div class="step-name">Develop</div>
-                            <div class="step-question">How do we track and sustain progress?</div>
-                            <div class="step-desc">Ongoing coaching, accountability, and real-time adjustments to ensure you never plateau.</div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-num">5</div>
-                        <div class="step-content">
-                            <div class="step-name">Deliver</div>
-                            <div class="step-question">How do we transfer it to the course?</div>
-                            <div class="step-desc">The ultimate goal: Lower scores, more confidence, and better golf under pressure.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="reveal method-video-wrap">
-                <video src="https://res.cloudinary.com/dysvknbv1/video/upload/f_auto,q_auto,vc_auto/copy_E11BC30B-2FBA-4418-BCB9-4EB7E2FDCF68_y4cfxx" class="method-video" autoplay muted loop playsinline></video>
-                <div style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 2px solid var(--tan);">
-                    <p style="font-size: 13px; font-style: italic; opacity: 0.8;">"I don't chase perfect-looking swings; I chase repeatable, efficient results that fit into your lifestyle."</p>
-                    <p style="font-size: 11px; font-weight: 700; color: var(--tan); margin-top: 8px; text-transform: uppercase;">— Tom Denby</p>
-                </div>
-            </div>
-        </div>
+  <div class="section-inner">
+    <div class="reveal" style="text-align: center; margin-bottom: 60px;">
+      <div class="section-tag" style="justify-content: center;">Our Process</div>
+      <h2 class="section-title">The Real Life <em>Method™</em></h2>
+      <p style="max-width: 600px; margin: 0 auto; opacity: 0.7;">
+        Real Life Coaching for Real Life Golfers. A bespoke framework for lasting improvement.
+      </p>
     </div>
+
+    <div class="method-split">
+      <div class="reveal">
+        <div class="method-steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-name">Discover</div>
+              <div class="step-question">Who are you as a golfer and a person?</div>
+              <div class="step-desc">A coaching plan built around your real life, schedule, and specific physical capabilities.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-name">Diagnose</div>
+              <div class="step-question">Where are shots actually being dropped?</div>
+              <div class="step-desc">Evidence-based root cause identification using video and data to stop guessing.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-name">Design</div>
+              <div class="step-question">What does your personal plan look like?</div>
+              <div class="step-desc">A bespoke improvement programme you can execute within your actual weekly time constraints.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-name">Develop</div>
+              <div class="step-question">How do we track and sustain progress?</div>
+              <div class="step-desc">Ongoing coaching, accountability, and real-time adjustments to ensure you never plateau.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-name">Deliver</div>
+              <div class="step-question">How do we transfer it to the course?</div>
+              <div class="step-desc">The ultimate goal: Lower scores, more confidence, and better golf under pressure.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal method-video-wrap">
+        <video
+          src="https://res.cloudinary.com/dysvknbv1/video/upload/f_auto,q_auto,vc_auto/copy_E11BC30B-2FBA-4418-BCB9-4EB7E2FDCF68_y4cfxx"
+          class="method-video" autoplay muted loop playsinline
+          aria-label="Tom Denby coaching demonstration">
+        </video>
+        <div style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--tan);">
+          <p style="font-size: 13px; font-style: italic; opacity: 0.85; line-height: 1.6;">
+            "I don't chase perfect-looking swings; I chase repeatable, efficient results that fit into your lifestyle."
+          </p>
+          <p style="font-size: 11px; font-weight: 700; color: var(--tan); margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">— Tom Denby</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="links" style="background: var(--navy-deep);">
-    <div class="section-inner">
-        <div class="reveal">
-            <div class="section-tag">Resources</div>
-            <h2 class="section-title">Follow the <em>Journey</em></h2>
-        </div>
-        
-        <div class="link-cards reveal">
-            <a href="https://instagram.com/tomdenbygolf" target="_blank" class="link-card">
-                <div class="link-icon" style="background: linear-gradient(135deg, #833ab4, #fd1d1d);">📸</div>
-                <div class="link-info">
-                    <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Instagram</div>
-                    <div style="font-size: 14px; opacity: 0.7;">Tips & Coaching Stories</div>
-                </div>
-            </a>
-            <a href="https://www.tiktok.com/@tomdenbygolf" target="_blank" class="link-card">
-                <div class="link-icon" style="background: #000; border: 1px solid #333;">📱</div>
-                <div class="link-info">
-                    <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">TikTok</div>
-                    <div style="font-size: 14px; opacity: 0.7;">Quick Drill Fixes</div>
-                </div>
-            </a>
-            <a href="https://youtube.com/@tomdenbygolf" target="_blank" class="link-card">
-                <div class="link-icon" style="background: #ff0000;">▶</div>
-                <div class="link-info">
-                    <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">YouTube</div>
-                    <div style="font-size: 14px; opacity: 0.7;">Technical Breakdowns</div>
-                </div>
-            </a>
-        </div>
+<!-- ══ SWING REVIEW CTA ══ -->
+<section style="background: var(--navy-deep); padding: 60px 24px;">
+  <div class="section-inner">
+    <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+      <div class="section-tag" style="justify-content: center;">Free Analysis</div>
+      <h2 class="section-title">Get a Free <em>Swing Review</em></h2>
+      <p style="opacity: 0.7; font-size: 15px; line-height: 1.7; margin-bottom: 32px;">
+        Upload a short video of your swing and I'll personally analyse it — identifying the root cause of your misses, not just the symptoms. No obligation, no sales pitch.
+      </p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary" style="max-width: 400px; margin: 0 auto;">
+        📤 Upload Your Swing For Review
+      </a>
+      <p style="font-size: 11px; color: rgba(245,234,216,0.35); margin-top: 12px; letter-spacing: 0.5px;">Free · Personal video response · Limited spots available</p>
     </div>
+  </div>
+</section>
+
+<!-- ══ SOCIAL HUB ══ -->
+<section id="links" style="background: var(--navy-deep);">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Follow Along</div>
+      <h2 class="section-title">Follow the <em>Journey</em></h2>
+      <p style="opacity:0.6; margin-bottom: 8px; font-size:14px;">Daily tips, drills, and real coaching content across every platform.</p>
+    </div>
+
+    <div class="link-cards reveal">
+      <a href="https://instagram.com/tomdenbygolf" target="_blank" rel="noopener" class="link-card">
+        <div class="link-icon" style="background: linear-gradient(135deg, #833ab4, #fd1d1d);">📸</div>
+        <div class="link-info">
+          <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Instagram</div>
+          <div style="font-size: 14px; opacity: 0.7;">Tips & Coaching Stories</div>
+        </div>
+      </a>
+      <a href="https://www.facebook.com/tomdenbygolf" target="_blank" rel="noopener" class="link-card">
+        <div class="link-icon" style="background: #1877f2;">📘</div>
+        <div class="link-info">
+          <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Facebook</div>
+          <div style="font-size: 14px; opacity: 0.7;">Community & Coaching Tips</div>
+        </div>
+      </a>
+      <a href="https://www.tiktok.com/@tomdenbygolf" target="_blank" rel="noopener" class="link-card">
+        <div class="link-icon" style="background: #000; border: 1px solid #333;">📱</div>
+        <div class="link-info">
+          <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">TikTok</div>
+          <div style="font-size: 14px; opacity: 0.7;">Quick Drill Fixes</div>
+        </div>
+      </a>
+      <a href="https://youtube.com/@tomdenbygolf" target="_blank" rel="noopener" class="link-card">
+        <div class="link-icon" style="background: #ff0000;">▶</div>
+        <div class="link-info">
+          <div style="font-weight: 700; color: var(--tan); text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">YouTube</div>
+          <div style="font-size: 14px; opacity: 0.7;">Technical Breakdowns</div>
+        </div>
+      </a>
+    </div>
+  </div>
 </section>
 
 <footer>
-    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: rgba(201,169,110,0.5); margin-bottom: 12px;">Tom Denby Golf</div>
-    <div style="font-size: 11px; opacity: 0.3;">© 2026 Tom Denby Golf. PGA Qualified Professional.</div>
+  <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: rgba(201,169,110,0.5); margin-bottom: 12px;">Tom Denby Golf</div>
+  <div style="font-size: 11px; opacity: 0.3; margin-bottom: 10px;">© 2026 Tom Denby Golf. PGA Qualified Professional.</div>
+  <div>
+    <a href="#privacy" onclick="document.getElementById('privacy-modal').style.display='flex'; return false;" style="font-size: 11px; color: rgba(201,169,110,0.45); text-decoration: underline; cursor: pointer;">Privacy Policy</a>
+  </div>
 </footer>
 
+<!-- ══ PRIVACY POLICY MODAL ══ -->
+<div id="privacy-modal" style="display:none; position:fixed; inset:0; background:rgba(10,16,26,0.92); z-index:2000; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--navy); border:1px solid rgba(201,169,110,0.25); border-radius:16px; max-width:680px; width:100%; max-height:85vh; overflow-y:auto; padding:40px 36px; position:relative;">
+
+    <button onclick="document.getElementById('privacy-modal').style.display='none'" style="position:absolute; top:16px; right:20px; background:none; border:none; color:var(--tan); font-size:22px; cursor:pointer; line-height:1;" aria-label="Close privacy policy">✕</button>
+
+    <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--cream); margin-bottom:4px; letter-spacing:2px;">Privacy Policy</div>
+    <div style="font-size:11px; color:rgba(201,169,110,0.6); margin-bottom:28px; text-transform:uppercase; letter-spacing:1px;">Tom Denby Golf · Last updated April 2026</div>
+
+    <div style="font-size:14px; line-height:1.8; color:rgba(245,234,216,0.8);">
+
+      <p style="margin-bottom:20px;">This Privacy Policy explains how Tom Denby Golf ("I", "me", "my") collects, uses, and protects your personal information when you visit <strong style="color:var(--cream);">tomdenbygolf.co.uk</strong> or sign up for any of my free resources or coaching services.</p>
+
+      <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">1. Who I Am</div>
+      <p style="margin-bottom:20px;">Tom Denby Golf is operated by Tom Denby, a PGA Qualified Professional based in the United Kingdom. For any privacy-related queries, you can contact me at: <strong style="color:var(--cream);">tomdenbygolfpro@gmail.com</strong></p>
+
+      <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">2. What Information I Collect</div>
+      <p style="margin-bottom:12px;">I collect the following personal information when you submit a form on this website:</p>
+      <ul style="margin-bottom:20px; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
+        <li>Your name</li>
+        <li>Your email address</li>
+        <li>Any swing video footage you voluntarily upload for a free swing review</li>
+        <li>Any additional information you choose to provide in form fields</li>
+      </ul>
+      <p style="margin-bottom:20px;">I do not collect payment information, and I do not use cookies for tracking or advertising purposes.</p>
+
+      <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">3. How I Use Your Information</div>
+      <p style="margin-bottom:12px;">Your information is used solely to:</p>
+      <ul style="margin-bottom:20px; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
+        <li>Deliver the free Strike It Pure video series you requested</li>
+        <li>Send follow-up emails as part of the video series sequence</li>
+        <li>Provide a personal swing analysis if you submitted video footage</li>
+        <li>Occasionally send coaching tips, updates, and relevant offers (you can unsubscribe at any time)</li>
+      </ul>
+      <p style="margin-bottom:20px;">I will never sell, rent, or share your personal information with third parties for marketing purposes.</p>
+
+      <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">4. How Your Data Is Stored</div>
+      <p style="margin-bottom:20px;">Your data is collected via Google Forms and stored in Google Sheets, both of which are governed by Google's own privacy and security standards. Email sequences are delivered via Google Apps Script. Your data is stored securely and access is limited to me personally. I do not use any third-party email marketing platforms at this time.</p>
+
+      <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">5. How Long I Keep Your Data</div>
+      <p style="margin-bottom:20px;">I retain your personal information for as long as you remain on my mailing list or have an active coaching relationship with me. If you request deletion of your data, I will remove it within 30 days.</p>
+
+      <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">6. Your Rights</div>
+      <p style="margin-bottom:12px;">Under UK GDPR and the Data Protection Act 2018, you have the right to:</p>
+      <ul style="margin-bottom:20px; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
+        <li>Access the personal data I hold about you</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion of your data ("right to be forgotten")</li>
+        <li>Withdraw consent to email communications at any time by clicking unsubscribe in any email</li>
+        <li>Lodge a complaint with the Information Commissioner's Office (ICO) at ico.org.uk</li>
+      </ul>
+      <p style="margin-bottom:20px;">To exercise any of these rights, please contact me at <strong style="color:var(--cream);">tomdenbygolfpro@gmail.com</strong></p>
+
+      <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">7. Third-Party Services</div>
+      <p style="margin-bottom:20px;">This website is hosted on GitHub Pages. Swing videos are hosted via Cloudinary. Forms and data storage are handled by Google. Each of these services operates under their own privacy policies, which I encourage you to review independently.</p>
+
+      <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">8. Changes to This Policy</div>
+      <p style="margin-bottom:28px;">I may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated date. Continued use of the website after changes constitutes acceptance of the updated policy.</p>
+
+      <div style="border-top:1px solid rgba(201,169,110,0.15); padding-top:20px; font-size:12px; color:rgba(245,234,216,0.4);">
+        Tom Denby Golf · tomdenbygolf.co.uk · tomdenbygolfpro@gmail.com
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ MOBILE BOTTOM NAV ══ -->
 <nav class="bottom-nav">
-    <a href="#home" class="bnav-item active">🏠 Home</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=dialog" class="bnav-item">▶ Videos</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform" class="bnav-item">📤 Review</a>
+  <a href="#home" class="bnav-item active">🏠<span>Home</span></a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=header" target="_blank" class="bnav-item">▶<span>Videos</span></a>
+  <a href="#method" class="bnav-item">📋<span>Method</span></a>
+  <a href="#links" class="bnav-item">🔗<span>Follow</span></a>
 </nav>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
+  // Privacy modal - close on backdrop click
+  document.getElementById('privacy-modal').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Active bottom nav state
+  const navItems = document.querySelectorAll('.bnav-item');
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === '#' + id) item.classList.add('active');
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+  sections.forEach(s => navObserver.observe(s));
 </script>
 </body>
 </html>
