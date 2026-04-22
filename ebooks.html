@@ -1,1 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f1824">
+<meta name="description" content="Golf eBooks by PGA Coach Tom Denby — practical guides for real-life golfers. Break 80, mental game, course management and more.">
+<title>eBooks | Tom Denby Golf</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #1a2640; --navy-deep: #0f1824; --navy-mid: #243350;
+  --green: #3a6b4a; --green-light: #4e8c62; --green-bright: #5daa74;
+  --tan: #c9a96e; --tan-light: #dfc18f; --cream: #f5ead8;
+  --white: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--navy-deep); color: var(--cream); font-family: 'Barlow', sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* PREMIUM GRAIN OVERLAY */
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 1000; opacity: 0.35;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(15, 24, 36, 0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  padding: 0 20px; height: 56px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-emblem { width: 32px; height: 32px; background: var(--tan); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--navy-deep); }
+.nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--cream); }
+.nav-back { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(201,169,110,0.7); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.nav-back:hover { color: var(--tan); }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 120px 24px 60px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(58,107,74,0.15) 0%, transparent 70%);
+}
+.page-hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center top, black 30%, transparent 80%);
+}
+.page-hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1000px; margin: 0 auto; text-align: center;
+}
+.section-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--tan); margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.section-tag::before { content: ''; width: 28px; height: 2px; background: var(--tan); border-radius: 1px; }
+.section-tag::after { content: ''; width: 28px; height: 2px; background: var(--tan); border-radius: 1px; }
+.page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 72px); line-height: 0.9; color: var(--cream); margin-bottom: 16px; }
+.page-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
+.page-subtitle { color: rgba(245,234,216,0.65); font-size: 15px; line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--navy-mid);
+  border-top: 1px solid rgba(201,169,110,0.1);
+  border-bottom: 1px solid rgba(201,169,110,0.1);
+  padding: 16px 24px;
+}
+.trust-bar-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: rgba(245,234,216,0.55);
+}
+.trust-item span { color: var(--tan); font-size: 14px; }
+
+/* ── BOOKS GRID ── */
+.books-section { padding: 60px 24px 80px; }
+.books-inner { max-width: 1000px; margin: 0 auto; }
+
+.book-card {
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 48px; align-items: start;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 20px; padding: 40px; margin-bottom: 40px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
+}
+.book-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--tan));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.book-card:hover { border-color: rgba(201,169,110,0.35); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+.book-card:hover::before { opacity: 1; }
+
+@media (max-width: 720px) {
+  .book-card { grid-template-columns: 1fr; gap: 28px; padding: 28px 24px; }
+}
+
+/* ── BOOK COVER ── */
+.book-cover-wrap { position: relative; }
+.book-cover {
+  width: 100%; border-radius: 12px;
+  box-shadow: -8px 12px 32px rgba(0,0,0,0.6), 4px 4px 12px rgba(0,0,0,0.3);
+  border: 1px solid rgba(201,169,110,0.2);
+  display: block; aspect-ratio: 3/4; object-fit: cover;
+}
+
+/* Placeholder cover (until real cover image is available) */
+.book-cover-placeholder {
+  width: 100%; aspect-ratio: 3/4; border-radius: 12px;
+  box-shadow: -8px 12px 32px rgba(0,0,0,0.6), 4px 4px 12px rgba(0,0,0,0.3);
+  border: 1px solid rgba(201,169,110,0.25);
+  background: linear-gradient(160deg, var(--navy-mid) 0%, #0d1520 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 24px; text-align: center; position: relative; overflow: hidden;
+}
+.book-cover-placeholder::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(201,169,110,0.03) 0px, rgba(201,169,110,0.03) 1px, transparent 1px, transparent 12px);
+}
+.cover-logo { font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 3px; color: rgba(201,169,110,0.5); margin-bottom: 20px; }
+.cover-main-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 6vw, 36px); color: var(--cream); line-height: 1; margin-bottom: 8px; }
+.cover-sub-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: var(--tan); opacity: 0.85; line-height: 1.4; margin-bottom: 20px; }
+.cover-divider { width: 40px; height: 1px; background: var(--tan); opacity: 0.4; margin: 0 auto 16px; }
+.cover-author { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,234,216,0.4); }
+.cover-badge-wrap { position: absolute; top: 12px; right: 12px; }
+.cover-badge {
+  background: var(--green); color: var(--cream); font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 8px; border-radius: 100px;
+}
+
+/* ── BOOK INFO ── */
+.book-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(58,107,74,0.2); border: 1px solid rgba(93,170,116,0.3);
+  border-radius: 100px; padding: 4px 14px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--green-bright);
+  margin-bottom: 16px;
+}
+.book-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 6vw, 44px); line-height: 1; color: var(--cream); margin-bottom: 8px; }
+.book-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
+.book-hook { font-family: 'Playfair Display', serif; font-style: italic; font-size: 16px; color: rgba(245,234,216,0.75); margin-bottom: 16px; line-height: 1.5; border-left: 3px solid var(--tan); padding-left: 14px; }
+.book-desc { font-size: 14px; line-height: 1.75; color: rgba(245,234,216,0.6); margin-bottom: 24px; }
+
+/* What's inside */
+.book-contents { margin-bottom: 28px; }
+.book-contents-title {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--tan);
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.book-contents-title::after { content: ''; flex: 1; height: 1px; background: rgba(201,169,110,0.15); }
+.book-checklist { display: flex; flex-direction: column; gap: 8px; }
+.check-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(245,234,216,0.7); line-height: 1.4; }
+.check-icon { color: var(--green-bright); flex-shrink: 0; margin-top: 1px; font-size: 12px; }
+
+/* Price & CTA */
+.book-footer { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.book-price-wrap { display: flex; flex-direction: column; }
+.book-price { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--cream); line-height: 1; }
+.book-price-note { font-size: 10px; color: rgba(245,234,216,0.35); letter-spacing: 0.5px; margin-top: 2px; }
+
+.btn-buy {
+  background: linear-gradient(135deg, var(--tan), var(--tan-light));
+  color: var(--navy-deep); border: none; border-radius: 8px; padding: 16px 28px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: 0.2s; box-shadow: 0 4px 15px rgba(201,169,110,0.3); flex: 1; min-width: 180px;
+}
+.btn-buy:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,169,110,0.4); }
+
+.btn-preview {
+  background: transparent; color: var(--cream); border: 1px solid rgba(201,169,110,0.3);
+  border-radius: 8px; padding: 16px 20px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  transition: 0.2s;
+}
+.btn-preview:hover { border-color: var(--tan); color: var(--tan); }
+
+/* Gumroad secure note */
+.secure-note {
+  margin-top: 12px; display: flex; align-items: center; gap: 6px;
+  font-size: 10px; color: rgba(245,234,216,0.3); letter-spacing: 0.5px;
+}
+
+/* ── COMING SOON CARD ── */
+.book-card.coming-soon { opacity: 0.6; cursor: default; }
+.coming-soon-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 100px; padding: 4px 14px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: rgba(201,169,110,0.5);
+  margin-bottom: 16px;
+}
+
+/* ── COACHING UPSELL ── */
+.upsell-section {
+  padding: 60px 24px;
+  background: var(--navy);
+  border-top: 1px solid rgba(201,169,110,0.1);
+  border-bottom: 1px solid rgba(201,169,110,0.1);
+}
+.upsell-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+.upsell-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 7vw, 46px); color: var(--cream); margin-bottom: 12px; }
+.upsell-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
+.upsell-desc { font-size: 14px; line-height: 1.75; color: rgba(245,234,216,0.6); margin-bottom: 28px; }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--tan), var(--tan-light));
+  color: var(--navy-deep); border: none; border-radius: 8px; padding: 18px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: 0.2s; box-shadow: 0 4px 15px rgba(201,169,110,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,169,110,0.4); }
+
+/* ── FOOTER ── */
+footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgba(201,169,110,0.1); }
+
+/* ── MOBILE NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(15,24,36,0.96); backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(201,169,110,0.2);
+  display: flex; height: 64px; padding-bottom: env(safe-area-inset-bottom); z-index: 99;
+}
+@media (min-width: 700px) { .bottom-nav { display: none; } }
+.bnav-item {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: rgba(245,234,216,0.4); text-decoration: none; font-size: 9px; font-weight: 600; flex: 1;
+}
+.bnav-item.active { color: var(--tan); }
+
+/* ── REVEALS ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-emblem">TDG</div>
+    <div class="nav-name">Tom Denby Golf</div>
+  </a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner reveal">
+    <div class="section-tag">The Real Life Method™</div>
+    <h1 class="page-title">Golf <em>eBooks</em></h1>
+    <p class="page-subtitle">
+      Practical, no-fluff guides built for real-life golfers. Proven frameworks you can study at home and apply on the course — without rebuilding your game from scratch.
+    </p>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span>🔒</span> Secure checkout via Gumroad</div>
+    <div class="trust-item"><span>📲</span> Instant PDF download</div>
+    <div class="trust-item"><span>🏌️</span> PGA Qualified author</div>
+    <div class="trust-item"><span>✅</span> No fluff — actionable only</div>
+  </div>
+</div>
+
+<!-- ══ BOOKS GRID ══ -->
+<section class="books-section">
+  <div class="books-inner">
+
+    <!-- ── BOOK 1: BREAK 80 ── -->
+    <div class="book-card reveal">
+
+      <div class="book-cover-wrap">
+        <!-- Replace src below with your real cover image once designed -->
+        <!-- <img src="your-cover-image.jpg" alt="Break 80 eBook Cover" class="book-cover"> -->
+        <div class="book-cover-placeholder">
+          <div class="cover-badge-wrap"><span class="cover-badge">New</span></div>
+          <div class="cover-logo">Tom Denby Golf</div>
+          <div class="cover-main-title">Break<br>80</div>
+          <div class="cover-sub-title">The Real Life Golfer's Complete Guide</div>
+          <div class="cover-divider"></div>
+          <div class="cover-author">Tom Denby · PGA Pro</div>
+        </div>
+      </div>
+
+      <div class="book-info">
+        <div class="book-label">⛳ New Release</div>
+        <h2 class="book-title">Break <em>80</em></h2>
+        <p class="book-hook">The blueprint mid-handicap golfers actually need — without living on the practice range.</p>
+        <p class="book-desc">
+          Most golfers stuck between 80 and 95 don't have a swing problem — they have a strategy problem. This guide uses The Real Life Method™ framework to identify exactly where you're losing shots and gives you a clear, structured plan to fix them. Built around how real golfers actually play and practise.
+        </p>
+
+        <div class="book-contents">
+          <div class="book-contents-title">What's inside</div>
+          <div class="book-checklist">
+            <div class="check-item"><span class="check-icon">▸</span>The Diagnose framework — find where your shots are actually leaking</div>
+            <div class="check-item"><span class="check-icon">▸</span>Course management decisions that save 4–6 shots per round</div>
+            <div class="check-item"><span class="check-icon">▸</span>The scoring zones most amateurs completely ignore</div>
+            <div class="check-item"><span class="check-icon">▸</span>A 4-week practice plan designed for 30–60 minutes per week</div>
+            <div class="check-item"><span class="check-icon">▸</span>Mental game essentials — how to think on the course like a low handicapper</div>
+            <div class="check-item"><span class="check-icon">▸</span>The pre-round routine that sets you up for your best golf</div>
+          </div>
+        </div>
+
+        <div class="book-footer">
+          <div class="book-price-wrap">
+            <div class="book-price">£27</div>
+            <div class="book-price-note">Instant PDF · No subscription</div>
+          </div>
+          <!-- Replace href with your real Gumroad product link -->
+          <a href="https://gumroad.com/tomdenbygolf" target="_blank" rel="noopener" class="btn-buy">
+            📖 Get the eBook
+          </a>
+          <!-- Optional: link to a sample page or preview PDF
+          <a href="#" class="btn-preview">Preview →</a>
+          -->
+        </div>
+
+        <div class="secure-note">
+          🔒 Secure checkout powered by Gumroad · Instant download after purchase
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── BOOK 2: MENTAL GAME (Coming Soon) ── -->
+    <div class="book-card coming-soon reveal">
+
+      <div class="book-cover-wrap">
+        <div class="book-cover-placeholder" style="opacity: 0.5;">
+          <div class="cover-logo">Tom Denby Golf</div>
+          <div class="cover-main-title">Mental<br>Game</div>
+          <div class="cover-sub-title">The Real Life Golfer's Complete Mental Game Guide</div>
+          <div class="cover-divider"></div>
+          <div class="cover-author">Tom Denby · PGA Pro</div>
+        </div>
+      </div>
+
+      <div class="book-info">
+        <div class="coming-soon-badge">⏳ Coming Soon</div>
+        <h2 class="book-title">The Mental <em>Game</em></h2>
+        <p class="book-hook">Mindset and course management — the two things separating you from your best golf.</p>
+        <p class="book-desc">
+          A combined premium guide covering everything in The Real Life Golfer's Complete Mental Game Guide — the Mindset & Course Management Guide paired with the Target Focus System. Stop letting your head cost you shots.
+        </p>
+
+        <div class="book-contents">
+          <div class="book-contents-title">What's inside</div>
+          <div class="book-checklist">
+            <div class="check-item"><span class="check-icon">▸</span>The Target Focus System — commit to every shot with a clear pre-shot routine</div>
+            <div class="check-item"><span class="check-icon">▸</span>Managing pressure, nerves, and bad holes without unravelling</div>
+            <div class="check-item"><span class="check-icon">▸</span>Course management decisions that protect your scorecard</div>
+            <div class="check-item"><span class="check-icon">▸</span>How to build mental resilience between the ears</div>
+          </div>
+        </div>
+
+        <div class="book-footer">
+          <div class="book-price-wrap">
+            <div class="book-price" style="color: rgba(245,234,216,0.3);">£37</div>
+            <div class="book-price-note">Available soon</div>
+          </div>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=header" target="_blank" rel="noopener" class="btn-preview">
+            ✉️ Notify me when it's live
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── BOOK 3: REAL LIFE PRACTICE (Coming Soon) ── -->
+    <div class="book-card coming-soon reveal">
+
+      <div class="book-cover-wrap">
+        <div class="book-cover-placeholder" style="opacity: 0.5;">
+          <div class="cover-logo">Tom Denby Golf</div>
+          <div class="cover-main-title">Real Life<br>Practice</div>
+          <div class="cover-sub-title">The Real Life Method™ Practice Guide</div>
+          <div class="cover-divider"></div>
+          <div class="cover-author">Tom Denby · PGA Pro</div>
+        </div>
+      </div>
+
+      <div class="book-info">
+        <div class="coming-soon-badge">⏳ Coming Soon</div>
+        <h2 class="book-title">Real Life <em>Practice</em></h2>
+        <p class="book-hook">How to improve your golf when you only have 30 minutes and a bucket of balls.</p>
+        <p class="book-desc">
+          Most golfers waste their practice time hitting ball after ball with no structure or intent. This guide gives you a complete practice system built around your real schedule — so every session moves the needle, whether you have 20 minutes on a mat or a full hour at the course.
+        </p>
+
+        <div class="book-contents">
+          <div class="book-contents-title">What's inside</div>
+          <div class="book-checklist">
+            <div class="check-item"><span class="check-icon">▸</span>How to structure practice sessions for maximum improvement in minimum time</div>
+            <div class="check-item"><span class="check-icon">▸</span>The difference between block practice and random practice — and when to use each</div>
+            <div class="check-item"><span class="check-icon">▸</span>Drills that transfer directly to the course, not just the range</div>
+            <div class="check-item"><span class="check-icon">▸</span>Weekly and monthly practice templates for real-life golfers</div>
+            <div class="check-item"><span class="check-icon">▸</span>How to practise your short game when you can't get to a course</div>
+          </div>
+        </div>
+
+        <div class="book-footer">
+          <div class="book-price-wrap">
+            <div class="book-price" style="color: rgba(245,234,216,0.3);">TBC</div>
+            <div class="book-price-note">Available soon</div>
+          </div>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=header" target="_blank" rel="noopener" class="btn-preview">
+            ✉️ Notify me when it's live
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── BOOK 4: STOP THE SLICE (Coming Soon) ── -->
+    <div class="book-card coming-soon reveal">
+
+      <div class="book-cover-wrap">
+        <div class="book-cover-placeholder" style="opacity: 0.5;">
+          <div class="cover-logo">Tom Denby Golf</div>
+          <div class="cover-main-title">Stop the<br>Slice</div>
+          <div class="cover-sub-title">Fix It Once. Fix It For Good.</div>
+          <div class="cover-divider"></div>
+          <div class="cover-author">Tom Denby · PGA Pro</div>
+        </div>
+      </div>
+
+      <div class="book-info">
+        <div class="coming-soon-badge">⏳ Coming Soon</div>
+        <h2 class="book-title">Stop the <em>Slice</em></h2>
+        <p class="book-hook">The slice is the most common shot in amateur golf — and the most fixable. Here's how.</p>
+        <p class="book-desc">
+          A slice isn't bad luck — it's a pattern, and patterns have causes. This guide diagnoses the real root of your slice using The Real Life Method™ framework, then gives you a step-by-step fix that lasts. No confusing theory, no jargon — just clear, proven corrections that work on real golfers.
+        </p>
+
+        <div class="book-contents">
+          <div class="book-contents-title">What's inside</div>
+          <div class="book-checklist">
+            <div class="check-item"><span class="check-icon">▸</span>Why you slice — the actual root causes most lessons miss</div>
+            <div class="check-item"><span class="check-icon">▸</span>Grip, stance, and path corrections explained simply</div>
+            <div class="check-item"><span class="check-icon">▸</span>The 3 drills that fix a slice faster than anything else</div>
+            <div class="check-item"><span class="check-icon">▸</span>How to stop the slice coming back under pressure</div>
+            <div class="check-item"><span class="check-icon">▸</span>Course management tips for while you're working on the fix</div>
+          </div>
+        </div>
+
+        <div class="book-footer">
+          <div class="book-price-wrap">
+            <div class="book-price" style="color: rgba(245,234,216,0.3);">TBC</div>
+            <div class="book-price-note">Available soon</div>
+          </div>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=header" target="_blank" rel="noopener" class="btn-preview">
+            ✉️ Notify me when it's live
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── BOOK 5: MENTAL GAME MASTERCLASS (Coming Soon) ── -->
+    <div class="book-card coming-soon reveal">
+
+      <div class="book-cover-wrap">
+        <div class="book-cover-placeholder" style="opacity: 0.5;">
+          <div class="cover-logo">Tom Denby Golf</div>
+          <div class="cover-main-title">Mental<br>Game<br>Master</div>
+          <div class="cover-sub-title">The Advanced Masterclass</div>
+          <div class="cover-divider"></div>
+          <div class="cover-author">Tom Denby · PGA Pro</div>
+        </div>
+      </div>
+
+      <div class="book-info">
+        <div class="coming-soon-badge">⏳ Coming Soon</div>
+        <h2 class="book-title">Mental Game <em>Masterclass</em></h2>
+        <p class="book-hook">Go beyond the basics — the advanced mental game framework for golfers serious about competing.</p>
+        <p class="book-desc">
+          Built for golfers who already understand the basics of course management and want to go deeper. This masterclass covers the advanced psychological side of golf — managing ego, building elite-level focus, competing under pressure, and developing an unshakeable on-course identity.
+        </p>
+
+        <div class="book-contents">
+          <div class="book-contents-title">What's inside</div>
+          <div class="book-checklist">
+            <div class="check-item"><span class="check-icon">▸</span>Advanced focus and attention control techniques used by tour professionals</div>
+            <div class="check-item"><span class="check-icon">▸</span>How to build a competitive mindset and shut out self-doubt</div>
+            <div class="check-item"><span class="check-icon">▸</span>Managing ego, frustration, and expectation on the course</div>
+            <div class="check-item"><span class="check-icon">▸</span>Pressure routines — how to perform at your best when it counts most</div>
+            <div class="check-item"><span class="check-icon">▸</span>Building a personal on-course identity and game plan</div>
+          </div>
+        </div>
+
+        <div class="book-footer">
+          <div class="book-price-wrap">
+            <div class="book-price" style="color: rgba(245,234,216,0.3);">TBC</div>
+            <div class="book-price-note">Available soon</div>
+          </div>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=header" target="_blank" rel="noopener" class="btn-preview">
+            ✉️ Notify me when it's live
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ COACHING UPSELL ══ -->
+<section class="upsell-section">
+  <div class="upsell-inner reveal">
+    <div class="section-tag">Want More?</div>
+    <h2 class="upsell-title">Want a Personal <em>Game Plan?</em></h2>
+    <p class="upsell-desc">
+      The eBooks give you the framework. Personal coaching gives you the execution. If you want me to build a bespoke plan around your game, schedule, and goals — start with a free swing review.
+    </p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVzvyyomlHhszEPRUo5k5SzprUjjGI33-c4js2zswbDVprkQ/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary">
+      📤 Get a Free Swing Review
+    </a>
+    <p style="font-size: 11px; color: rgba(245,234,216,0.3); margin-top: 12px; letter-spacing: 0.5px;">Free · Personal video response · Limited spots</p>
+  </div>
+</section>
+
+<footer>
+  <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: rgba(201,169,110,0.5); margin-bottom: 12px;">Tom Denby Golf</div>
+  <div style="font-size: 11px; opacity: 0.3; margin-bottom: 10px;">© 2026 Tom Denby Golf. PGA Qualified Professional.</div>
+  <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+    <a href="index.html" style="font-size: 11px; color: rgba(201,169,110,0.45); text-decoration: none;">← Home</a>
+    <a href="#privacy" onclick="document.getElementById('privacy-modal').style.display='flex'; return false;" style="font-size: 11px; color: rgba(201,169,110,0.45); text-decoration: underline; cursor: pointer;">Privacy Policy</a>
+  </div>
+</footer>
+
+<!-- ══ PRIVACY MODAL ══ -->
+<div id="privacy-modal" style="display:none; position:fixed; inset:0; background:rgba(10,16,26,0.92); z-index:2000; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--navy); border:1px solid rgba(201,169,110,0.25); border-radius:16px; max-width:680px; width:100%; max-height:85vh; overflow-y:auto; padding:40px 36px; position:relative;">
+    <button onclick="document.getElementById('privacy-modal').style.display='none'" style="position:absolute; top:16px; right:20px; background:none; border:none; color:var(--tan); font-size:22px; cursor:pointer; line-height:1;" aria-label="Close">✕</button>
+    <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--cream); margin-bottom:4px; letter-spacing:2px;">Privacy Policy</div>
+    <div style="font-size:11px; color:rgba(201,169,110,0.6); margin-bottom:28px; text-transform:uppercase; letter-spacing:1px;">Tom Denby Golf · Last updated April 2026</div>
+    <div style="font-size:14px; line-height:1.8; color:rgba(245,234,216,0.8);">
+      <p>This Privacy Policy explains how Tom Denby Golf collects, uses, and protects your personal information. Contact: <strong style="color:var(--cream);">tomdenbygolfpro@gmail.com</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MOBILE BOTTOM NAV ══ -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bnav-item">🏠<span>Home</span></a>
+  <a href="#" class="bnav-item active">📖<span>eBooks</span></a>
+  <a href="index.html#method" class="bnav-item">📋<span>Method</span></a>
+  <a href="index.html#links" class="bnav-item">🔗<span>Follow</span></a>
+</nav>
+
+<script>
+  document.getElementById('privacy-modal').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
 
