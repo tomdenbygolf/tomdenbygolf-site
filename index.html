@@ -40,11 +40,46 @@ nav {
 .nav-emblem { width: 32px; height: 32px; background: var(--tan); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--navy-deep); }
 .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--cream); }
 
+.nav-ebooks-btn {
+  background: linear-gradient(135deg, var(--tan), var(--tan-light));
+  color: var(--navy-deep); border-radius: 6px; padding: 8px 16px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+  transition: 0.2s; box-shadow: 0 2px 10px rgba(201,169,110,0.25);
+}
+.nav-ebooks-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,169,110,0.4); }
+
+/* ── EBOOKS BANNER ── */
+.ebooks-banner {
+  margin-top: 56px;
+  background: linear-gradient(135deg, var(--navy-mid) 0%, #1e3a28 100%);
+  border-bottom: 1px solid rgba(201,169,110,0.2);
+  padding: 18px 24px;
+  display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+  text-align: center;
+}
+.ebooks-banner-text {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600;
+  letter-spacing: 1px; color: rgba(245,234,216,0.8);
+}
+.ebooks-banner-text strong { color: var(--tan); }
+.ebooks-banner-btn {
+  background: linear-gradient(135deg, var(--tan), var(--tan-light));
+  color: var(--navy-deep); border-radius: 8px; padding: 12px 28px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: 0.2s; box-shadow: 0 4px 15px rgba(201,169,110,0.3);
+  white-space: nowrap;
+}
+.ebooks-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,169,110,0.4); }
+
 /* ── HERO ── */
 .hero {
   min-height: 100svh;
   display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden; padding: 100px 24px 60px;
+  position: relative; overflow: hidden; padding: 60px 24px 60px;
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -76,7 +111,6 @@ nav {
   white-space: nowrap; z-index: 2; display: flex; align-items: center; gap: 8px;
 }
 
-/* Pain-led headline */
 .hero-pain {
   font-family: 'Playfair Display', serif;
   font-size: clamp(16px, 3vw, 20px);
@@ -99,7 +133,6 @@ nav {
   color: rgba(245,234,216,0.7); line-height: 1.7; margin-bottom: 24px; font-size: 15px;
 }
 
-/* single primary CTA */
 .hero-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
 
 .btn-primary {
@@ -117,7 +150,6 @@ nav {
   letter-spacing: 0.5px;
 }
 
-/* ── SECTIONS ── */
 section { padding: 80px 24px; position: relative; }
 .section-inner { max-width: 1000px; margin: 0 auto; }
 .section-tag {
@@ -128,7 +160,6 @@ section { padding: 80px 24px; position: relative; }
 .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 8vw, 52px); color: var(--cream); margin-bottom: 16px; }
 .section-title em { color: var(--tan); font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
 
-/* ── 5-STEP METHOD ── */
 .method-section { background: var(--navy); }
 .method-split { display: grid; grid-template-columns: 1fr 340px; gap: 50px; align-items: start; }
 @media (max-width: 800px) { .method-split { grid-template-columns: 1fr; } }
@@ -152,7 +183,6 @@ section { padding: 80px 24px; position: relative; }
 .step-question { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: var(--cream); margin-bottom: 8px; opacity: 0.95; }
 .step-desc { font-size: 14px; line-height: 1.6; color: rgba(245,234,216,0.6); }
 
-/* ── SOCIAL HUB ── */
 .link-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 32px; }
 .link-card {
   display: flex; align-items: center; gap: 16px;
@@ -162,7 +192,6 @@ section { padding: 80px 24px; position: relative; }
 .link-card:hover { border-color: var(--tan); background: rgba(201,169,110,0.08); transform: translateY(-3px); }
 .link-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
 
-/* ── MOBILE NAV ── */
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0;
   background: rgba(15,24,36,0.96); backdrop-filter: blur(16px);
@@ -189,7 +218,14 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
     <div class="nav-emblem">TDG</div>
     <div class="nav-name">Tom Denby Golf</div>
   </a>
+  <a href="ebooks.html" class="nav-ebooks-btn">📖 eBooks</a>
 </nav>
+
+<!-- ══ EBOOKS BANNER ══ -->
+<div class="ebooks-banner">
+  <div class="ebooks-banner-text">📖 <strong>New:</strong> Real Life Golf eBooks — practical guides for mid-handicap golfers</div>
+  <a href="ebooks.html" class="ebooks-banner-btn">Browse eBooks →</a>
+</div>
 
 <!-- ══ HERO ══ -->
 <section class="hero" id="home">
@@ -206,17 +242,12 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
 
     <div class="hero-content-col">
       <div class="section-tag">Real Life Coaching</div>
-
-      <!-- Pain-led hook -->
       <p class="hero-pain">Still thinning and fatting it after years of lessons?</p>
-
       <h1 class="hero-title">Strike It <em>Pure</em></h1>
-
       <p class="hero-sub">
         A free 3-video series built for real-life golfers who want cleaner ball striking —
         without rebuilding their swing or spending hours on the range.
       </p>
-
       <div class="hero-btns">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary">▶ Get the Free Video Series</a>
         <p class="btn-hint">Free · No credit card · Takes 30 seconds</p>
@@ -225,8 +256,6 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
 
   </div>
 </section>
-
-
 
 <!-- ══ 5-STEP METHOD ══ -->
 <section class="method-section" id="method">
@@ -372,29 +401,21 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
 <!-- ══ PRIVACY POLICY MODAL ══ -->
 <div id="privacy-modal" style="display:none; position:fixed; inset:0; background:rgba(10,16,26,0.92); z-index:2000; align-items:center; justify-content:center; padding:20px;">
   <div style="background:var(--navy); border:1px solid rgba(201,169,110,0.25); border-radius:16px; max-width:680px; width:100%; max-height:85vh; overflow-y:auto; padding:40px 36px; position:relative;">
-
     <button onclick="document.getElementById('privacy-modal').style.display='none'" style="position:absolute; top:16px; right:20px; background:none; border:none; color:var(--tan); font-size:22px; cursor:pointer; line-height:1;" aria-label="Close privacy policy">✕</button>
-
     <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--cream); margin-bottom:4px; letter-spacing:2px;">Privacy Policy</div>
     <div style="font-size:11px; color:rgba(201,169,110,0.6); margin-bottom:28px; text-transform:uppercase; letter-spacing:1px;">Tom Denby Golf · Last updated April 2026</div>
-
     <div style="font-size:14px; line-height:1.8; color:rgba(245,234,216,0.8);">
-
       <p style="margin-bottom:20px;">This Privacy Policy explains how Tom Denby Golf ("I", "me", "my") collects, uses, and protects your personal information when you visit <strong style="color:var(--cream);">tomdenbygolf.co.uk</strong> or sign up for any of my free resources or coaching services.</p>
-
       <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">1. Who I Am</div>
       <p style="margin-bottom:20px;">Tom Denby Golf is operated by Tom Denby, a PGA Qualified Professional based in the United Kingdom. For any privacy-related queries, you can contact me at: <strong style="color:var(--cream);">tomdenbygolfpro@gmail.com</strong></p>
-
       <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">2. What Information I Collect</div>
       <p style="margin-bottom:12px;">I collect the following personal information when you submit a form on this website:</p>
       <ul style="margin-bottom:20px; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
-        <li>Your name</li>
-        <li>Your email address</li>
+        <li>Your name</li><li>Your email address</li>
         <li>Any swing video footage you voluntarily upload for a free swing review</li>
         <li>Any additional information you choose to provide in form fields</li>
       </ul>
       <p style="margin-bottom:20px;">I do not collect payment information, and I do not use cookies for tracking or advertising purposes.</p>
-
       <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">3. How I Use Your Information</div>
       <p style="margin-bottom:12px;">Your information is used solely to:</p>
       <ul style="margin-bottom:20px; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
@@ -404,13 +425,10 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
         <li>Occasionally send coaching tips, updates, and relevant offers (you can unsubscribe at any time)</li>
       </ul>
       <p style="margin-bottom:20px;">I will never sell, rent, or share your personal information with third parties for marketing purposes.</p>
-
       <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">4. How Your Data Is Stored</div>
       <p style="margin-bottom:20px;">Your data is collected via Google Forms and stored in Google Sheets, both of which are governed by Google's own privacy and security standards. Email sequences are delivered via Google Apps Script. Your data is stored securely and access is limited to me personally. I do not use any third-party email marketing platforms at this time.</p>
-
       <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">5. How Long I Keep Your Data</div>
       <p style="margin-bottom:20px;">I retain your personal information for as long as you remain on my mailing list or have an active coaching relationship with me. If you request deletion of your data, I will remove it within 30 days.</p>
-
       <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">6. Your Rights</div>
       <p style="margin-bottom:12px;">Under UK GDPR and the Data Protection Act 2018, you have the right to:</p>
       <ul style="margin-bottom:20px; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
@@ -421,17 +439,13 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
         <li>Lodge a complaint with the Information Commissioner's Office (ICO) at ico.org.uk</li>
       </ul>
       <p style="margin-bottom:20px;">To exercise any of these rights, please contact me at <strong style="color:var(--cream);">tomdenbygolfpro@gmail.com</strong></p>
-
       <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">7. Third-Party Services</div>
       <p style="margin-bottom:20px;">This website is hosted on GitHub Pages. Swing videos are hosted via Cloudinary. Forms and data storage are handled by Google. Each of these services operates under their own privacy policies, which I encourage you to review independently.</p>
-
       <div style="color:var(--tan); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px;">8. Changes to This Policy</div>
       <p style="margin-bottom:28px;">I may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated date. Continued use of the website after changes constitutes acceptance of the updated policy.</p>
-
       <div style="border-top:1px solid rgba(201,169,110,0.15); padding-top:20px; font-size:12px; color:rgba(245,234,216,0.4);">
         Tom Denby Golf · tomdenbygolf.co.uk · tomdenbygolfpro@gmail.com
       </div>
-
     </div>
   </div>
 </div>
@@ -441,22 +455,17 @@ footer { padding: 40px 24px 100px; text-align: center; border-top: 1px solid rgb
   <a href="#home" class="bnav-item active">🏠<span>Home</span></a>
   <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXFjtUQ8kCyf9z9j_YcoJR6Mr4YM0qASCEGRHc7rRtCOtJRA/viewform?usp=header" target="_blank" class="bnav-item">▶<span>Videos</span></a>
   <a href="#method" class="bnav-item">📋<span>Method</span></a>
-  <a href="#links" class="bnav-item">🔗<span>Follow</span></a>
+  <a href="ebooks.html" class="bnav-item">📖<span>eBooks</span></a>
 </nav>
 
 <script>
-  // Privacy modal - close on backdrop click
   document.getElementById('privacy-modal').addEventListener('click', function(e) {
     if (e.target === this) this.style.display = 'none';
   });
-
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Active bottom nav state
   const navItems = document.querySelectorAll('.bnav-item');
   const sections = document.querySelectorAll('section[id], div[id]');
   const navObserver = new IntersectionObserver((entries) => {
